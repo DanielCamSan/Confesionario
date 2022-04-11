@@ -11,17 +11,15 @@
         android:id="@+id/constraintLayout"
         android:layout_width="410dp"
         android:layout_height="69dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.001">
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/publicate_btn"
-            android:layout_width="141dp"
-            android:layout_height="53dp"
+            android:layout_width="153dp"
+            android:layout_height="60dp"
             android:backgroundTint="@color/button_color_1"
             android:hapticFeedbackEnabled="false"
             android:text="@string/publications_btn_publication"
@@ -48,61 +46,35 @@
         android:id="@+id/searcher_publication"
         android:layout_width="371dp"
         android:layout_height="44dp"
+        android:layout_marginTop="8dp"
         android:background="#DFDFDF"
         android:queryHint="@string/publications_searcher_hint"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.625"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.009" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="413dp"
-        android:layout_height="49dp"
+    <FrameLayout
+        android:id="@+id/principal_frame_layout"
+        android:layout_width="416dp"
+        android:layout_height="438dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/principal_bottom_navigation_view"
+        app:layout_constraintVertical_bias="0.992">
+
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/principal_bottom_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searcher_publication"
-        app:layout_constraintVertical_bias="0.014"
-        tools:context=".MainActivity">
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="103dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:text="@string/publications_category_all"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="103dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="40dp"
-            android:text="@string/publications_category_parties"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button2"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="103dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="28dp"
-            android:text="@string/publications_category_books"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button3"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.444" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
+        app:menu="@menu/publications_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>
