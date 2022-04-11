@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="btn_Back">Volver</string>
+    <string name="Create_Confesion">Crea tu confesión</string>
+    <string name="Title_Confesion">Titulo*</string>
+    <string name="text_title_confesion">Titulo</string>
+    <string name="Category_Confesion">Categoria*</string>
+    <string name="text_category_confesion">Categoria</string>
+    <string name="Confesion">Confesion*</string>
+    <string name="text_confesion">Confesion</string>
+    <string name="switch_Anonymous">Publicar de foma anónima</string>
+    <string name="btn_Publish">Publicar</string>
+</resources>
