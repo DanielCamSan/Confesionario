@@ -8,4 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="button_color_1">#FFC83E</color>
+    <color name="publication_card_title">#162587</color>
+    <color name="publication_card_category">#FFD05B</color>
+    <color name="publication_card_gris">#5C5C5C</color>
+    <color name="publication_card_text">#222222</color>
 </resources>
