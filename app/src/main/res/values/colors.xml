@@ -11,4 +11,5 @@
     <color name="commentBackground">#E9E9E9</color>
     <color name="mainBlue">#2E5EA7</color>
     <color name="placeholder">#707070</color>
+    <color name="ayuda_yellow">#FFEBBD</color>
 </resources>
