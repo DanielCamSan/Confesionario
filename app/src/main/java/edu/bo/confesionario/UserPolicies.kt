@@ -5,16 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-class MainActivity : AppCompatActivity() {
-    private val loginBtn : Button
-        get() =  findViewById(R.id.login_btn)
+class UserPolicies : AppCompatActivity() {
+
+    private val goBackBtn : Button
+        get() =  findViewById(R.id.go_back_btn)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        loginBtn.setOnClickListener{
-            val intent = Intent(this, UserPolicies::class.java)
+        setContentView(R.layout.activity_user_policies)
+
+        goBackBtn.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }
