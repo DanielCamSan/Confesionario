@@ -7,17 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-<<<<<<< HEAD
     <color name="background">#F8F8F8</color>
     <color name="commentBackground">#E9E9E9</color>
     <color name="mainBlue">#2E5EA7</color>
     <color name="placeholder">#707070</color>
     <color name="ayuda_yellow">#FFEBBD</color>
-=======
     <color name="button_color_1">#FFC83E</color>
     <color name="publication_card_title">#162587</color>
     <color name="publication_card_category">#FFD05B</color>
     <color name="publication_card_gris">#5C5C5C</color>
     <color name="publication_card_text">#222222</color>
->>>>>>> alvaro-publications
 </resources>

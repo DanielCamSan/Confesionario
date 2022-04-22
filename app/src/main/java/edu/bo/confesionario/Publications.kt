@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.io.Serializable
 
 class Publications : AppCompatActivity() {
+
     lateinit var toolbar: ActionBar
     lateinit var recyclerView : RecyclerView
     lateinit var listPublicationsString : String
@@ -28,8 +29,8 @@ class Publications : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_publications)
-        val rar = findViewById<BottomNavigationView>(R.id.principal_bottom_navigation_view)
 
+        val rar = findViewById<BottomNavigationView>(R.id.principal_bottom_navigation_view)
         leftButton.visibility = View.INVISIBLE
         leftButton.setOnClickListener{
             if (menuView > 0){
@@ -113,7 +114,6 @@ class Publications : AppCompatActivity() {
                 else -> true
             }
         }
-
 
     }
 }

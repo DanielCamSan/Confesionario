@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Confesionario">
         <activity
+            android:name=".Publications"
+            android:exported="false" />
+        <activity
             android:name=".IndividualConfession"
+            android:exported="false" />
+        <activity
+            android:name=".Ayuda"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
