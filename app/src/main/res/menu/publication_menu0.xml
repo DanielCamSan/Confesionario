@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/categoryMenu">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/categoryMenu0">
     <item
         android:id="@+id/bottom_navigation_all"
         android:title="_____________"
@@ -14,13 +13,4 @@
         android:id="@+id/bottom_navigation_books"
         android:title="_____________"
         android:icon="@drawable/libros"/>
-    <item android:id="@+id/bottom_navigation_classes"
-        android:title="_____________"
-        android:icon="@drawable/clases" />
-    <item
-        android:id="@+id/bottom_navigation_confesions"
-        android:title="_____________"
-        android:icon="@drawable/confesion"/>
-
 </menu>
-

@@ -70,14 +70,38 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/principal_bottom_navigation_view"
-        android:layout_width="410dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="265dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="44dp"
         app:itemIconSize="46dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searcher_publication"
-        app:menu="@menu/publications_menu" />
+        app:menu="@menu/publication_menu0" />
 
+    <Button
+        android:id="@+id/buttonLeft"
+        android:layout_width="48dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="16dp"
+        android:backgroundTint="#CA7070"
+        android:text="I"
+        android:textColor="#2B2B2B"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.252" />
+
+    <Button
+        android:id="@+id/buttonRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="228dp"
+        android:layout_marginEnd="20dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
