@@ -80,7 +80,7 @@ public class ExpandableTextViewAdapter extends BaseExpandableListAdapter {
         String sectionFaq = (String)getGroup(i);
         if (view==null){
             LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.activity_ayuda,null);
+            view = inflater.inflate(R.layout.ayuda_collapse,null);
         }
         TextView sectionFaq2=view.findViewById(R.id.ayudaTitleView);
         sectionFaq2.setTypeface(null, Typeface.BOLD);

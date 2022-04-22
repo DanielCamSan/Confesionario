@@ -7,17 +7,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5dp">
+
     <TextView
         android:id="@+id/ayudaTitleView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/ayuda_yellow"
+        android:gravity="center"
         android:minHeight="40dp"
         android:paddingStart="?android:expandableListPreferredChildPaddingLeft"
         android:paddingLeft="?android:expandableListPreferredChildPaddingLeft"
-        android:text="Title Example"
-        android:textColor="@color/black"
-        android:background="@color/ayuda_yellow"
-        android:textSize="18dp"
+        android:paddingRight="30dp"
+        android:text="Tittle Example"
         android:textAlignment="center"
-        android:gravity="center"/>
+        android:textColor="@color/black"
+        android:textSize="18dp" />
 </LinearLayout>
