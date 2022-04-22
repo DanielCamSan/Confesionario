@@ -2,7 +2,9 @@ package edu.bo.confesionario
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -17,10 +19,10 @@ class Publications : AppCompatActivity() {
     private val navigation_view: BottomNavigationView
         get() = findViewById(R.id.principal_bottom_navigation_view)
 
-    private val leftButton : Button
+    private val leftButton : ImageButton
         get() = findViewById(R.id.buttonLeft)
 
-    private val rightButton : Button
+    private val rightButton : ImageButton
         get() = findViewById(R.id.buttonRight)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,38 +30,41 @@ class Publications : AppCompatActivity() {
         setContentView(R.layout.activity_publications)
         val rar = findViewById<BottomNavigationView>(R.id.principal_bottom_navigation_view)
 
-
+        leftButton.visibility = View.INVISIBLE
         leftButton.setOnClickListener{
             if (menuView > 0){
                 menuView -= 1
                 if (menuView == 0) {
                     navigation_view.getMenu().clear();
                     navigation_view.inflateMenu(R.menu.publication_menu0);
+                    leftButton.visibility = View.INVISIBLE
+                    rightButton.visibility = View.VISIBLE
                 }
                 if (menuView == 1) {
                     navigation_view.getMenu().clear();
                     navigation_view.inflateMenu(R.menu.publication_menu1);
+                    rightButton.visibility = View.VISIBLE
                 }
                 if (menuView == 2) {
                     navigation_view.getMenu().clear();
                     navigation_view.inflateMenu(R.menu.publication_menu2);
+                    rightButton.visibility = View.VISIBLE
                 }
             }
         }
         rightButton.setOnClickListener{
-            if (menuView < 3) {
+            if (menuView < 2) {
                 menuView += 1
-                if (menuView == 0) {
-                    navigation_view.getMenu().clear();
-                    navigation_view.inflateMenu(R.menu.publication_menu0);
-                }
                 if (menuView == 1) {
                     navigation_view.getMenu().clear();
                     navigation_view.inflateMenu(R.menu.publication_menu1);
+                    leftButton.visibility = View.VISIBLE
                 }
                 if (menuView == 2) {
                     navigation_view.getMenu().clear();
                     navigation_view.inflateMenu(R.menu.publication_menu2);
+                    rightButton.visibility = View.INVISIBLE
+                    leftButton.visibility = View.VISIBLE
                 }
             }
         }
