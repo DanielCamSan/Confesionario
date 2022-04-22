@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/drawable-anydpi/arrow_left.xml" value="0.1" />
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/drawable/commentaries_icon_background.xml" value="0.142" />
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/drawable/ic_launcher_background.xml" value="0.296" />
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/drawable/shape_card_publication.xml" value="0.142" />
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/activity_main.xml" value="0.34692028985507245" />
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/activity_publications.xml" value="0.25" />
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/fragment_blank.xml" value="0.34692028985507245" />
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/fragment_publication_all.xml" value="0.18" />
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/fragment_publications_books.xml" value="0.25" />
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/fragment_publications_classes.xml" value="0.34692028985507245" />
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/fragment_publications_confesions.xml" value="0.34692028985507245" />
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/fragment_publications_parties.xml" value="0.34692028985507245" />
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/publication_card.xml" value="0.4288164665523156" />
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/menu/footer.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/menu/publication_menu0.xml" value="0.18385416666666668" />
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/menu/publication_menu1.xml" value="0.3625" />
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/menu/publications_menu.xml" value="0.33" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

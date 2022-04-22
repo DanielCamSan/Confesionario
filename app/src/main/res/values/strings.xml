@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Confesionario</string>
+
+    <string name="publications_title">Confesiones</string>
+    <string name="publications_btn_publication">Publicar</string>
+    <string name="publications_searcher_hint">Buscar</string>
+    <string name="publications_category_all">Todos</string>
+    <string name="publications_category_parties">Fiesta</string>
+    <string name="publications_category_books">Libros</string>
+    <string name="publications_category_classes">Clases</string>
+    <string name="publications_category_confesions">Confesion</string>
 </resources>
