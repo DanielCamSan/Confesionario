@@ -12,7 +12,7 @@ import java.util.*
 
 class PublicationsClassesFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
-
+    private lateinit var listPublications: List<Publication>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -26,43 +26,15 @@ class PublicationsClassesFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_publications_classes, container, false)
-
+        listPublications = ListPublications.getList()
+        listPublications = listPublications.filter { publication -> publication.category == "clases" }
         initRecyclerView(view)
         return view
     }
     private fun initRecyclerView(view: View){
-        val listPublications = arrayListOf<Publication>()
-        listPublications.add(Publication(
-            "Maestros",
-            "1",
-            "Wea1",
-            "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-            Date(2,2,2),
-            "Tom"))
-        listPublications.add(Publication(
-            "Maestros",
-            "2",
-            "Wea1",
-            "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-            Date(2,2,2),
-            "Tom"))
-        listPublications.add(Publication(
-            "Maestros",
-            "3",
-            "Wea1",
-            "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-            Date(2,2,2),
-            "Tom"))
-        listPublications.add(Publication(
-            "Maestros",
-            "4",
-            "Wea1",
-            "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-            Date(2,2,2),
-            "Tom"))
 
         recyclerView = view.findViewById<RecyclerView>(R.id.recicler_classes)
-        recyclerView.adapter = PublicationsListAdapter(listPublications)
+        recyclerView.adapter = PublicationsListAdapter(listPublications as ArrayList<Publication>)
         val linearLayoutManager = LinearLayoutManager(activity)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView.layoutManager = linearLayoutManager
