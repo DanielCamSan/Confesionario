@@ -3,6 +3,9 @@ package edu.bo.confesionario
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import edu.bo.confesionario.adapter.CommentAdapter
 
 class IndividualConfession : AppCompatActivity() {
     private val backBtn: Button
@@ -14,5 +17,11 @@ class IndividualConfession : AppCompatActivity() {
         backBtn.setOnClickListener {
             finish()
         }
+        initRecyclerView()
+    }
+    private fun initRecyclerView(){
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = CommentAdapter(CommentsProvider.commentsList)
     }
 }
