@@ -56,7 +56,7 @@ class IndividualConfession : AppCompatActivity() {
         val bundle = intent.extras
         var category = bundle!!.getString("category")
         val number = bundle!!.getString("number")
-        val title = bundle!!.getString("tile")
+        val title = bundle!!.getString("title")
         val date = Calendar.getInstance()
         val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
         date.time = sdf.parse(bundle!!.getString("date")) // all done

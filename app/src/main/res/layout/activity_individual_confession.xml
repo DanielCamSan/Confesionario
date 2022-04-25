@@ -90,159 +90,185 @@
         android:layout_marginTop="80dp"
         android:background="#00FFFFFF"
         android:drawableLeft="@drawable/ic_left_arrow"
-        android:text="Atras"
+        android:text="@string/go_back_txt"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/confessContainer"
-        android:layout_width="0dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="13dp"
         android:layout_marginEnd="13dp"
-        android:layout_marginBottom="13dp"
         android:background="@color/background"
         android:backgroundTint="@color/background"
-        app:cardBackgroundColor="@color/background"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="20dp"
-        app:cardMaxElevation="20dp"
+        app:cardCornerRadius="10sp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backButton"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/backButton">
 
-        <TextView
-            android:id="@+id/confessionBody"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="El docente Pepe solo lee las diapositivas y no asiste puntualmente a clases"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/userName"
-            app:layout_constraintTop_toBottomOf="@+id/userName" />
-
-        <TextView
-            android:id="@+id/confessionName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:text="Me miró feo"
-            android:textColor="@color/mainBlue"
-            android:textSize="23sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/categoryName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:text="Docentes"
-            android:textColor="@color/black"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/confessContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:background="@color/background"
+            android:backgroundTint="@color/background"
+            app:cardBackgroundColor="@color/background"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="15dp"
+            app:cardMaxElevation="17dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/userName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Chuslan Pedro"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="@+id/confessionName"
-            app:layout_constraintTop_toBottomOf="@+id/confessionName" />
+            <TextView
+                android:id="@+id/confessionBody"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="El docente Pepe solo lee las diapositivas y no asiste puntualmente a clases"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/userName"
+                app:layout_constraintTop_toBottomOf="@+id/userName" />
 
-        <TextView
-            android:id="@+id/confessionNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Confesion #4"
-            android:textColor="@color/placeholder"
-            app:layout_constraintStart_toStartOf="@+id/confessionBody"
-            app:layout_constraintTop_toBottomOf="@+id/confessionBody" />
+            <TextView
+                android:id="@+id/confessionName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="Me miró feo"
+                android:textColor="@color/primary_blue"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/confessionNumber3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
-            android:text="23 comentarios"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/confessionBody" />
+            <TextView
+                android:id="@+id/categoryName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:text="Docentes"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/confessionDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12/01/2022"
-            android:textColor="@color/placeholder"
-            app:layout_constraintStart_toStartOf="@+id/confessionNumber"
-            app:layout_constraintTop_toBottomOf="@+id/confessionNumber" />
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chuslan Pedro"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/confessionName"
+                app:layout_constraintTop_toBottomOf="@+id/confessionName" />
 
-        <EditText
-            android:id="@+id/confessionNewComment"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="58dp"
-            android:layout_marginEnd="16dp"
-            android:autoText="false"
-            android:ems="10"
-            android:hint="Escribe tu comentario"
-            android:inputType="textLongMessage|textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/confessionBody" />
+            <TextView
+                android:id="@+id/confessionNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Confesion #4"
+                android:textColor="@color/placeholder"
+                app:layout_constraintStart_toStartOf="@+id/confessionBody"
+                app:layout_constraintTop_toBottomOf="@+id/confessionBody" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="52dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/confessionNewComment" />
+            <TextView
+                android:id="@+id/confessionNumber3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="40dp"
+                android:text="23 comentarios"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/confessionBody" />
 
-        <Button
-            android:id="@+id/confessionPublishBtn"
-            android:layout_width="105dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="3dp"
-            android:backgroundTint="@color/white"
-            android:text="Publicar"
-            android:textAllCaps="false"
-            android:textColor="@color/placeholder"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-            app:layout_constraintEnd_toEndOf="@+id/confessionNewComment"
-            app:layout_constraintTop_toBottomOf="@+id/confessionNewComment" />
+            <TextView
+                android:id="@+id/confessionDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12/01/2022"
+                android:textColor="@color/placeholder"
+                app:layout_constraintStart_toStartOf="@+id/confessionNumber"
+                app:layout_constraintTop_toBottomOf="@+id/confessionNumber" />
 
-        <Button
-            android:id="@+id/confessionCancelPublishBtn"
-            android:layout_width="105dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="3dp"
-            android:backgroundTint="@color/white"
-            android:text="Cancelar"
-            android:textAllCaps="false"
-            android:textColor="@color/placeholder"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-            app:layout_constraintEnd_toStartOf="@+id/confessionPublishBtn"
-            app:layout_constraintTop_toBottomOf="@+id/confessionNewComment"
-            app:layout_constraintVertical_bias="1.0" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <EditText
+                android:id="@+id/confessionNewComment"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="58dp"
+                android:layout_marginEnd="16dp"
+                android:autoText="false"
+                android:background="@color/commentBackground"
+                android:backgroundTint="@color/commentBackground"
+                android:ems="10"
+                android:hint="Escribe tu comentario"
+                android:inputType="textLongMessage|textPersonName"
+                android:paddingStart="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/confessionBody" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="52dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/confessionNewComment" />
+
+            <Button
+                android:id="@+id/confessionPublishBtn"
+                android:layout_width="105dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="3dp"
+                android:backgroundTint="@color/white"
+                android:text="Publicar"
+                android:textAllCaps="false"
+                android:textColor="@color/placeholder"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+                app:layout_constraintEnd_toEndOf="@+id/confessionNewComment"
+                app:layout_constraintTop_toBottomOf="@+id/confessionNewComment" />
+
+            <Button
+                android:id="@+id/confessionCancelPublishBtn"
+                android:layout_width="105dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="3dp"
+                android:backgroundTint="@color/white"
+                android:text="Cancelar"
+                android:textAllCaps="false"
+                android:textColor="@color/placeholder"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+                app:layout_constraintEnd_toStartOf="@+id/confessionPublishBtn"
+                app:layout_constraintTop_toBottomOf="@+id/confessionNewComment"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/imageView16"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/confessionBody"
+                app:srcCompat="@drawable/commentaries_logo" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
