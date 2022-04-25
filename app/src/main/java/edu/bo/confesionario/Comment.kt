@@ -1,3 +1,5 @@
 package edu.bo.confesionario
 
-data class Comment (val username: String, val commentBody: String)
+import java.time.LocalDate
+
+data class Comment (val username: String, val commentBody: String, val commentDate: LocalDate)

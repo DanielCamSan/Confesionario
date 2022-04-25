@@ -56,7 +56,7 @@ class IndividualConfession : AppCompatActivity() {
         val bundle = intent.extras
         var category = bundle!!.getString("category")
         val number = bundle!!.getString("number")
-        val title = bundle!!.getString("tile")
+        val title = bundle!!.getString("title")
         val date = LocalDate.parse(bundle!!.getString("date"))
         val description = bundle!!.getString("description")
         val userName = bundle!!.getString("userName")
