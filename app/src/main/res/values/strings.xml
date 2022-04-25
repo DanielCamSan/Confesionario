@@ -9,4 +9,11 @@
     <string name="publications_category_books">Libros</string>
     <string name="publications_category_classes">Clases</string>
     <string name="publications_category_confesions">Confesion</string>
+
+    <string name="login_txt">Login</string>
+    <string name="login_w_google_txt">Login with Google</string>
+    <string name="policies_title_txt">Políticas de uso</string>
+    <string name="policies_body_txt">body</string>
+    <string name="accept_button_txt">Aceptar</string>
+    <string name="go_back_txt">Volver</string>
 </resources>

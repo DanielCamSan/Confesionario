@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="0dp"
+    tools:context=".Help">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/myToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="?attr/colorPrimary"
+                android:backgroundTint="#3D5A80"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title=" " />
+
+
+            <ImageView
+                android:id="@+id/confImage"
+                android:layout_width="147dp"
+                android:layout_height="59dp"
+                android:contentDescription="TODO"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.551"
+                app:srcCompat="@drawable/conf_text"
+                app:tint="@color/white" />
+
+
+            <ImageButton
+                android:id="@+id/infoBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="3dp"
+                android:backgroundTint="#3D5A80"
+                android:contentDescription="@string/login_txt"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/myToolbar"
+                app:layout_constraintTop_toTopOf="@+id/myToolbar"
+                app:srcCompat="@drawable/info" />
+
+            <ImageButton
+                android:id="@+id/toolBarLogoutBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#3D5A80"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/confImage"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logout_black" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/btn_Back"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:icon="?attr/actionModeCloseDrawable"
+        app:iconPadding="0dp"
+        app:iconTint="#000000" />
+
+    <ExpandableListView
+        android:id="@+id/eTV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"></ExpandableListView>
+</LinearLayout>
