@@ -13,8 +13,23 @@
     <color name="placeholder">#707070</color>
     <color name="ayuda_yellow">#FFEBBD</color>
     <color name="button_color_1">#FFC83E</color>
+    <color name="button_color_2">#E3BD60</color>
+    <color name="yellow_200">#FFB908</color>
     <color name="publication_card_title">#162587</color>
     <color name="publication_card_category">#FFD05B</color>
     <color name="publication_card_gris">#5C5C5C</color>
     <color name="publication_card_text">#222222</color>
+    <color name="grey_200">#3D5A80</color>
+    <color name="grey_500">#608ECA</color>
+
+
+    <color name="primary_blue">#3D5A80</color>
+    <color name="light_blue">#608ECA</color>
+    <color name="primary_yellow">#FBCB5B</color>
+    <color name="dark_yellow">#E3BD60</color>
+    <color name="light_yellow">#FFEBBD</color>
+    <color name="inputBackground">#F0F0F0</color>
+    <color name="text_title">#2E5EA7</color>
+    <color name="text_placeholder">#707070</color>
+    <color name="text_publication">#222222</color>
 </resources>

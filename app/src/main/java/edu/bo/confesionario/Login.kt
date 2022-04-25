@@ -5,15 +5,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-class MainActivity : AppCompatActivity() {
-    private val btn: Button
-        get() = findViewById(R.id.button)
+class Login : AppCompatActivity() {
+    private val loginBtn : Button
+        get() =  findViewById(R.id.login_btn)
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        btn.setOnClickListener{
-            val intent = Intent(this, IndividualConfession::class.java)
+
+        setContentView(R.layout.activity_login)
+
+        loginBtn.setOnClickListener{
+            val intent = Intent(this, UserPolicies::class.java)
             startActivity(intent)
+
         }
     }
 }

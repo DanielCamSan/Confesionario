@@ -1,5 +1,6 @@
 package edu.bo.confesionario
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,7 +9,6 @@ import android.widget.ImageButton
 import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import java.io.Serializable
 
 class Publications : AppCompatActivity() {
 
@@ -23,14 +23,30 @@ class Publications : AppCompatActivity() {
     private val leftButton : ImageButton
         get() = findViewById(R.id.buttonLeft)
 
+
+    private  val publicateBtn: Button
+        get() = findViewById(R.id.publicate_btn)
+
     private val rightButton : ImageButton
         get() = findViewById(R.id.buttonRight)
+
+    private val goBackBtn : Button
+        get() =  findViewById(R.id.go_back_btn)
+
+
+    private val toolBarLogoutBtn : ImageButton
+        get() =  findViewById(R.id.toolBarLogoutBtn)
+
+    private val appInfoBtn : ImageButton
+        get() =  findViewById(R.id.infoBtn)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_publications)
 
         val rar = findViewById<BottomNavigationView>(R.id.principal_bottom_navigation_view)
+
+
         leftButton.visibility = View.INVISIBLE
         leftButton.setOnClickListener{
             if (menuView > 0){
@@ -114,6 +130,24 @@ class Publications : AppCompatActivity() {
                 else -> true
             }
         }
+        publicateBtn.setOnClickListener{
+            print("asdasd");
+            val intent = Intent(this, Confesion::class.java)
+            startActivity(intent)
+            this.overridePendingTransition(0, 0);
 
+        }
+        toolBarLogoutBtn.setOnClickListener{
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
+            this.overridePendingTransition(0, 0);
+
+        }
+        appInfoBtn.setOnClickListener{
+            val intent = Intent(this, Help::class.java)
+            startActivity(intent)
+            this.overridePendingTransition(0, 0);
+
+        }
     }
 }
