@@ -72,7 +72,7 @@ class IndividualConfession : AppCompatActivity() {
         var date = publicationData.date.get(Calendar.YEAR).toString() + "-"+publicationData.date.get(Calendar.MONTH).toString()+"-"+ publicationData.date.get(Calendar.DAY_OF_MONTH).toString()
         userNameTxt.text = publicationData.userName
         confessionCategoryTxt.text = publicationData.category
-        confessionNumberTxt.text = publicationData.number
+        confessionNumberTxt.text = "Confesión #${publicationData.number}"
         confessionBodyTxt.text = publicationData.description
         confessionDateTxt.text = date.toString()
         confessionNameTxt.text = publicationData.title

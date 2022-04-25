@@ -40,8 +40,8 @@ class PublicationsListAdapter(val publications: ArrayList<Publication>):
         holder.itemView.findViewById<TextView>(R.id.userText).text = publication.userName
         val bundle = Bundle()
         bundle.putString("category", publication.category)
-        bundle.putString("title", publication.category)
-        bundle.putString("description", publication.category)
+        bundle.putString("title", publication.title)
+        bundle.putString("description", publication.description)
         bundle.putString("number", publication.number)
         bundle.putString("date", date)
         bundle.putString("userName", publication.userName)
