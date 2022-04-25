@@ -5,14 +5,14 @@
     android:id="@+id/categoryMenu0">
     <item
         android:id="@+id/bottom_navigation_all"
-        android:title="_____________"
+        android:title="───────────"
         android:icon="@drawable/todos"
         />
     <item android:id="@+id/bottom_navigation_parties"
-        android:title="_____________"
+        android:title="───────────"
         android:icon="@drawable/fiestas" />
     <item
         android:id="@+id/bottom_navigation_books"
-        android:title="_____________"
+        android:title="───────────"
         android:icon="@drawable/libros"/>
 </menu>

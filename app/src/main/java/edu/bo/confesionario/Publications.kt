@@ -6,9 +6,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.time.LocalDate
+import java.time.LocalDateTime
 
 class Publications : AppCompatActivity() {
 
@@ -20,14 +23,14 @@ class Publications : AppCompatActivity() {
     private val navigation_view: BottomNavigationView
         get() = findViewById(R.id.principal_bottom_navigation_view)
 
-    private val leftButton : ImageButton
+    private val leftButton : ImageView
         get() = findViewById(R.id.buttonLeft)
 
 
     private  val publicateBtn: Button
         get() = findViewById(R.id.publicate_btn)
 
-    private val rightButton : ImageButton
+    private val rightButton : ImageView
         get() = findViewById(R.id.buttonRight)
 
     private val goBackBtn : Button
@@ -43,10 +46,11 @@ class Publications : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_publications)
-
+        var fragmentAll = PublicationAllFragment()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.principal_frame_layout,fragmentAll)
+            .commit()
         val rar = findViewById<BottomNavigationView>(R.id.principal_bottom_navigation_view)
-
-
         leftButton.visibility = View.INVISIBLE
         leftButton.setOnClickListener{
             if (menuView > 0){

@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class PublicationsListAdapter(val publications: ArrayList<Publication>):
@@ -28,19 +30,20 @@ class PublicationsListAdapter(val publications: ArrayList<Publication>):
     override fun onBindViewHolder(holder: PublicationListViewHolder, position: Int) {
 
         val publication = publications.get(position)
+        var date = publication.date.get(Calendar.YEAR).toString() + "-"+publication.date.get(Calendar.MONTH).toString()+"-"+ publication.date.get(Calendar.DAY_OF_MONTH).toString()
         holder.itemView.findViewById<TextView>(R.id.categoryText).text = publication.category
         holder.itemView.findViewById<TextView>(R.id.titleText).text = publication.title
         holder.itemView.findViewById<TextView>(R.id.descriptionText).text = publication.description
         holder.itemView.findViewById<TextView>(R.id.numberText).text = "Confesion #"+publication.number
         holder.itemView.findViewById<TextView>(R.id.numberComentariesText).text = "5"
-        holder.itemView.findViewById<TextView>(R.id.dateText).text = publication.date.toString()
+        holder.itemView.findViewById<TextView>(R.id.dateText).text = date
         holder.itemView.findViewById<TextView>(R.id.userText).text = publication.userName
         val bundle = Bundle()
         bundle.putString("category", publication.category)
         bundle.putString("title", publication.category)
         bundle.putString("description", publication.category)
         bundle.putString("number", publication.number)
-        bundle.putString("date", publication.date.toString())
+        bundle.putString("date", date)
         bundle.putString("userName", publication.userName)
         holder.itemView.findViewById<CardView>(R.id.publication_card).setOnClickListener {
             var intent = Intent(parentContext, IndividualConfession::class.java)

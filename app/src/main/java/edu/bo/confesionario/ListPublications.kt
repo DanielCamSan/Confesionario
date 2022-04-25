@@ -1,20 +1,29 @@
 package edu.bo.confesionario
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import java.time.LocalDate
+import java.time.ZonedDateTime
 import java.util.*
 
 class ListPublications {
     companion object {
-        @JvmStatic
+
+        fun getDate(year:Int,month:Int,day:Int) : Calendar
+        {
+            val date =  Calendar.getInstance()
+            date.set(year, month, day)
+            return date
+        }
         fun getList(): List<Publication> {
             var listPublications = arrayListOf<Publication>()
             listPublications.add(
                 Publication(
                     "libros",
                     "1",
-                    "Wea1",
-                    "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    LocalDate.parse("2022-03-03"),
+                    "Recogida de libros para caridad",
+                    "Se requiere libros que sean donados para crear una libreria de acceso publico.",
+                     getDate(2020,6,22),
                     "Tom"
                 )
             )
@@ -22,9 +31,9 @@ class ListPublications {
                 Publication(
                     "libros",
                     "2",
-                    "Wea1",
-                    "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    LocalDate.parse("2022-03-03"),
+                    "Recogida de libros",
+                    "Se pide que los estudiantes del area de Ingenieria de la Siesta recoga sus libros.",
+                    getDate(2022,6,23),
                     "Tom"
                 )
             )
@@ -32,9 +41,9 @@ class ListPublications {
                 Publication(
                     "libros",
                     "3",
-                    "Wea1",
-                    "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    LocalDate.parse("2022-03-03"),
+                    "Compra de libros",
+                    "Se vende libros para las personas interesadas venir planta baja en el edificio principal.",
+                    getDate(2020,7,22),
                     "Tom"
                 )
             )
@@ -42,9 +51,9 @@ class ListPublications {
                 Publication(
                     "libros",
                     "4",
-                    "Wea1",
+                    "Libros logrando",
                     "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    LocalDate.parse("2022-03-03"),
+                    getDate(2020,7,23),
                     "Tom"
                 )
             )
@@ -52,9 +61,9 @@ class ListPublications {
                 Publication(
                     "libros",
                     "5",
-                    "Wea1",
+                    "Libros prohibidos",
                     "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    LocalDate.parse("2022-03-03"),
+                    getDate(2020,7,23),
                     "Tom"
                 )
             )
@@ -64,7 +73,7 @@ class ListPublications {
                     "6",
                     "Libros 1",
                     "Se ha perdido mi libro",
-                    LocalDate.parse("2022-03-03"),
+                    getDate(2020,7,23),
                     "Juan"
                 )
             )
@@ -74,7 +83,7 @@ class ListPublications {
                     "7",
                     "Libros 2",
                     "Mi libro no aguantó hacer cuña a una mesa",
-                    LocalDate.parse("2022-03-03"),
+                    getDate(2020,7,26),
                     "Pedro"
                 )
             )
@@ -84,7 +93,7 @@ class ListPublications {
                     "8",
                     "Discretas",
                     "No le entiendo al mgr",
-                    LocalDate.parse("2022-03-03"),
+                    getDate(2020,7,30),
                     "Dussan"
                 )
             )
@@ -94,7 +103,7 @@ class ListPublications {
                     "9",
                     "Inglés",
                     "El Thomas",
-                    LocalDate.parse("2022-03-03"),
+                    getDate(2020,8,1),
                     "Tom"
                 )
             )
@@ -104,7 +113,7 @@ class ListPublications {
                     "10",
                     "Bienvenida",
                     "Los nuevios tienen que tener un bautizo",
-                    LocalDate.parse("2022-03-03"),
+                    getDate(2020,8,9),
                     "Dani"
                 )
             )
@@ -114,7 +123,7 @@ class ListPublications {
                     "11",
                     "Soy gei",
                     "lo reconozco, me gusta el wilsterman",
-                    LocalDate.parse("2022-03-03"),
+                    getDate(2020,8,11),
                     "Dussan"
                 )
             )
@@ -122,9 +131,9 @@ class ListPublications {
                 Publication(
                     "confesiones",
                     "12",
-                    "Wea1",
+                    "Me gusta la pizza con piña",
                     "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    LocalDate.parse("2022-03-03"),
+                    getDate(2020,8,14),
                     "Tom"
                 )
             )
@@ -134,7 +143,7 @@ class ListPublications {
                     "13",
                     "Sera posible esto we",
                     "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    LocalDate.parse("2022-03-03"),
+                    getDate(2020,8,16),
                     "Tom"
                 )
             )
@@ -144,7 +153,7 @@ class ListPublications {
                     "14",
                     "Mira we",
                     "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    LocalDate.parse("2022-03-03"),
+                    getDate(2020,8,18),
                     "Tom"
                 )
             )
@@ -154,7 +163,7 @@ class ListPublications {
                     "15",
                     "Wea1",
                     "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    LocalDate.parse("2022-03-03"),
+                    getDate(2020,8,20),
                     "Tom"
                 )
             )

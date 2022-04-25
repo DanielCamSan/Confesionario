@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="#F1F1F1"
     tools:context=".Publications">
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout2"
         android:layout_width="match_parent"
@@ -73,7 +74,8 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/logout_black" />
+                app:srcCompat="@drawable/logout_black"
+                tools:ignore="SpeakableTextPresentCheck" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -84,11 +86,11 @@
         android:id="@+id/constraintLayout"
         android:layout_width="410dp"
         android:layout_height="69dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2">
 
         <Button
             android:id="@+id/publicate_btn"
@@ -109,6 +111,7 @@
             android:layout_height="55dp"
             android:layout_marginStart="16dp"
             android:text="@string/publications_title"
+            android:textColor="@color/black"
             android:textSize="34sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -122,39 +125,24 @@
         android:id="@+id/searcher_publication"
         android:layout_width="371dp"
         android:layout_height="44dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:background="#DFDFDF"
         android:queryHint="@string/publications_searcher_hint"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/menuContainer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
-    <FrameLayout
-        android:id="@+id/principal_frame_layout"
-        android:layout_width="377dp"
-        android:layout_height="394dp"
-        android:layout_marginTop="110dp"
-        android:layout_marginBottom="4dp"
-        android:foregroundGravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.558"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searcher_publication">
-
-    </FrameLayout>
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="411dp"
-        android:layout_height="86dp"
-        app:layout_constraintBottom_toTopOf="@+id/principal_frame_layout"
+        android:id="@+id/menuContainer"
+        android:layout_width="410dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searcher_publication"
-        app:layout_constraintVertical_bias="0.134">
+        app:layout_constraintTop_toBottomOf="@+id/searcher_publication">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/buttonRight"
             android:layout_width="48dp"
             android:layout_height="56dp"
@@ -174,13 +162,13 @@
             android:background="#F1F1F1"
             app:elevation="0dp"
             app:itemIconSize="46dp"
-            app:layout_constraintBottom_toTopOf="@+id/divider"
+            app:itemIconTint="#777777"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/buttonRight"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
             app:menu="@menu/publication_menu0" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/buttonLeft"
             android:layout_width="48dp"
             android:layout_height="56dp"
@@ -191,16 +179,29 @@
             app:srcCompat="@drawable/arrow_left"
             tools:ignore="SpeakableTextPresentCheck" />
 
-        <View
-            android:id="@+id/divider"
-            android:layout_width="303dp"
-            android:layout_height="1dp"
-            android:layout_marginBottom="12dp"
-            android:background="@color/publication_card_gris"
-            android:backgroundTint="#7E7E7E"
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="409dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menuContainer"
+        app:layout_constraintVertical_bias="1.0">
+
+        <FrameLayout
+            android:id="@+id/principal_frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="405dp"
+            android:foregroundGravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

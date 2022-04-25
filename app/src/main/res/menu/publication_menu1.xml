@@ -3,13 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/categoryMenu1">
     <item android:id="@+id/bottom_navigation_parties"
-        android:title="_____________"
+        android:title="───────────"
         android:icon="@drawable/fiestas" />
     <item
         android:id="@+id/bottom_navigation_books"
-        android:title="_____________"
+        android:title="───────────"
         android:icon="@drawable/libros"/>
     <item android:id="@+id/bottom_navigation_classes"
-        android:title="_____________"
+        android:title="───────────"
         android:icon="@drawable/clases" />
 </menu>

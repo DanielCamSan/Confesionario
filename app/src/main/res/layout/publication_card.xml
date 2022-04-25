@@ -40,7 +40,8 @@
                         android:layout_marginStart="15dp"
                         android:text="Titulo"
                         android:textColor="@color/publication_card_title"
-                        android:textSize="24sp" />
+                        android:textSize="24sp"
+                        tools:ignore="RtlCompat" />
 
                     <TextView
                         android:id="@+id/userText"
@@ -49,7 +50,8 @@
                         android:layout_marginStart="15dp"
                         android:text="usuario"
                         android:textColor="@color/publication_card_gris"
-                        android:textSize="12dp" />
+                        android:textSize="12dp"
+                        tools:ignore="RtlCompat" />
 
                 </LinearLayout>
 
@@ -68,7 +70,8 @@
                         android:gravity="right"
                         android:text="Categoria"
                         android:textColor="@color/publication_card_category"
-                        android:textSize="12dp" />
+                        android:textSize="12dp"
+                        tools:ignore="RtlCompat" />
 
                     <TextView
                         android:id="@+id/numberText"
@@ -78,7 +81,8 @@
                         android:gravity="right"
                         android:text="Confesion #n"
                         android:textColor="@color/publication_card_gris"
-                        android:textSize="12dp" />
+                        android:textSize="12dp"
+                        tools:ignore="RtlCompat" />
 
                 </LinearLayout>
 
@@ -120,7 +124,8 @@
                         android:layout_marginTop="10dp"
                         android:text="22/22/2222"
                         android:textColor="@color/publication_card_gris"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        tools:ignore="RtlCompat" />
 
                 </LinearLayout>
 
@@ -138,11 +143,12 @@
                         android:textColor="@color/publication_card_gris" />
 
                     <ImageView
-                        android:id="@+id/imageView2"
-                        android:layout_width="40dp"
-                        android:layout_height="42dp"
-                        android:layout_marginEnd="25dp"
-                        tools:srcCompat="@drawable/commentaries_logo" />
+                        android:id="@+id/imageView16"
+                        android:layout_width="34dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/commentaries" />
+
+
                 </LinearLayout>
 
             </LinearLayout>

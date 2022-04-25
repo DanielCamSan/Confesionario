@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "edu.bo.confesionario"
-        minSdk 26
+        minSdk 14
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -46,3 +46,4 @@ dependencies {
     //noinspection GradleCompatible
     //implementation 'com.android.support:design:27.0.2'
 }
+

@@ -1,16 +1,17 @@
 package edu.bo.confesionario
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import edu.bo.confesionario.adapter.CommentAdapter
-import java.time.LocalDate
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 class IndividualConfession : AppCompatActivity() {
     private val backBtn: Button
@@ -52,12 +53,14 @@ class IndividualConfession : AppCompatActivity() {
             this.overridePendingTransition(0, 0);
         }
         // get Data from intent bundle
-
         val bundle = intent.extras
         var category = bundle!!.getString("category")
         val number = bundle!!.getString("number")
         val title = bundle!!.getString("tile")
-        val date = LocalDate.parse(bundle!!.getString("date"))
+        val date = Calendar.getInstance()
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
+        date.time = sdf.parse(bundle!!.getString("date")) // all done
+        //val date =  Calendar.parse(bundle!!.getString("date"))
         val description = bundle!!.getString("description")
         val userName = bundle!!.getString("userName")
 
@@ -66,11 +69,12 @@ class IndividualConfession : AppCompatActivity() {
         fillTextViews()
     }
     private fun fillTextViews(){
+        var date = publicationData.date.get(Calendar.YEAR).toString() + "-"+publicationData.date.get(Calendar.MONTH).toString()+"-"+ publicationData.date.get(Calendar.DAY_OF_MONTH).toString()
         userNameTxt.text = publicationData.userName
         confessionCategoryTxt.text = publicationData.category
         confessionNumberTxt.text = publicationData.number
         confessionBodyTxt.text = publicationData.description
-        confessionDateTxt.text = publicationData.date.toString()
+        confessionDateTxt.text = date.toString()
         confessionNameTxt.text = publicationData.title
     }
     private fun initRecyclerView(){

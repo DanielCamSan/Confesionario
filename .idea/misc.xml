@@ -3,50 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/drawable-anydpi/arrow_left.xml" value="0.1" />
-        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/drawable/commentaries_icon_background.xml" value="0.142" />
-        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/drawable/ic_launcher_background.xml" value="0.296" />
-        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/drawable/shape_card_publication.xml" value="0.142" />
-        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/activity_main.xml" value="0.34692028985507245" />
-        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/activity_publications.xml" value="0.25" />
-        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/fragment_blank.xml" value="0.34692028985507245" />
-        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/fragment_publication_all.xml" value="0.18" />
-        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/fragment_publications_books.xml" value="0.25" />
-        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/fragment_publications_classes.xml" value="0.34692028985507245" />
-        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/fragment_publications_confesions.xml" value="0.34692028985507245" />
-        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/fragment_publications_parties.xml" value="0.34692028985507245" />
-        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/publication_card.xml" value="0.4288164665523156" />
-        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/menu/footer.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/menu/publication_menu0.xml" value="0.18385416666666668" />
-        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/menu/publication_menu1.xml" value="0.3625" />
-        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/menu/publications_menu.xml" value="0.33" />
-        <entry key="app/src/main/res/drawable-anydpi/arrow_right.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/shape_card_publication.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_ayuda.xml" value="0.33282051282051284" />
-        <entry key="app/src/main/res/layout/activity_confesion.xml" value="0.318974358974359" />
-        <entry key="app/src/main/res/layout/activity_help.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_individual_confession.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.17395833333333333" />
-        <entry key="app/src/main/res/layout/activity_publications.xml" value="0.31435897435897436" />
-        <entry key="app/src/main/res/layout/activity_user_policies.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.33384615384615385" />
-        <entry key="app/src/main/res/layout/ayuda_collapse.xml" value="0.3375" />
-        <entry key="app/src/main/res/layout/ayuda_expand.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_publication_all.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_publications_books.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_publications_classes.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_publications_confesions.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_publications_parties.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/item_comment.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/publication_card.xml" value="0.31927083333333334" />
-        <entry key="app/src/main/res/layout/publish_confesion.xml" value="0.31927083333333334" />
-        <entry key="app/src/main/res/menu/publication_menu0.xml" value="0.1" />
-        <entry key="app/src/main/res/menu/publication_menu1.xml" value="0.1" />
-        <entry key="app/src/main/res/menu/publication_menu2.xml" value="0.1" />
-        <entry key="app/src/main/res/menu/publications_menu.xml" value="0.1" />
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/activity_publications.xml" value="0.33" />
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/layout/publication_card.xml" value="0.5" />
+        <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/menu/publication_menu0.xml" value="0.13240740740740742" />
       </map>
     </option>
   </component>
