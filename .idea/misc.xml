@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Dani Camacho/Desktop/9 Semestre/Progra Moviles/Confesionario/app/src/main/res/layout/activity_confesion.xml" value="0.5" />
+        <entry key="..\:/Users/Dani Camacho/Desktop/9 Semestre/Progra Moviles/Confesionario/app/src/main/res/layout/activity_help.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Dani Camacho/Desktop/9 Semestre/Progra Moviles/Confesionario/app/src/main/res/layout/activity_individual_confession.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Dani Camacho/Desktop/9 Semestre/Progra Moviles/Confesionario/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Dani Camacho/Desktop/9 Semestre/Progra Moviles/Confesionario/app/src/main/res/layout/activity_publications.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Dani Camacho/Desktop/9 Semestre/Progra Moviles/Confesionario/app/src/main/res/layout/activity_user_policies.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Dani Camacho/Desktop/9 Semestre/Progra Moviles/Confesionario/app/src/main/res/layout/fragment_publications_confesions.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Dani Camacho/Desktop/9 Semestre/Progra Moviles/Confesionario/app/src/main/res/layout/publication_card.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/drawable-anydpi/arrow_left.xml" value="0.1" />
         <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/drawable/commentaries_icon_background.xml" value="0.142" />
         <entry key="..\:/Users/bacs2/Downloads/Programacion Dispositivos Moviles/Projecto/Confesionario/app/src/main/res/drawable/ic_launcher_background.xml" value="0.296" />
