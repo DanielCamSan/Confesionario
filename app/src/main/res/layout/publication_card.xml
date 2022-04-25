@@ -11,6 +11,7 @@
     android:background="@drawable/shape_card_publication">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/publication_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"

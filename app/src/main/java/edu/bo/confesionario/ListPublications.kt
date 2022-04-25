@@ -1,5 +1,6 @@
 package edu.bo.confesionario
 
+import java.time.LocalDate
 import java.util.*
 
 class ListPublications {
@@ -9,41 +10,41 @@ class ListPublications {
             var listPublications = arrayListOf<Publication>()
             listPublications.add(
                 Publication(
-                    "todos",
+                    "libros",
                     "1",
                     "Wea1",
                     "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    Date(2, 2, 2),
+                    LocalDate.parse("2022-03-03"),
                     "Tom"
                 )
             )
             listPublications.add(
                 Publication(
-                    "todos",
+                    "libros",
                     "2",
                     "Wea1",
                     "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    Date(2, 2, 2),
+                    LocalDate.parse("2022-03-03"),
                     "Tom"
                 )
             )
             listPublications.add(
                 Publication(
-                    "todos",
+                    "libros",
                     "3",
                     "Wea1",
                     "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    Date(2, 2, 2),
+                    LocalDate.parse("2022-03-03"),
                     "Tom"
                 )
             )
             listPublications.add(
                 Publication(
-                    "todos",
+                    "libros",
                     "4",
                     "Wea1",
                     "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    Date(2, 2, 2),
+                    LocalDate.parse("2022-03-03"),
                     "Tom"
                 )
             )
@@ -53,7 +54,7 @@ class ListPublications {
                     "5",
                     "Wea1",
                     "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    Date(2, 2, 2),
+                    LocalDate.parse("2022-03-03"),
                     "Tom"
                 )
             )
@@ -61,39 +62,39 @@ class ListPublications {
                 Publication(
                     "libros",
                     "6",
-                    "Wea1",
-                    "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    Date(2, 2, 2),
-                    "Tom"
+                    "Libros 1",
+                    "Se ha perdido mi libro",
+                    LocalDate.parse("2022-03-03"),
+                    "Juan"
                 )
             )
             listPublications.add(
                 Publication(
                     "libros",
                     "7",
-                    "Wea1",
-                    "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    Date(2, 2, 2),
-                    "Tom"
+                    "Libros 2",
+                    "Mi libro no aguantó hacer cuña a una mesa",
+                    LocalDate.parse("2022-03-03"),
+                    "Pedro"
                 )
             )
             listPublications.add(
                 Publication(
                     "clases",
                     "8",
-                    "Wea1",
-                    "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    Date(2, 2, 2),
-                    "Tom"
+                    "Discretas",
+                    "No le entiendo al mgr",
+                    LocalDate.parse("2022-03-03"),
+                    "Dussan"
                 )
             )
             listPublications.add(
                 Publication(
                     "clases",
                     "9",
-                    "Wea1",
-                    "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    Date(2, 2, 2),
+                    "Inglés",
+                    "El Thomas",
+                    LocalDate.parse("2022-03-03"),
                     "Tom"
                 )
             )
@@ -101,20 +102,20 @@ class ListPublications {
                 Publication(
                     "fiestas",
                     "10",
-                    "Wea1",
-                    "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    Date(2, 2, 2),
-                    "Tom"
+                    "Bienvenida",
+                    "Los nuevios tienen que tener un bautizo",
+                    LocalDate.parse("2022-03-03"),
+                    "Dani"
                 )
             )
             listPublications.add(
                 Publication(
                     "confesiones",
                     "11",
-                    "Wea1",
-                    "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    Date(2, 2, 2),
-                    "Tom"
+                    "Soy gei",
+                    "lo reconozco, me gusta el wilsterman",
+                    LocalDate.parse("2022-03-03"),
+                    "Dussan"
                 )
             )
             listPublications.add(
@@ -123,7 +124,7 @@ class ListPublications {
                     "12",
                     "Wea1",
                     "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    Date(2, 2, 2),
+                    LocalDate.parse("2022-03-03"),
                     "Tom"
                 )
             )
@@ -133,7 +134,7 @@ class ListPublications {
                     "13",
                     "Sera posible esto we",
                     "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    Date(2, 2, 2),
+                    LocalDate.parse("2022-03-03"),
                     "Tom"
                 )
             )
@@ -143,7 +144,7 @@ class ListPublications {
                     "14",
                     "Mira we",
                     "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    Date(2, 2, 2),
+                    LocalDate.parse("2022-03-03"),
                     "Tom"
                 )
             )
@@ -153,7 +154,7 @@ class ListPublications {
                     "15",
                     "Wea1",
                     "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    Date(2, 2, 2),
+                    LocalDate.parse("2022-03-03"),
                     "Tom"
                 )
             )

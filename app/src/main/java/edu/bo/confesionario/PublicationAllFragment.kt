@@ -31,7 +31,6 @@ class PublicationAllFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_publication_all, container, false)
         listPublications = ListPublications.getList()
-        listPublications = listPublications.filter { publication -> publication.category == "todos" }
         initRecyclerView(view)
         return view
     }
