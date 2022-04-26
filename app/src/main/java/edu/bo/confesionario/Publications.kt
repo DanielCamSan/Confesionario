@@ -3,11 +3,14 @@ package edu.bo.confesionario
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.ActionBar
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.time.LocalDate
@@ -47,6 +50,16 @@ class Publications : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_publications)
         var fragmentAll = PublicationAllFragment()
+        val menu = navigation_view.menu
+        val itemAll = menu.findItem(R.id.bottom_navigation_all)
+        val itemBooks = menu.findItem(R.id.bottom_navigation_books)
+        val itemParties = menu.findItem(R.id.bottom_navigation_parties)
+        val itemClasses = menu.findItem(R.id.bottom_navigation_classes)
+        val itemConfessions = menu.findItem(R.id.bottom_navigation_confesions)
+
+        itemClasses.isVisible = false
+        itemConfessions.isVisible = false
+
         supportFragmentManager.beginTransaction()
             .replace(R.id.principal_frame_layout,fragmentAll)
             .commit()
@@ -56,19 +69,14 @@ class Publications : AppCompatActivity() {
             if (menuView > 0){
                 menuView -= 1
                 if (menuView == 0) {
-                    navigation_view.getMenu().clear();
-                    navigation_view.inflateMenu(R.menu.publication_menu0);
+                    itemClasses.isVisible = false
+                    itemAll.isVisible = true
                     leftButton.visibility = View.INVISIBLE
                     rightButton.visibility = View.VISIBLE
                 }
                 if (menuView == 1) {
-                    navigation_view.getMenu().clear();
-                    navigation_view.inflateMenu(R.menu.publication_menu1);
-                    rightButton.visibility = View.VISIBLE
-                }
-                if (menuView == 2) {
-                    navigation_view.getMenu().clear();
-                    navigation_view.inflateMenu(R.menu.publication_menu2);
+                    itemConfessions.isVisible = false
+                    itemParties.isVisible = true
                     rightButton.visibility = View.VISIBLE
                 }
             }
@@ -77,23 +85,24 @@ class Publications : AppCompatActivity() {
             if (menuView < 2) {
                 menuView += 1
                 if (menuView == 1) {
-                    navigation_view.getMenu().clear();
-                    navigation_view.inflateMenu(R.menu.publication_menu1);
+                    itemAll.isVisible = false
+                    itemClasses.isVisible = true
                     leftButton.visibility = View.VISIBLE
                 }
                 if (menuView == 2) {
-                    navigation_view.getMenu().clear();
-                    navigation_view.inflateMenu(R.menu.publication_menu2);
+                    itemParties.isVisible = false
+                    itemConfessions.isVisible = true
                     rightButton.visibility = View.INVISIBLE
                     leftButton.visibility = View.VISIBLE
                 }
             }
         }
+
         navigation_view.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.bottom_navigation_all -> {
+
                     var fragmentAll = PublicationAllFragment()
-                    //fragmentAll.arguments = bundle
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.principal_frame_layout,fragmentAll)
                         .commit()
@@ -101,7 +110,6 @@ class Publications : AppCompatActivity() {
                 }
                 R.id.bottom_navigation_books -> {
                     var fragmentBooks = PublicationsBooksFragment()
-                    // fragmentBooks.arguments = bundle
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.principal_frame_layout, fragmentBooks)
                         .commit()
@@ -109,7 +117,6 @@ class Publications : AppCompatActivity() {
                 }
                 R.id.bottom_navigation_parties -> {
                     var fragmentParties = PublicationsPartiesFragment()
-                    //fragmentParties.arguments = bundle
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.principal_frame_layout, fragmentParties)
                         .commit()
@@ -117,7 +124,6 @@ class Publications : AppCompatActivity() {
                 }
                 R.id.bottom_navigation_classes -> {
                     var fragmentPublications = PublicationsClassesFragment()
-                    //fragmentPublications.arguments = bundle
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.principal_frame_layout, fragmentPublications)
                         .commit()
@@ -125,7 +131,6 @@ class Publications : AppCompatActivity() {
                 }
                 R.id.bottom_navigation_confesions -> {
                     var fragmentConfesions = PublicationsConfesionsFragment()
-                    //fragmentConfesions .arguments = bundle
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.principal_frame_layout, fragmentConfesions )
                         .commit()
@@ -153,5 +158,7 @@ class Publications : AppCompatActivity() {
             this.overridePendingTransition(0, 0);
 
         }
+
     }
+
 }

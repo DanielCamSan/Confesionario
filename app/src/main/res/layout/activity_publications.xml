@@ -166,7 +166,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/buttonRight"
             app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/publication_menu0" />
+            app:menu="@menu/publications_menu" />
 
         <ImageView
             android:id="@+id/buttonLeft"
@@ -202,6 +202,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
         </FrameLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

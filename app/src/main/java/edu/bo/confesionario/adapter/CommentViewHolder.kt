@@ -5,6 +5,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import edu.bo.confesionario.Comment
 import edu.bo.confesionario.R
+import java.util.*
 
 class CommentViewHolder(view: View): RecyclerView.ViewHolder(view) {
     val comment_username = view.findViewById<TextView>(R.id.username)
@@ -12,8 +13,9 @@ class CommentViewHolder(view: View): RecyclerView.ViewHolder(view) {
     val comment_date = view.findViewById<TextView>(R.id.commentDate)
 
     fun render(commentModel: Comment){
+        var commentDate = commentModel.commentDate.get(Calendar.YEAR).toString() + "-"+commentModel.commentDate.get(Calendar.MONTH).toString()+"-"+ commentModel.commentDate.get(Calendar.DAY_OF_MONTH).toString()
         comment_username.text = commentModel.username
         comment_body.text = commentModel.commentBody
-        comment_date.text = commentModel.commentDate.toString()
+        comment_date.text = commentDate
     }
 }

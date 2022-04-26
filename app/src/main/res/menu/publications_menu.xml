@@ -4,22 +4,22 @@
     android:id="@+id/categoryMenu">
     <item
         android:id="@+id/bottom_navigation_all"
-        android:title="_____________"
+        android:title="───────────"
         android:icon="@drawable/todos"
         />
     <item android:id="@+id/bottom_navigation_parties"
-        android:title="_____________"
+        android:title="───────────"
         android:icon="@drawable/fiestas" />
     <item
         android:id="@+id/bottom_navigation_books"
-        android:title="_____________"
+        android:title="───────────"
         android:icon="@drawable/libros"/>
     <item android:id="@+id/bottom_navigation_classes"
-        android:title="_____________"
+        android:title="───────────"
         android:icon="@drawable/clases" />
     <item
         android:id="@+id/bottom_navigation_confesions"
-        android:title="_____________"
+        android:title="───────────"
         android:icon="@drawable/confesion"/>
 
 </menu>
