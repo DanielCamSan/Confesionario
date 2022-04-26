@@ -227,12 +227,12 @@
         android:text="@string/switch_Anonymous"
         android:textColor="@color/grey_100"
         android:textSize="16sp"
-        android:thumbTint="@color/publication_card_title"
-        android:trackTint="@color/grey_10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.609"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_confesion" />
+        app:layout_constraintTop_toBottomOf="@+id/text_confesion"
+        android:layout_alignParentRight="true"
+        android:theme="@style/SCBSwitch"/>
 
     <Button
         android:id="@+id/btn_publish"
