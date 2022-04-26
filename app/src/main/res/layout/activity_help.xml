@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/help_background"
     android:orientation="vertical"
     android:padding="0dp"
     tools:context=".Help">
@@ -83,23 +84,36 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <Button
-        android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:id="@+id/go_back_btn"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="123dp"
+        android:layout_height="48dp"
         android:backgroundTint="#FFFFFF"
-        android:text="@string/btn_Back"
+        android:drawableLeft="@drawable/go_back"
+        android:drawablePadding="0dp"
+        android:drawableTint="@color/black"
+        android:includeFontPadding="false"
+        android:paddingLeft="5dp"
+        android:paddingRight="50dp"
+        android:text="@string/go_back_txt"
         android:textAllCaps="false"
-        android:textColor="#000000"
-        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
         android:textStyle="bold"
-        app:icon="?attr/actionModeCloseDrawable"
         app:iconPadding="0dp"
-        app:iconTint="#000000" />
+        app:iconTint="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.093"
+        app:strokeColor="#00FFFFFF"
+        app:strokeWidth="0dp" />
 
     <ExpandableListView
         android:id="@+id/eTV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:divider="@null"
+        android:groupIndicator="@null"
         android:padding="5dp"></ExpandableListView>
 </LinearLayout>
