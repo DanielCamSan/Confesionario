@@ -25,11 +25,11 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="65dp">
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="230dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
@@ -60,17 +60,17 @@
 
                 <LinearLayout
                     android:layout_width="170dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:baselineAligned="false"
                     android:gravity="right|left|center_vertical"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/categoryText"
-                        android:layout_width="145dp"
-                        android:layout_height="23dp"
+                        android:layout_width="144dp"
+                        android:layout_height="29dp"
                         android:layout_marginEnd="25dp"
-                        android:gravity="right"
+                        android:gravity="right|center_vertical"
                         android:text="Categoria"
                         android:textColor="@color/publication_card_category"
                         android:textSize="14sp"
@@ -78,7 +78,7 @@
 
                     <TextView
                         android:id="@+id/numberText"
-                        android:layout_width="145dp"
+                        android:layout_width="144dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="25dp"
                         android:gravity="right"
