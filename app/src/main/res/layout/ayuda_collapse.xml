@@ -26,7 +26,6 @@
                 android:id="@+id/ayudaTitleView"
                 android:layout_width="357dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/help_background_color"
                 android:gravity="center"
                 android:minHeight="40dp"
                 android:text="Tittle Example"
