@@ -22,16 +22,45 @@ public class ExpandableTextViewAdapter extends BaseExpandableListAdapter {
     };
     String[][]description={
             {
-                "Esto es servicio al cliente"
+                "Horario del centro de llamadas:\n" +
+                        "Lun-vie 9 am-7pm EST\n" +
+                        "El mejor momento para marcar:\n" +
+                        "10:45 am\n" +
+                        "Navega por el laberinto del teléfono a un humano:\n" +
+                        "Presione 2 y luego 1\n" +
+                        "Espera promedio\n" +
+                        "Espera actual\n" +
+                        "7 7\n" +
+                        "Rango (entre números de teléfono):\n" +
+                        "1\n" +
+                        "Rango (general):\n" +
+                        "1\n" +
+                        "Métodos alternativos:\n" +
+                        "teléfono, web\n" +
+                        "Es recomendable enviar un correo a los mensajes de contactanos."
             },
             {
-                "Esto es Politica de privacidad"
+                "Esta Política de Privacidad se aplica a todos nuestros juegos, ya se jueguen en nuestro sitio web www.king.com.\n" +
+                        "\n" +
+                        "En dispositivos móviles, PC o en otras plataformas como Facebook. También se aplica a nuestras actividades de marketing y publicidad.\n" +
+                        "\n" +
+                        "En todas las plataformas y otros servicios que podemos proporcionarle de vez en cuando. En esta Política de Privacidad, nos referimos a nuestros"
             },
             {
-                "Esto es acerca de la aplicacion"
+                "Pulse el botón del Mapa del Reino situado en la esquina inferior izquierda para ir al Mapa del Reino, y luego pulse el botón del globo terráqueo para ir al Mapa del Mundo.\n" + "Pulsa sobre un reino para ver su mapa. Toca una casilla vacía y selecciona Reubicar o Migrar para transferir tu territorio. Los jugadores sólo pueden trasladarse a un reino en el que la migración esté restringida si es más antiguo que su reino de origen.\n"
             },
             {
-                "Esto es contactanos"
+                "Contactenos en:\n" +
+                        "\n" +
+                        "abc2234@gmail.com\n" +
+                        "androidlover@gmail.com\n" +
+                        "\n" +
+                        "Visite nuestra pagina en:\n" +
+                        "\n" +
+                        "\n" +
+                        "https://www.facebook.com/1182906556/videos/10220903002183147/\n" +
+                        "\n" +
+                        "Y nuestro canal de youtube:\u2028\u2028https://www.youtube.com/watch?v=riT4nl0T8_M"
             }
     };
 

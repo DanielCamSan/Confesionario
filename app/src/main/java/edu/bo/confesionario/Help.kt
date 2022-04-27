@@ -11,11 +11,8 @@ class Help : AppCompatActivity() {
     private var expandableTextView: ExpandableListView? = null
     private var adapter = ExpandableTextViewAdapter(this)
 
-    private val btn_back : Button
-        get() = findViewById(R.id.btn_back)
-    private val goBackBtn : Button
-        get() =  findViewById(R.id.go_back_btn)
-
+    private val btnBack : Button
+        get() = findViewById(R.id.go_back_btn)
 
     private val toolBarLogoutBtn : ImageButton
         get() =  findViewById(R.id.toolBarLogoutBtn)
@@ -28,11 +25,9 @@ class Help : AppCompatActivity() {
         setContentView(R.layout.activity_help)
         expandableTextView=findViewById(R.id.eTV)
         expandableTextView!!.setAdapter(adapter)
-
-        btn_back.setOnClickListener{
-            val intent = Intent(this, Publications::class.java)
-            startActivity(intent)
-            this.overridePendingTransition(0, 0);
+        btnBack.findViewById<Button>(R.id.go_back_btn)
+        btnBack.setOnClickListener{
+            finish()
         }
         appInfoBtn.setOnClickListener{
             val intent = Intent(this, Help::class.java)
