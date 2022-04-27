@@ -69,7 +69,9 @@ class IndividualConfession : AppCompatActivity() {
         fillTextViews()
     }
     private fun fillTextViews(){
-        var date = publicationData.date.get(Calendar.YEAR).toString() + "-"+publicationData.date.get(Calendar.MONTH).toString()+"-"+ publicationData.date.get(Calendar.DAY_OF_MONTH).toString()
+        var date = publicationData.date.get(Calendar.YEAR).toString()
+        date = date + "-" + (if (publicationData.date.get(Calendar.MONTH)<10) "0" else "") + publicationData.date.get(Calendar.MONTH).toString()
+        date = date + "-" + (if (publicationData.date.get(Calendar.DAY_OF_MONTH)<10) "0" else "") + publicationData.date.get(Calendar.DAY_OF_MONTH).toString()
         userNameTxt.text = publicationData.userName
         confessionCategoryTxt.text = publicationData.category
         confessionNumberTxt.text = "Confesión #${publicationData.number}"

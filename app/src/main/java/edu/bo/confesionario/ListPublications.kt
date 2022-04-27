@@ -161,9 +161,9 @@ class ListPublications {
                 Publication(
                     "confesiones",
                     "15",
-                    "Wea1",
+                    "Confesion aleatoria",
                     "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
-                    getDate(2020,8,20),
+                    getDate(2020,10,20),
                     "Tom"
                 )
             )

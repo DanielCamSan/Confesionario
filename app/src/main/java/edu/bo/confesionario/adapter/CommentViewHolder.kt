@@ -13,7 +13,10 @@ class CommentViewHolder(view: View): RecyclerView.ViewHolder(view) {
     val comment_date = view.findViewById<TextView>(R.id.commentDate)
 
     fun render(commentModel: Comment){
-        var commentDate = commentModel.commentDate.get(Calendar.YEAR).toString() + "-"+commentModel.commentDate.get(Calendar.MONTH).toString()+"-"+ commentModel.commentDate.get(Calendar.DAY_OF_MONTH).toString()
+        var commentDate = commentModel.commentDate.get(Calendar.YEAR).toString()
+        commentDate = commentDate + "-" + (if (commentModel.commentDate.get(Calendar.MONTH)<10) "0" else "") + commentModel.commentDate.get(Calendar.MONTH).toString()
+        commentDate = commentDate + "-" + (if (commentModel.commentDate.get(Calendar.DAY_OF_MONTH)<10) "0" else "") + commentModel.commentDate.get(Calendar.DAY_OF_MONTH).toString()
+
         comment_username.text = commentModel.username
         comment_body.text = commentModel.commentBody
         comment_date.text = commentDate
