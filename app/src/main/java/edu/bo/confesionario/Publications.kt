@@ -140,7 +140,6 @@ class Publications : AppCompatActivity() {
             }
         }
         publicateBtn.setOnClickListener{
-            print("asdasd");
             val intent = Intent(this, Confesion::class.java)
             startActivity(intent)
             this.overridePendingTransition(0, 0);

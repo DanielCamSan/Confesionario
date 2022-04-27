@@ -30,7 +30,9 @@ class PublicationsListAdapter(val publications: ArrayList<Publication>):
     override fun onBindViewHolder(holder: PublicationListViewHolder, position: Int) {
 
         val publication = publications.get(position)
-        var date = publication.date.get(Calendar.YEAR).toString() + "-"+publication.date.get(Calendar.MONTH).toString()+"-"+ publication.date.get(Calendar.DAY_OF_MONTH).toString()
+        var date = publication.date.get(Calendar.YEAR).toString()
+        date = date + "-" + (if (publication.date.get(Calendar.MONTH)<10) "0" else "") + publication.date.get(Calendar.MONTH).toString()
+        date = date + "-" + (if (publication.date.get(Calendar.DAY_OF_MONTH)<10) "0" else "") + publication.date.get(Calendar.DAY_OF_MONTH).toString()
         holder.itemView.findViewById<TextView>(R.id.categoryText).text = publication.category
         holder.itemView.findViewById<TextView>(R.id.titleText).text = publication.title
         holder.itemView.findViewById<TextView>(R.id.descriptionText).text = publication.description
@@ -38,6 +40,9 @@ class PublicationsListAdapter(val publications: ArrayList<Publication>):
         holder.itemView.findViewById<TextView>(R.id.numberComentariesText).text = "5"
         holder.itemView.findViewById<TextView>(R.id.dateText).text = date
         holder.itemView.findViewById<TextView>(R.id.userText).text = publication.userName
+        date = publication.date.get(Calendar.YEAR).toString()
+        date = date + "-" + (if (publication.date.get(Calendar.MONTH)+1<10) "0" else "") + (publication.date.get(Calendar.MONTH)+1).toString()
+        date = date + "-" + (if (publication.date.get(Calendar.DAY_OF_MONTH)<10) "0" else "") + publication.date.get(Calendar.DAY_OF_MONTH).toString()
         val bundle = Bundle()
         bundle.putString("category", publication.category)
         bundle.putString("title", publication.title)

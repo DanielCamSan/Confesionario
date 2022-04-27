@@ -24,7 +24,7 @@
                 android:id="@+id/myToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="?attr/colorPrimary"
+                android:background="@drawable/shape_searcher"
                 android:backgroundTint="#3D5A80"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
@@ -94,7 +94,7 @@
 
         <Button
             android:id="@+id/publicate_btn"
-            android:layout_width="153dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/button_color_1"
             android:hapticFeedbackEnabled="false"
