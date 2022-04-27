@@ -10,9 +10,9 @@ class Welcome : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
-        //Handler().postDelayed({
-        val intent = Intent(this, Publications::class.java)
-        startActivity(intent)
-        //}, 0)
+        Handler().postDelayed({
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
+        }, 0)
     }
 }
