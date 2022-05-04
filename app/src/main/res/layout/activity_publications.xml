@@ -134,7 +134,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/menuContainer"
-        android:layout_width="410dp"
+        android:layout_width="match_parent"
         android:layout_height="74dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -147,122 +147,95 @@
             android:layout_width="48dp"
             android:layout_height="56dp"
             android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6"
             app:srcCompat="@drawable/arrow_right"
             tools:ignore="SpeakableTextPresentCheck" />
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/principal_bottom_navigation_view"
-            android:layout_width="303dp"
-            android:layout_height="52dp"
-            android:layout_marginEnd="4dp"
-            android:background="#F1F1F1"
-            app:elevation="0dp"
-            app:itemIconSize="46dp"
-            app:itemIconTint="#777777"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/buttonRight"
-            app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/publications_menu" />
 
         <ImageView
             android:id="@+id/buttonLeft"
             android:layout_width="48dp"
             android:layout_height="56dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/principal_bottom_navigation_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/arrow_left"
             tools:ignore="SpeakableTextPresentCheck" />
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="303dp"
+            android:layout_height="52dp"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonRight"
+            app:layout_constraintHorizontal_bias="0.50"
+            app:layout_constraintStart_toEndOf="@+id/buttonLeft"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/button_color_1"
+            app:tabMode="fixed"
+            app:tabTextColor="@color/black">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:text="Todos"
+                android:tint="#F6D9D9" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Libros" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Fiestas" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Clases" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Confesiones" />
+        </com.google.android.material.tabs.TabLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="413dp"
-        android:layout_height="178dp"
+        android:layout_width="match_parent"
+        android:layout_height="362dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/menuContainer"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
-        <FrameLayout
-            android:id="@+id/principal_frame_layout"
-            android:layout_width="396dp"
-            android:layout_height="166dp"
-            android:layout_marginBottom="4dp"
-            android:foregroundGravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.482"
-            app:layout_constraintStart_toStartOf="parent">
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"
+            tools:layout_editor_absoluteX="5dp"
+            tools:layout_editor_absoluteY="20dp">
 
-        </FrameLayout>
-
+        </androidx.viewpager2.widget.ViewPager2>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/app_name"
-        app:layout_constraintBottom_toTopOf="@+id/viewPager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-        app:layout_constraintVertical_bias="0.096"
-        app:tabGravity="fill"
-        app:tabIndicatorColor="#F1D108"
-        app:tabMode="fixed"
-        app:tabTextColor="@color/black">
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/black"
-            android:text="Todos"
-            android:tint="#F6D9D9" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Libros" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Fiestas" />
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Clases" />
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab5"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Confesiones" />
-    </com.google.android.material.tabs.TabLayout>
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
-        android:layout_width="402dp"
-        android:layout_height="136dp"
-        android:contentDescription="@string/app_name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </androidx.viewpager2.widget.ViewPager2>
 </androidx.constraintlayout.widget.ConstraintLayout>
