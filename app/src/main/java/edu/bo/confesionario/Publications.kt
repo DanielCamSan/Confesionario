@@ -3,24 +3,32 @@ package edu.bo.confesionario
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.ActionBar
-import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import java.time.LocalDate
-import java.time.LocalDateTime
+import com.google.android.material.tabs.TabLayout
+import edu.bo.confesionario.publications.MainViewModel
+import edu.bo.ucb.data.PublicationsRepository
+import edu.bo.ucb.framework.PublicationDataSource
+import edu.bo.ucb.framework.RetrofitBuilder
+import edu.bo.ucb.usecases.GetPublications
+import edu.bo.ucb.domain.Publication
+import kotlinx.android.synthetic.main.activity_publications.*
 
 class Publications : AppCompatActivity() {
-
+    lateinit var mainViewModel: MainViewModel
     lateinit var toolbar: ActionBar
     lateinit var recyclerView : RecyclerView
     lateinit var listPublicationsString : String
+    private lateinit var pager: ViewPager2
+    private lateinit var tabs: TabLayout
     var menuView : Int = 0
     private lateinit var adapter : PublicationsListAdapter
     private val navigation_view: BottomNavigationView
@@ -49,6 +57,14 @@ class Publications : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_publications)
+
+        mainViewModel = MainViewModel(GetPublications(PublicationsRepository(PublicationDataSource( RetrofitBuilder ), "patata")))
+        mainViewModel.model.observe(this, Observer(::updateUi))
+        mainViewModel.loadPublications()
+        setUpTabBar()
+        tabs = findViewById(R.id.tabs)
+        pager = findViewById(R.id.viewPager)
+
         var fragmentAll = PublicationAllFragment()
         val menu = navigation_view.menu
         val itemAll = menu.findItem(R.id.bottom_navigation_all)
@@ -98,7 +114,7 @@ class Publications : AppCompatActivity() {
             }
         }
 
-        navigation_view.setOnNavigationItemSelectedListener {
+        /*navigation_view.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.bottom_navigation_all -> {
 
@@ -138,7 +154,7 @@ class Publications : AppCompatActivity() {
                 }
                 else -> true
             }
-        }
+        }*/
         publicateBtn.setOnClickListener{
             val intent = Intent(this, Confesion::class.java)
             startActivity(intent)
@@ -157,6 +173,29 @@ class Publications : AppCompatActivity() {
             this.overridePendingTransition(0, 0);
 
         }
+    }
+    private fun setUpTabBar()
+    {
+        val fragments: List<Fragment> = listOf<Fragment>(PublicationAllFragment(),PublicationsBooksFragment(),PublicationsPartiesFragment(),PublicationsClassesFragment(),PublicationsConfesionsFragment())
+        val adapter = TabPageAdapter(this, tabs.tabCount, fragments)
+        pager.adapter = adapter
+        pager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback()
+        {
+            override fun onPageSelected(position: Int){
+                tabs.selectTab(tabs.getTabAt(position))
+            }
+        })
+        tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener
+        {
+            override fun onTabSelected(tab: TabLayout.Tab)
+            {
+                viewPager.currentItem = tab.position
+            }
+            override fun onTabUnselected(tab: TabLayout.Tab?){}
+            override fun onTabReselected(tab: TabLayout.Tab?){}
+        })
+    }
+    private fun updateUi(model: MainViewModel.UiModel?){
 
     }
 

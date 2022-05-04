@@ -12,7 +12,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 import kotlin.collections.ArrayList
-
+import edu.bo.ucb.domain.Publication
 
 class PublicationsListAdapter(val publications: ArrayList<Publication>):
     RecyclerView.Adapter<PublicationsListAdapter.PublicationListViewHolder>() {

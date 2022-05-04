@@ -10,7 +10,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
-
+import edu.bo.ucb.domain.Publication
 
 class PublicationsPartiesFragment : Fragment() {
 

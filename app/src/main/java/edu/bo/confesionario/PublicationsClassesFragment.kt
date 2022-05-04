@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
-
+import edu.bo.ucb.domain.Publication
 
 class PublicationsClassesFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
