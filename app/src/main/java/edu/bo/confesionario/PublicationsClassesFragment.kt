@@ -1,23 +1,33 @@
 package edu.bo.confesionario
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import edu.bo.confesionario.publications.MainViewModel
+import edu.bo.ucb.data.PublicationsRepository
 import java.util.*
+import androidx.lifecycle.Observer
 import edu.bo.ucb.domain.Publication
+import edu.bo.ucb.framework.PublicationDataSource
+import edu.bo.ucb.framework.RetrofitBuilder
+import edu.bo.ucb.usecases.GetPublications
 
 class PublicationsClassesFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var listPublications: List<Publication>
+    lateinit var mainViewModel: MainViewModel
+    private lateinit var viewPublications: View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
 
         }
+        mainViewModel = MainViewModel(GetPublications(PublicationsRepository(PublicationDataSource( RetrofitBuilder ), "patata")))
+        mainViewModel.model.observe(this, Observer(::updateUi))
+        mainViewModel.loadPublications()
     }
 
     override fun onCreateView(
@@ -25,20 +35,16 @@ class PublicationsClassesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_publications_classes, container, false)
-        listPublications = ListPublications.getList()
-        listPublications = listPublications.filter { publication -> publication.category == "clases" }
-        initRecyclerView(view)
-        return view
-    }
-    private fun initRecyclerView(view: View){
-
-        recyclerView = view.findViewById<RecyclerView>(R.id.recicler_classes)
-        recyclerView.adapter = PublicationsListAdapter(listPublications as ArrayList<Publication>)
+        viewPublications = inflater.inflate(R.layout.fragment_publications_classes, container, false)
+        recyclerView = viewPublications.findViewById<RecyclerView>(R.id.recicler_classes)
         val linearLayoutManager = LinearLayoutManager(activity)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView.layoutManager = linearLayoutManager
-
+        return viewPublications
+    }
+    private fun initRecyclerView(publications: List<Publication>){
+        var listPublications = publications.filter { publication -> publication.category == "clases" }
+        recyclerView.adapter = PublicationsListAdapter(listPublications as ArrayList<Publication>)
     }
     companion object {
 
@@ -49,5 +55,11 @@ class PublicationsClassesFragment : Fragment() {
 
                 }
             }
+    }
+    private fun updateUi(model: MainViewModel.UiModel?){
+        when ( model) {
+            is MainViewModel.UiModel.Content -> initRecyclerView(model.publicationsList)
+        }
+
     }
 }

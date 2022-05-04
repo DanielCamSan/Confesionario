@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,9 +16,8 @@ import edu.bo.ucb.framework.PublicationDataSource
 import edu.bo.ucb.framework.RetrofitBuilder
 import edu.bo.ucb.usecases.GetPublications
 
-class PublicationAllFragment : Fragment() {
+class PublicationsAllFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var listPublications: List<Publication>
     lateinit var mainViewModel: MainViewModel
     private lateinit var viewPublications: View
 
@@ -52,7 +50,7 @@ class PublicationAllFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            PublicationAllFragment().apply {
+            PublicationsAllFragment().apply {
                 arguments = Bundle().apply {
                 }
             }
