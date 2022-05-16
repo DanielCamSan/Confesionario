@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ExpandableListView
 import android.widget.ImageButton
+import edu.bo.confesionario.login.Login
 
 class Help : AppCompatActivity() {
     private var expandableTextView: ExpandableListView? = null

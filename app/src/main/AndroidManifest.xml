@@ -13,7 +13,7 @@
             android:name=".Confesion"
             android:exported="false" />
         <activity
-            android:name=".Welcome"
+            android:name=".welcome.Welcome"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,10 +21,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UserPolicies"
+            android:name=".user_policies.UserPolicies"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".login.Login"
             android:exported="false" />
         <activity
             android:name=".Publications"

@@ -1,4 +1,4 @@
-package edu.bo.confesionario
+package edu.bo.confesionario.user_policies
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,6 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import edu.bo.confesionario.Help
+import edu.bo.confesionario.Publications
+import edu.bo.confesionario.R
+import edu.bo.confesionario.login.Login
 
 class UserPolicies : AppCompatActivity() {
 

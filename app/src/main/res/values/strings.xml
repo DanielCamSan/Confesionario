@@ -9,6 +9,7 @@
     <string name="publications_category_books">Libros</string>
     <string name="publications_category_classes">Clases</string>
     <string name="publications_category_confesions">Confesion</string>
+    <string name="login_error_session">invalid credentials</string>
 
     <string name="login_txt">Login</string>
     <string name="login_w_google_txt">Login with Google</string>
