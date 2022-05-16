@@ -3,6 +3,7 @@
     package="edu.bo.confesionario">
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/confesionario_padre_cleber"
         android:label="@string/app_name"
