@@ -1,4 +1,4 @@
-package edu.bo.confesionario
+package edu.bo.confesionario.publications
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import edu.bo.confesionario.publications.MainViewModel
 import java.util.*
 import androidx.lifecycle.Observer
+import edu.bo.confesionario.R
 import edu.bo.data.PublicationsRepository
 import edu.bo.domain.Publication
 import edu.bo.framework.PublicationDataSource
@@ -34,9 +34,8 @@ class PublicationsClassesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         viewPublications = inflater.inflate(R.layout.fragment_publications_classes, container, false)
-        recyclerView = viewPublications.findViewById<RecyclerView>(R.id.recicler_classes)
+        recyclerView = viewPublications.findViewById(R.id.recicler_classes)
         val linearLayoutManager = LinearLayoutManager(activity)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView.layoutManager = linearLayoutManager
@@ -51,9 +50,7 @@ class PublicationsClassesFragment : Fragment() {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             PublicationsClassesFragment().apply {
-                arguments = Bundle().apply {
-
-                }
+                arguments = Bundle().apply {}
             }
     }
     private fun updateUi(model: MainViewModel.UiModel?){

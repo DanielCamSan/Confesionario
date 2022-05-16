@@ -1,4 +1,4 @@
-package edu.bo.confesionario
+package edu.bo.confesionario.publications
 
 import android.content.Context
 import android.content.Intent
@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import edu.bo.confesionario.IndividualConfession
+import edu.bo.confesionario.R
 import java.util.*
 import kotlin.collections.ArrayList
 import edu.bo.domain.Publication
