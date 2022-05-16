@@ -1,4 +1,4 @@
-package edu.bo.ucb.framework
+package edu.bo.framework
 import java.util.*
 
 

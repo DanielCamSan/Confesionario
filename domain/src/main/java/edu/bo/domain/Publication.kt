@@ -1,4 +1,4 @@
-package edu.bo.ucb.domain
+package edu.bo.domain
 
 import java.util.*
 

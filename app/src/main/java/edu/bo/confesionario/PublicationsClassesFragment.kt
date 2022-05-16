@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import edu.bo.confesionario.publications.MainViewModel
-import edu.bo.ucb.data.PublicationsRepository
 import java.util.*
 import androidx.lifecycle.Observer
-import edu.bo.ucb.domain.Publication
-import edu.bo.ucb.framework.PublicationDataSource
-import edu.bo.ucb.framework.RetrofitBuilder
-import edu.bo.ucb.usecases.GetPublications
+import edu.bo.data.PublicationsRepository
+import edu.bo.domain.Publication
+import edu.bo.framework.PublicationDataSource
+import edu.bo.framework.RetrofitBuilder
+import edu.bo.usecases.GetPublications
 
 class PublicationsClassesFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView

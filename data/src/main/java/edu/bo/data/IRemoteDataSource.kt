@@ -1,6 +1,6 @@
-package edu.bo.ucb.data
+package edu.bo.data
 
-import edu.bo.ucb.domain.Publication
+import edu.bo.domain.Publication
 
 interface IRemoteDataSource {
     suspend fun getPublications( apiKey: String): List<Publication>

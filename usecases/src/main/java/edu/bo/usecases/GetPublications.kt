@@ -1,7 +1,7 @@
-package edu.bo.ucb.usecases
+package edu.bo.usecases
 
-import edu.bo.ucb.data.PublicationsRepository
-import edu.bo.ucb.domain.Publication
+import edu.bo.data.PublicationsRepository
+import edu.bo.domain.Publication
 
 class GetPublications(val repository: PublicationsRepository) {
     suspend fun invoke(): List<Publication> {

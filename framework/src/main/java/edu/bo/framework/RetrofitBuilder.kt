@@ -1,4 +1,4 @@
-package edu.bo.ucb.framework
+package edu.bo.framework
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

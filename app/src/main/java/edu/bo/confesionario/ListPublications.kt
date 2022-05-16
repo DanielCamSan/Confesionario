@@ -5,7 +5,7 @@ import androidx.annotation.RequiresApi
 import java.time.LocalDate
 import java.time.ZonedDateTime
 import java.util.*
-import edu.bo.ucb.domain.Publication
+import edu.bo.domain.Publication
 
 class ListPublications {
     companion object {

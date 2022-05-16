@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import edu.bo.confesionario.adapter.CommentAdapter
 import java.text.SimpleDateFormat
 import java.util.*
-import edu.bo.ucb.domain.Publication
+import edu.bo.domain.Publication
 
 class IndividualConfession : AppCompatActivity() {
     private val backBtn: Button

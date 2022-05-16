@@ -1,8 +1,8 @@
 package edu.bo.confesionario.publications
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import edu.bo.ucb.domain.Publication
-import edu.bo.ucb.usecases.GetPublications
+import edu.bo.domain.Publication
+import edu.bo.usecases.GetPublications
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val publications: GetPublications) :ScopedViewModel()  {

@@ -13,10 +13,10 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import edu.bo.confesionario.publications.MainViewModel
-import edu.bo.ucb.data.PublicationsRepository
-import edu.bo.ucb.framework.PublicationDataSource
-import edu.bo.ucb.framework.RetrofitBuilder
-import edu.bo.ucb.usecases.GetPublications
+import edu.bo.data.PublicationsRepository
+import edu.bo.framework.PublicationDataSource
+import edu.bo.framework.RetrofitBuilder
+import edu.bo.usecases.GetPublications
 
 import kotlinx.android.synthetic.main.activity_publications.*
 

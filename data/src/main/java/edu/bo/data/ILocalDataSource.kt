@@ -1,5 +1,5 @@
-package edu.bo.ucb.data
-import edu.bo.ucb.domain.Publication
+package edu.bo.data
+import edu.bo.domain.Publication
 
 interface ILocalDataSource {
     suspend fun getPublications(): List<Publication>
