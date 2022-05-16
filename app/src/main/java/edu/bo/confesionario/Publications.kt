@@ -7,11 +7,15 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.auth.FirebaseAuth
 import edu.bo.confesionario.publications.MainViewModel
 import edu.bo.data.PublicationsRepository
 import edu.bo.framework.PublicationDataSource
@@ -92,7 +96,13 @@ class Publications : AppCompatActivity() {
 
         }
         toolBarLogoutBtn.setOnClickListener{
-            val intent = Intent(this, Login::class.java)
+            FirebaseAuth.getInstance().signOut()
+            GoogleSignIn.getClient(
+                this,
+                GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+            ).signOut()
+            Toast.makeText(this, R.string.logout_msg, Toast.LENGTH_SHORT).show()
+            val intent = Intent(applicationContext, Login::class.java)
             startActivity(intent)
             this.overridePendingTransition(0, 0);
 
