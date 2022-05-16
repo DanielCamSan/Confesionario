@@ -1,4 +1,4 @@
-package edu.bo.confesionario
+package edu.bo.confesionario.user_policies
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -11,6 +11,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 
+import edu.bo.confesionario.Help
+import edu.bo.confesionario.Publications
+import edu.bo.confesionario.R
+import edu.bo.confesionario.login.Login
 
 class UserPolicies : AppCompatActivity() {
 

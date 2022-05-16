@@ -1,10 +1,11 @@
-package edu.bo.confesionario
+package edu.bo.confesionario.welcome
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import java.util.*
+import edu.bo.confesionario.R
+import edu.bo.confesionario.login.Login
 
 class Welcome : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

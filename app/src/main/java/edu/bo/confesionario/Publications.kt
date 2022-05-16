@@ -23,6 +23,10 @@ import edu.bo.framework.RetrofitBuilder
 import edu.bo.usecases.GetPublications
 
 import kotlinx.android.synthetic.main.activity_publications.*
+import androidx.appcompat.app.ActionBar
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import edu.bo.confesionario.login.Login
 
 class Publications : AppCompatActivity() {
     lateinit var recyclerView : RecyclerView
