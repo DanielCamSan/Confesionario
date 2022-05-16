@@ -28,7 +28,7 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".Publications"
+            android:name=".publications.Publications"
             android:exported="false" />
         <activity
             android:name=".IndividualConfession"

@@ -1,4 +1,4 @@
-package edu.bo.confesionario
+package edu.bo.confesionario.publications
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import edu.bo.confesionario.publications.MainViewModel
 import java.util.*
 import androidx.lifecycle.Observer
+import edu.bo.confesionario.R
 import edu.bo.data.PublicationsRepository
 import edu.bo.domain.Publication
 import edu.bo.framework.PublicationDataSource
@@ -23,14 +23,10 @@ class PublicationsAllFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
+        arguments?.let {}
         mainViewModel = MainViewModel(GetPublications(PublicationsRepository(PublicationDataSource( RetrofitBuilder ), "patata")))
         mainViewModel.model.observe(this, Observer(::updateUi))
         mainViewModel.loadPublications()
-
-
     }
 
     override fun onCreateView(
@@ -38,7 +34,7 @@ class PublicationsAllFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewPublications = inflater.inflate(R.layout.fragment_publication_all, container, false)
-        recyclerView = viewPublications.findViewById<RecyclerView>(R.id.recicler_all)
+        recyclerView = viewPublications.findViewById(R.id.recicler_all)
         val linearLayoutManager = LinearLayoutManager(activity)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView.layoutManager = linearLayoutManager

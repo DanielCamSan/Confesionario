@@ -1,4 +1,4 @@
-package edu.bo.confesionario
+package edu.bo.confesionario.publications
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +16,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
-import edu.bo.confesionario.publications.MainViewModel
+import edu.bo.confesionario.*
 import edu.bo.data.PublicationsRepository
 import edu.bo.framework.PublicationDataSource
 import edu.bo.framework.RetrofitBuilder
@@ -25,9 +25,10 @@ import edu.bo.usecases.GetPublications
 import kotlinx.android.synthetic.main.activity_publications.*
 
 class Publications : AppCompatActivity() {
-    lateinit var recyclerView : RecyclerView
-    private lateinit var pager: ViewPager2
-    private lateinit var tabs: TabLayout
+    private val pager: ViewPager2
+        get() = findViewById(R.id.viewPager)
+    private val tabs: TabLayout
+        get() = findViewById(R.id.tabs)
     private lateinit var mainViewModel: MainViewModel
     var menuView : Int = 0
     private val leftButton : ImageView
@@ -46,12 +47,9 @@ class Publications : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_publications)
-
         mainViewModel = MainViewModel(GetPublications(PublicationsRepository(PublicationDataSource( RetrofitBuilder ), "patata")))
-        mainViewModel.model.observe(this, Observer(::updateUi))
+        //mainViewModel.model.observe(this, Observer(::updateUi))
         mainViewModel.loadPublications()
-        tabs = findViewById(R.id.tabs)
-        pager = findViewById(R.id.viewPager)
         setUpTabBar()
 
         tabs.getTabAt(3)?.view?.visibility = View.GONE
@@ -116,7 +114,13 @@ class Publications : AppCompatActivity() {
     }
     private fun setUpTabBar()
     {
-        val fragments: List<Fragment> = listOf<Fragment>(PublicationsAllFragment(),PublicationsBooksFragment(),PublicationsPartiesFragment(),PublicationsClassesFragment(),PublicationsConfesionsFragment())
+        val fragments: List<Fragment> = listOf<Fragment>(
+            PublicationsAllFragment(),
+            PublicationsBooksFragment(),
+            PublicationsPartiesFragment(),
+            PublicationsClassesFragment(),
+            PublicationsConfesionsFragment()
+        )
         val adapter = TabPageAdapter(this, tabs.tabCount, fragments)
         pager.adapter = adapter
         pager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback()
@@ -135,8 +139,9 @@ class Publications : AppCompatActivity() {
             override fun onTabReselected(tab: TabLayout.Tab?){}
         })
     }
+    /*
     private fun updateUi(model: MainViewModel.UiModel?){
 
     }
-
+    */
 }

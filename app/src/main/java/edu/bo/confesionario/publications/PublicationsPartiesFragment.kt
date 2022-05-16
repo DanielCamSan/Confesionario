@@ -1,4 +1,4 @@
-package edu.bo.confesionario
+package edu.bo.confesionario.publications
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import edu.bo.confesionario.publications.MainViewModel
 import edu.bo.data.PublicationsRepository
 import java.util.*
 import androidx.lifecycle.Observer
+import edu.bo.confesionario.R
 import edu.bo.domain.Publication
 import edu.bo.framework.PublicationDataSource
 import edu.bo.framework.RetrofitBuilder
