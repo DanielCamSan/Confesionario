@@ -2,10 +2,15 @@ package edu.bo.confesionario
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseAuth
+
 
 class UserPolicies : AppCompatActivity() {
 
@@ -29,17 +34,28 @@ class UserPolicies : AppCompatActivity() {
 
 
         goBackBtn.setOnClickListener{
-            val intent = Intent(this, Login::class.java)
+            FirebaseAuth.getInstance().signOut()
+            GoogleSignIn.getClient(
+                this,
+                GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+            ).signOut()
+            Toast.makeText(this, R.string.logout_msg, Toast.LENGTH_SHORT).show()
+            val intent = Intent(applicationContext, Login::class.java)
             startActivity(intent)
             this.overridePendingTransition(0, 0);
 
         }
 
         toolBarLogoutBtn.setOnClickListener{
-            val intent = Intent(this, Login::class.java)
+            FirebaseAuth.getInstance().signOut()
+            GoogleSignIn.getClient(
+                this,
+                GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+            ).signOut()
+            Toast.makeText(this, R.string.logout_msg, Toast.LENGTH_SHORT).show()
+            val intent = Intent(applicationContext, Login::class.java)
             startActivity(intent)
             this.overridePendingTransition(0, 0);
-
         }
 
         acceptPoliciesBtn.setOnClickListener{

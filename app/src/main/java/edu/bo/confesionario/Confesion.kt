@@ -6,6 +6,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Switch
+import android.widget.Toast
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseAuth
 
 
 class Confesion : AppCompatActivity() {
@@ -37,7 +41,13 @@ class Confesion : AppCompatActivity() {
 
         }
         toolBarLogoutBtn.setOnClickListener{
-            val intent = Intent(this, Login::class.java)
+            FirebaseAuth.getInstance().signOut()
+            GoogleSignIn.getClient(
+                this,
+                GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+            ).signOut()
+            Toast.makeText(this, R.string.logout_msg, Toast.LENGTH_SHORT).show()
+            val intent = Intent(applicationContext, Login::class.java)
             startActivity(intent)
             this.overridePendingTransition(0, 0);
 
