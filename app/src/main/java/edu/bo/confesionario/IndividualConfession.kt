@@ -7,15 +7,23 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import edu.bo.confesionario.adapter.CommentAdapter
+import edu.bo.confesionario.comments.MainViewModel
+import edu.bo.data.CommentsRepository
+import edu.bo.domain.Comment
 import java.text.SimpleDateFormat
 import java.util.*
 import edu.bo.domain.Publication
+import edu.bo.framework.CommentDataSource
+import edu.bo.framework.RetrofitBuilder
+import edu.bo.usecases.GetComments
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class IndividualConfession : AppCompatActivity() {
     private val backBtn: Button
@@ -36,7 +44,12 @@ class IndividualConfession : AppCompatActivity() {
         get() = findViewById(R.id.confessionNumber)
     private val confessionCategoryTxt : TextView
         get() = findViewById(R.id.categoryName)
-    private  lateinit var publicationData: Publication
+    private val commentsLabel: TextView
+        get() = findViewById(R.id.comments)
+    lateinit var mainViewModel: MainViewModel
+    private lateinit var publicationData: Publication
+    private lateinit var commentsAdapter: CommentAdapter
+    private var commentsList: MutableList<Comment?> = mutableListOf<Comment?>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_individual_confession)
@@ -44,8 +57,12 @@ class IndividualConfession : AppCompatActivity() {
         backBtn.setOnClickListener {
             finish()
         }
-        initRecyclerView()
-
+        // retrieve comments
+        commentsAdapter = CommentAdapter(commentsList)
+        mainViewModel = MainViewModel(GetComments(CommentsRepository(CommentDataSource(commentsList))))
+        mainViewModel.model.observe(this, Observer(::updateUi))
+        mainViewModel.loadComments()
+        //toolbar
         toolBarLogoutBtn.setOnClickListener{
             FirebaseAuth.getInstance().signOut()
             GoogleSignIn.getClient(
@@ -62,7 +79,7 @@ class IndividualConfession : AppCompatActivity() {
             startActivity(intent)
             this.overridePendingTransition(0, 0);
         }
-        // get Data from intent bundle
+        // get Publication Data from intent bundle
         val bundle = intent.extras
         var category = bundle!!.getString("category")
         val number = bundle!!.getString("number")
@@ -77,6 +94,12 @@ class IndividualConfession : AppCompatActivity() {
         publicationData = Publication(category, number, title, description, date, userName)
 
         fillTextViews()
+
+        // buttons actions
+        commentsLabel.setOnClickListener{
+            commentsLabel.text = String.format("%d comentarios", commentsList.size)
+            initRecyclerView()
+        }
     }
     private fun fillTextViews(){
         var date = publicationData.date.get(Calendar.YEAR).toString()
@@ -92,6 +115,15 @@ class IndividualConfession : AppCompatActivity() {
     private fun initRecyclerView(){
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = CommentAdapter(CommentsProvider.commentsList)
+        recyclerView.adapter = commentsAdapter
+    }
+    private fun updateCommentsList(comments: List<Comment?>){
+        commentsAdapter.notifyDataSetChanged()
+    }
+    private fun updateUi(model: MainViewModel.UiModel?){
+        when ( model) {
+            is MainViewModel.UiModel.Content -> updateCommentsList(model.commentsList)
+        }
+
     }
 }

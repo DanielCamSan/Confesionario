@@ -184,13 +184,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/confessionBody" />
 
             <TextView
-                android:id="@+id/confessionNumber3"
+                android:id="@+id/comments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="40dp"
-                android:text="23 comentarios"
+                android:text="comentarios"
                 android:textColor="@color/black"
+                android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/confessionBody" />
 
@@ -252,6 +253,7 @@
                 android:layout_width="105dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="3dp"
+                android:layout_marginEnd="15dp"
                 android:backgroundTint="@color/white"
                 android:text="Cancelar"
                 android:textAllCaps="false"

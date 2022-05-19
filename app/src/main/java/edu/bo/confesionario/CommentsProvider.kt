@@ -1,9 +1,7 @@
 package edu.bo.confesionario
 
 import edu.bo.confesionario.ListPublications.Companion.getDate
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.util.*
+import edu.bo.domain.Comment
 
 class CommentsProvider {
     companion object{
