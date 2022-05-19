@@ -15,6 +15,7 @@ import edu.bo.usecases.GetPublications
 import java.util.*
 import androidx.lifecycle.Observer
 import edu.bo.confesionario.R
+import edu.bo.framework.DatabaseRef
 
 class PublicationsConfesionsFragment : Fragment() {
 
@@ -24,7 +25,7 @@ class PublicationsConfesionsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {}
-        mainViewModel = MainViewModel(GetPublications(PublicationsRepository(PublicationDataSource( RetrofitBuilder ), "patata")))
+        mainViewModel = MainViewModel(GetPublications(PublicationsRepository(DatabaseRef(), "patata")))
         mainViewModel.model.observe(this, Observer(::updateUi))
         mainViewModel.loadPublications()
     }
