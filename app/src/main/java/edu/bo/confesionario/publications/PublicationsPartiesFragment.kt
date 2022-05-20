@@ -19,9 +19,6 @@ class PublicationsPartiesFragment(private var mainViewModel : MainViewModel) : F
     private lateinit var viewPublications: View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
         mainViewModel.model.observe(this, Observer(::updateUi))
         mainViewModel.loadPublications()
     }
@@ -41,17 +38,6 @@ class PublicationsPartiesFragment(private var mainViewModel : MainViewModel) : F
         val listPublications = publications.filter { publication -> publication.category == "fiestas" }
         recyclerView.adapter = PublicationsListAdapter(listPublications as ArrayList<Publication>)
     }
-    /*
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PublicationsPartiesFragment().apply {
-                arguments = Bundle().apply {
-
-                }
-            }
-    }
-     */
     private fun updateUi(model: MainViewModel.UiModel?){
         when ( model) {
             is MainViewModel.UiModel.Content -> initRecyclerView(model.publicationsList)

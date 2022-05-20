@@ -2,6 +2,7 @@ package edu.bo.confesionario.publications
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
@@ -42,44 +43,13 @@ class Publications : AppCompatActivity() {
         get() =  findViewById(R.id.toolBarLogoutBtn)
     private val appInfoBtn : ImageButton
         get() =  findViewById(R.id.infoBtn)
-    //private lateinit var binding : ActivityReadDataBinding
 
-    private lateinit var database : DatabaseReference
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_publications)
-        mainViewModel = MainViewModel(GetPublications(PublicationsRepository(DatabaseRef(), "patata")))
-        //mainViewModel.model.observe(this, Observer(::updateUi))
-        mainViewModel.loadPublications()
-        /*
-        database = FirebaseDatabase.getInstance().getReference().child("publications")
-        database.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                for (snap in dataSnapshot.children) {
-                    //val info = snap.getValue<Publication>()
-                    Log.d("s1",snap.child("id").value.toString())
-                    Log.d("s1",snap.child("title").value.toString())
-                    Log.d("s1",snap.child("description").value.toString())
-                    Log.d("s1",snap.child("date").value.toString())
-                    Log.d("s1",snap.child("idUser").value.toString())
-                    Log.d("meess","aaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
-                Log.w("fail", "Failed to read value.", error.toException())
-            }
-        })*/
-        setUpTabBar()
-
+    private fun tabsDisplacement()
+    {
         tabs.getTabAt(3)?.view?.visibility = View.GONE
         tabs.getTabAt(4)?.view?.visibility = View.GONE
         leftButton.visibility = View.INVISIBLE
+
         leftButton.setOnClickListener{
             if (menuView > 0){
                 menuView -= 1
@@ -112,6 +82,15 @@ class Publications : AppCompatActivity() {
                 }
             }
         }
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_publications)
+        mainViewModel = MainViewModel(GetPublications(PublicationsRepository(DatabaseRef())))
+        //mainViewModel.model.observe(this, Observer(::updateUi))
+        mainViewModel.loadPublications()
+        pager.setPageTransformer(ZoomOutPageTransformer())
+        tabsDisplacement()
         publicateBtn.setOnClickListener{
             val intent = Intent(this, Confesion::class.java)
             startActivity(intent)
@@ -136,10 +115,42 @@ class Publications : AppCompatActivity() {
             this.overridePendingTransition(0, 0);
 
         }
+        //pager.on
+        //{
+        //    Toast.makeText(this, "cambio de pagina"  , Toast.LENGTH_SHORT).show()
+        //}
+        setUpTabBar()
+    }
+    private fun onSlidePage(numberPage: Int)
+    {
+        if (numberPage == 0) {
+            tabs.getTabAt(3)?.view?.visibility = View.GONE
+            tabs.getTabAt(0)?.view?.visibility = View.VISIBLE
+            rightButton.visibility = View.VISIBLE
+            leftButton.visibility = View.INVISIBLE
+        }
+        if (numberPage == 1) {
+            tabs.getTabAt(4)?.view?.visibility = View.GONE
+            tabs.getTabAt(1)?.view?.visibility = View.VISIBLE
+            rightButton.visibility = View.VISIBLE
+            leftButton.visibility = View.VISIBLE
+        }
+        if (numberPage == 3) {
+            tabs.getTabAt(0)?.view?.visibility = View.GONE
+            tabs.getTabAt(3)?.view?.visibility = View.VISIBLE
+            rightButton.visibility = View.VISIBLE
+            leftButton.visibility = View.VISIBLE
+        }
+        if (numberPage == 4) {
+            tabs.getTabAt(1)?.view?.visibility = View.GONE
+            tabs.getTabAt(4)?.view?.visibility = View.VISIBLE
+            rightButton.visibility = View.INVISIBLE
+            leftButton.visibility = View.VISIBLE
+        }
     }
     private fun setUpTabBar()
     {
-        val fragments: List<Fragment> = listOf<Fragment>(
+        val fragments: List<Fragment> = listOf(
             PublicationsAllFragment(mainViewModel),
             PublicationsBooksFragment(mainViewModel),
             PublicationsPartiesFragment(mainViewModel),
@@ -151,22 +162,69 @@ class Publications : AppCompatActivity() {
         pager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback()
         {
             override fun onPageSelected(position: Int){
-                tabs.selectTab(tabs.getTabAt(position))
+                if (position in 0..4) {
+                    onSlidePage(position)
+                    tabs.selectTab(tabs.getTabAt(position))
+                }
             }
         })
         tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener
         {
             override fun onTabSelected(tab: TabLayout.Tab)
             {
+
                 viewPager.currentItem = tab.position
             }
             override fun onTabUnselected(tab: TabLayout.Tab?){}
             override fun onTabReselected(tab: TabLayout.Tab?){}
         })
+        tabs.selectTab(tabs.getTabAt(0))
     }
     /*
     private fun updateUi(model: MainViewModel.UiModel?){
 
     }
     */
+    ///visual
+    ///animacion del visual pager que realiza un zoom out cuando cambiamos de tab
+    class ZoomOutPageTransformer : ViewPager2.PageTransformer {
+        private val MIN_SCALE = 0.85f
+        private val MIN_ALPHA = 0.5f
+
+        override fun transformPage(view: View, position: Float) {
+            view.apply {
+                val pageWidth = width
+                val pageHeight = height
+                when {
+                    position < -1 -> { // [-Infinity,-1)
+                        // This page is way off-screen to the left.
+                        alpha = 0f
+                    }
+                    position <= 1 -> { // [-1,1]
+                        // Modify the default slide transition to shrink the page as well
+                        val scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position))
+                        val vertMargin = pageHeight * (1 - scaleFactor) / 2
+                        val horzMargin = pageWidth * (1 - scaleFactor) / 2
+                        translationX = if (position < 0) {
+                            horzMargin - vertMargin / 2
+                        } else {
+                            horzMargin + vertMargin / 2
+                        }
+
+                        // Scale the page down (between MIN_SCALE and 1)
+                        scaleX = scaleFactor
+                        scaleY = scaleFactor
+
+                        // Fade the page relative to its size.
+                        alpha = (MIN_ALPHA +
+                                (((scaleFactor - MIN_SCALE) / (1 - MIN_SCALE)) * (1 - MIN_ALPHA)))
+                    }
+                    else -> { // (1,+Infinity]
+                        // This page is way off-screen to the right.
+                        alpha = 0f
+                    }
+                }
+            }
+        }
+    }
 }

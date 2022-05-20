@@ -1,7 +1,6 @@
 package edu.bo.confesionario.publications
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,13 +14,10 @@ import edu.bo.domain.Publication
 
 data class PublicationsAllFragment(private var mainViewModel : MainViewModel) : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    //lateinit var mainViewModel: MainViewModel
     private lateinit var viewPublications: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {}
-        //mainViewModel = MainViewModel(GetPublications(PublicationsRepository(DatabaseRef(), "patata")))
         mainViewModel.model.observe(this, Observer(::updateUi))
         mainViewModel.loadPublications()
     }
@@ -40,15 +36,6 @@ data class PublicationsAllFragment(private var mainViewModel : MainViewModel) : 
     private fun initRecyclerView(publications: List<Publication>){
         recyclerView.adapter = PublicationsListAdapter(publications  as ArrayList<Publication>)
     }
-    /*
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PublicationsAllFragment(mainViewModel).apply {
-                arguments = Bundle().apply {
-                }
-            }
-    }*/
     private fun updateUi(model: MainViewModel.UiModel?){
         when ( model) {
             is MainViewModel.UiModel.Content -> initRecyclerView(model.publicationsList)

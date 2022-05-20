@@ -10,21 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 import androidx.lifecycle.Observer
 import edu.bo.confesionario.R
-import edu.bo.data.PublicationsRepository
 import edu.bo.domain.Publication
-import edu.bo.framework.DatabaseRef
-import edu.bo.framework.PublicationDataSource
-import edu.bo.framework.RetrofitBuilder
-import edu.bo.usecases.GetPublications
+
 
 class PublicationsClassesFragment(private var mainViewModel : MainViewModel) : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewPublications: View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
         mainViewModel.model.observe(this, Observer(::updateUi))
         mainViewModel.loadPublications()
     }
@@ -44,16 +37,6 @@ class PublicationsClassesFragment(private var mainViewModel : MainViewModel) : F
         var listPublications = publications.filter { publication -> publication.category == "clases" }
         recyclerView.adapter = PublicationsListAdapter(listPublications as ArrayList<Publication>)
     }
-    /*
-    companion object {
-
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PublicationsClassesFragment().apply {
-                arguments = Bundle().apply {}
-            }
-    }
-     */
     private fun updateUi(model: MainViewModel.UiModel?){
         when ( model) {
             is MainViewModel.UiModel.Content -> initRecyclerView(model.publicationsList)
