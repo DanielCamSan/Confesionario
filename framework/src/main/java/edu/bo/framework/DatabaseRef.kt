@@ -9,6 +9,7 @@ import edu.bo.data.IRemoteDataSource
 import java.util.*
 import edu.bo.domain.Publication
 
+
 class DatabaseRef : IRemoteDataSource {
     fun getDate(year:Int,month:Int,day:Int) : Calendar
     {
@@ -176,9 +177,6 @@ class DatabaseRef : IRemoteDataSource {
     constructor(){
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                Log.d("ddddddd","ddddddaaaaaaaaaaaaaaaaqqqqqqqqqqqqqqqqwwwwwwwwwwwwwwwweeeeeeeeeeeeeee")
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
                 for (snap in dataSnapshot.children) {
                     var date = Calendar.getInstance()
                     date.set(2,2,2)
