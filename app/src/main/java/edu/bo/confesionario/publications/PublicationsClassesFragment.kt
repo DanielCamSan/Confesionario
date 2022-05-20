@@ -17,16 +17,14 @@ import edu.bo.framework.PublicationDataSource
 import edu.bo.framework.RetrofitBuilder
 import edu.bo.usecases.GetPublications
 
-class PublicationsClassesFragment : Fragment() {
+class PublicationsClassesFragment(private var mainViewModel : MainViewModel) : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    lateinit var mainViewModel: MainViewModel
     private lateinit var viewPublications: View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
 
         }
-        mainViewModel = MainViewModel(GetPublications(PublicationsRepository(DatabaseRef(), "patata")))
         mainViewModel.model.observe(this, Observer(::updateUi))
         mainViewModel.loadPublications()
     }
@@ -46,6 +44,7 @@ class PublicationsClassesFragment : Fragment() {
         var listPublications = publications.filter { publication -> publication.category == "clases" }
         recyclerView.adapter = PublicationsListAdapter(listPublications as ArrayList<Publication>)
     }
+    /*
     companion object {
 
         @JvmStatic
@@ -54,6 +53,7 @@ class PublicationsClassesFragment : Fragment() {
                 arguments = Bundle().apply {}
             }
     }
+     */
     private fun updateUi(model: MainViewModel.UiModel?){
         when ( model) {
             is MainViewModel.UiModel.Content -> initRecyclerView(model.publicationsList)

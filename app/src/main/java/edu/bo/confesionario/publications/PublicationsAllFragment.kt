@@ -11,22 +11,17 @@ import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 import androidx.lifecycle.Observer
 import edu.bo.confesionario.R
-import edu.bo.data.PublicationsRepository
 import edu.bo.domain.Publication
-import edu.bo.framework.DatabaseRef
-import edu.bo.framework.PublicationDataSource
-import edu.bo.framework.RetrofitBuilder
-import edu.bo.usecases.GetPublications
 
-class PublicationsAllFragment : Fragment() {
+data class PublicationsAllFragment(private var mainViewModel : MainViewModel) : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    lateinit var mainViewModel: MainViewModel
+    //lateinit var mainViewModel: MainViewModel
     private lateinit var viewPublications: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {}
-        mainViewModel = MainViewModel(GetPublications(PublicationsRepository(DatabaseRef(), "patata")))
+        //mainViewModel = MainViewModel(GetPublications(PublicationsRepository(DatabaseRef(), "patata")))
         mainViewModel.model.observe(this, Observer(::updateUi))
         mainViewModel.loadPublications()
     }
@@ -34,7 +29,7 @@ class PublicationsAllFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         viewPublications = inflater.inflate(R.layout.fragment_publication_all, container, false)
         recyclerView = viewPublications.findViewById(R.id.recicler_all)
         val linearLayoutManager = LinearLayoutManager(activity)
@@ -45,14 +40,15 @@ class PublicationsAllFragment : Fragment() {
     private fun initRecyclerView(publications: List<Publication>){
         recyclerView.adapter = PublicationsListAdapter(publications  as ArrayList<Publication>)
     }
+    /*
     companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            PublicationsAllFragment().apply {
+            PublicationsAllFragment(mainViewModel).apply {
                 arguments = Bundle().apply {
                 }
             }
-    }
+    }*/
     private fun updateUi(model: MainViewModel.UiModel?){
         when ( model) {
             is MainViewModel.UiModel.Content -> initRecyclerView(model.publicationsList)

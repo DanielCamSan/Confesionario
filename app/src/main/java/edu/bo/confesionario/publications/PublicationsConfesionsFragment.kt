@@ -17,15 +17,13 @@ import androidx.lifecycle.Observer
 import edu.bo.confesionario.R
 import edu.bo.framework.DatabaseRef
 
-class PublicationsConfesionsFragment : Fragment() {
+class PublicationsConfesionsFragment(private var mainViewModel : MainViewModel) : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
-    lateinit var mainViewModel: MainViewModel
     private lateinit var viewPublications: View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {}
-        mainViewModel = MainViewModel(GetPublications(PublicationsRepository(DatabaseRef(), "patata")))
         mainViewModel.model.observe(this, Observer(::updateUi))
         mainViewModel.loadPublications()
     }
@@ -45,6 +43,7 @@ class PublicationsConfesionsFragment : Fragment() {
         var listPublications = publications.filter { publication -> publication.category == "confesiones" }
         recyclerView.adapter = PublicationsListAdapter(listPublications as ArrayList<Publication>)
     }
+    /*
     companion object {
 
         @JvmStatic
@@ -52,7 +51,7 @@ class PublicationsConfesionsFragment : Fragment() {
             PublicationsConfesionsFragment().apply {
                 arguments = Bundle().apply {}
             }
-    }
+    }*/
     private fun updateUi(model: MainViewModel.UiModel?){
         when ( model) {
             is MainViewModel.UiModel.Content -> initRecyclerView(model.publicationsList)

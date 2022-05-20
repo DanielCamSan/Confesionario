@@ -2,7 +2,6 @@ package edu.bo.confesionario.publications
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
@@ -16,14 +15,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.getValue
 import edu.bo.confesionario.*
 import edu.bo.confesionario.R
 import edu.bo.data.PublicationsRepository
-import edu.bo.domain.Publication
 import edu.bo.framework.DatabaseRef
-import edu.bo.framework.PublicationDataSource
-import edu.bo.framework.RetrofitBuilder
 import edu.bo.usecases.GetPublications
 import kotlinx.android.synthetic.main.activity_publications.*
 
@@ -145,11 +140,11 @@ class Publications : AppCompatActivity() {
     private fun setUpTabBar()
     {
         val fragments: List<Fragment> = listOf<Fragment>(
-            PublicationsAllFragment(),
-            PublicationsBooksFragment(),
-            PublicationsPartiesFragment(),
-            PublicationsClassesFragment(),
-            PublicationsConfesionsFragment()
+            PublicationsAllFragment(mainViewModel),
+            PublicationsBooksFragment(mainViewModel),
+            PublicationsPartiesFragment(mainViewModel),
+            PublicationsClassesFragment(mainViewModel),
+            PublicationsConfesionsFragment(mainViewModel)
         )
         val adapter = TabPageAdapter(this, tabs.tabCount, fragments)
         pager.adapter = adapter
