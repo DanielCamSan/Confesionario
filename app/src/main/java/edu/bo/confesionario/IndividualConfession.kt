@@ -57,11 +57,6 @@ class IndividualConfession : AppCompatActivity() {
         backBtn.setOnClickListener {
             finish()
         }
-        // retrieve comments
-        commentsAdapter = CommentAdapter(commentsList)
-        mainViewModel = MainViewModel(GetComments(CommentsRepository(CommentDataSource(commentsList))))
-        mainViewModel.model.observe(this, Observer(::updateUi))
-        mainViewModel.loadComments()
         //toolbar
         toolBarLogoutBtn.setOnClickListener{
             FirebaseAuth.getInstance().signOut()
@@ -81,6 +76,7 @@ class IndividualConfession : AppCompatActivity() {
         }
         // get Publication Data from intent bundle
         val bundle = intent.extras
+        var idPublication = bundle!!.getString("id")?.toInt()
         var category = bundle!!.getString("category")
         val number = bundle!!.getString("number")
         val title = bundle!!.getString("title")
@@ -91,9 +87,15 @@ class IndividualConfession : AppCompatActivity() {
         val description = bundle!!.getString("description")
         val userName = bundle!!.getString("userName")
 
-        publicationData = Publication(category, number, title, description, date, userName)
+        publicationData = Publication(category, number, title, description, date, userName, idPublication)
 
         fillTextViews()
+
+        // retrieve comments
+        commentsAdapter = CommentAdapter(commentsList)
+        mainViewModel = MainViewModel(GetComments(CommentsRepository(CommentDataSource(commentsList, idPublication))))
+        mainViewModel.model.observe(this, Observer(::updateUi))
+        mainViewModel.loadComments()
 
         // buttons actions
         commentsLabel.setOnClickListener{

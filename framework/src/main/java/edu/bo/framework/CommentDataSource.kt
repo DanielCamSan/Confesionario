@@ -6,41 +6,37 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import edu.bo.data.IFirebaseCommentsDataSource
-import edu.bo.domain.Comment
+import edu.bo.framework.Comment as Comment
+import java.text.SimpleDateFormat
 import java.util.*
+import edu.bo.domain.Comment as CommentDTO
 
 
-class CommentDataSource (val commentList: MutableList<Comment?>) : IFirebaseCommentsDataSource {
-    override suspend fun getComments(): List<Comment?> {
+class CommentDataSource (val commentList: MutableList<CommentDTO?>, val idPublication: Int?) : IFirebaseCommentsDataSource {
+    override suspend fun getComments(): List<CommentDTO?> {
+        Log.d("id Publication", idPublication.toString())
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("Comments")
         myRef.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(comment in snapshot.children){
-                    commentList.add(comment.getValue(Comment::class.java))
-                    Log.d("comment -->", comment.getValue().toString())
+                    val snapcomment = comment.getValue(Comment::class.java)
+                    if(snapcomment?.idPublication == idPublication){
+                        commentList.add(getDTO(snapcomment))
+                    }
                 }
             }
-
-            override fun onCancelled(p0: DatabaseError) {
-
-            }
+            override fun onCancelled(p0: DatabaseError) {}
         })
         return commentList
     }
-
-    fun getDate(year:Int,month:Int,day:Int) : Calendar
-    {
-        val date =  Calendar.getInstance()
-        date.set(year, month, day)
-        return date
-    }
-
-    fun getList(): List<Comment>{
-        return listOf<Comment>(
-
-            Comment("Justin1", "El docente Pepe solo lee las diapositivas y no asiste puntualmente a clases", getDate(2022,2,11)),
-            Comment("Justin2", "El docente Pepe solo lee las diapositivas y no asiste puntualmente a clases", getDate(2022,2,11))
-        )
+    private fun getDTO(comment: Comment?): CommentDTO{
+        if(comment != null) {
+            val date = Calendar.getInstance()
+            val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH)
+            date.time = sdf.parse(comment.commentDate)
+            return CommentDTO(comment.id, comment.username, comment.idUser, comment.idPublication, comment.commentBody, date)
+        }
+        return CommentDTO(0,"",0,0,"",Calendar.getInstance())
     }
 }

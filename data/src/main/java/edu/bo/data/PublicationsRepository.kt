@@ -21,7 +21,8 @@ class PublicationsRepository (val remoteDataSource: IRemoteDataSource, val apiKe
                 "Recogida de libros para caridad",
                 "Se requiere libros que sean donados para crear una libreria de acceso publico.",
                 getDate(2020,6,22),
-                "Tom"
+                "Tom",
+                1
             )
         )
         listPublications.add(
@@ -31,7 +32,8 @@ class PublicationsRepository (val remoteDataSource: IRemoteDataSource, val apiKe
                 "Recogida de libros",
                 "Se pide que los estudiantes del area de Ingenieria de la Siesta recoga sus libros.",
                 getDate(2022,6,23),
-                "Tom"
+                "Tom",
+                2
             )
         )
         listPublications.add(
@@ -41,7 +43,8 @@ class PublicationsRepository (val remoteDataSource: IRemoteDataSource, val apiKe
                 "Compra de libros",
                 "Se vende libros para las personas interesadas venir planta baja en el edificio principal.",
                 getDate(2020,7,22),
-                "Tom"
+                "Tom",
+                3
             )
         )
         listPublications.add(
@@ -51,7 +54,8 @@ class PublicationsRepository (val remoteDataSource: IRemoteDataSource, val apiKe
                 "Libros logrando",
                 "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
                 getDate(2020,7,23),
-                "Tom"
+                "Tom",
+                4
             )
         )
         listPublications.add(
@@ -61,7 +65,8 @@ class PublicationsRepository (val remoteDataSource: IRemoteDataSource, val apiKe
                 "Libros prohibidos",
                 "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
                 getDate(2020,7,23),
-                "Tom"
+                "Tom",
+                5
             )
         )
         listPublications.add(
@@ -71,7 +76,8 @@ class PublicationsRepository (val remoteDataSource: IRemoteDataSource, val apiKe
                 "Libros 1",
                 "Se ha perdido mi libro",
                 getDate(2020,7,23),
-                "Juan"
+                "Juan",
+                6
             )
         )
         listPublications.add(
@@ -81,7 +87,8 @@ class PublicationsRepository (val remoteDataSource: IRemoteDataSource, val apiKe
                 "Libros 2",
                 "Mi libro no aguantó hacer cuña a una mesa",
                 getDate(2020,7,26),
-                "Pedro"
+                "Pedro",
+                7
             )
         )
         listPublications.add(
@@ -91,7 +98,8 @@ class PublicationsRepository (val remoteDataSource: IRemoteDataSource, val apiKe
                 "Discretas",
                 "No le entiendo al mgr",
                 getDate(2020,7,30),
-                "Dussan"
+                "Dussan",
+                8
             )
         )
         listPublications.add(
@@ -101,7 +109,8 @@ class PublicationsRepository (val remoteDataSource: IRemoteDataSource, val apiKe
                 "Inglés",
                 "El Thomas",
                 getDate(2020,8,1),
-                "Tom"
+                "Tom",
+                9
             )
         )
         listPublications.add(
@@ -111,7 +120,8 @@ class PublicationsRepository (val remoteDataSource: IRemoteDataSource, val apiKe
                 "Bienvenida",
                 "Los nuevios tienen que tener un bautizo",
                 getDate(2020,8,9),
-                "Dani"
+                "Dani",
+                10
             )
         )
         listPublications.add(
@@ -121,7 +131,8 @@ class PublicationsRepository (val remoteDataSource: IRemoteDataSource, val apiKe
                 "Soy gei",
                 "lo reconozco, me gusta el wilsterman",
                 getDate(2020,8,11),
-                "Dussan"
+                "Dussan",
+                11
             )
         )
         listPublications.add(
@@ -131,7 +142,8 @@ class PublicationsRepository (val remoteDataSource: IRemoteDataSource, val apiKe
                 "Me gusta la pizza con piña",
                 "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
                 getDate(2020,8,14),
-                "Tom"
+                "Tom",
+                12
             )
         )
         listPublications.add(
@@ -141,7 +153,8 @@ class PublicationsRepository (val remoteDataSource: IRemoteDataSource, val apiKe
                 "Sera posible esto we",
                 "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
                 getDate(2020,8,16),
-                "Tom"
+                "Tom",
+                13
             )
         )
         listPublications.add(
@@ -151,7 +164,8 @@ class PublicationsRepository (val remoteDataSource: IRemoteDataSource, val apiKe
                 "Mira we",
                 "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
                 getDate(2020,8,18),
-                "Tom"
+                "Tom",
+                14
             )
         )
         listPublications.add(
@@ -161,7 +175,8 @@ class PublicationsRepository (val remoteDataSource: IRemoteDataSource, val apiKe
                 "Confesion aleatoria",
                 "Esta descripcion habla mucho sobre como crear una app madre mia cuantas clases",
                 getDate(2020,10,20),
-                "Tom"
+                "Tom",
+                15
             )
         )
         return listPublications

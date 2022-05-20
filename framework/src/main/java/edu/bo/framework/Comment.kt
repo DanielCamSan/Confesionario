@@ -1,4 +1,5 @@
-package edu.bo.domain
+package edu.bo.framework
+
 import java.util.*
 
 data class Comment (
@@ -7,5 +8,5 @@ data class Comment (
     val idUser: Int = 0,
     val idPublication: Int = 0,
     val commentBody: String = "",
-    val commentDate: Calendar = Calendar.getInstance()
+    val commentDate: String = ""
 )
