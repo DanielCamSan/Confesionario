@@ -1,30 +1,29 @@
 package edu.bo.confesionario.publications
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import edu.bo.data.PublicationsRepository
 import java.util.*
 import androidx.lifecycle.Observer
 import edu.bo.confesionario.R
+import edu.bo.data.PublicationsRepository
 import edu.bo.domain.Publication
 import edu.bo.framework.DatabaseRef
 import edu.bo.framework.PublicationDataSource
 import edu.bo.framework.RetrofitBuilder
 import edu.bo.usecases.GetPublications
 
-class PublicationsBooksFragment : Fragment() {
+data class PublicationsBooksFragment(private var mainViewModel : MainViewModel) : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    lateinit var mainViewModel: MainViewModel
     private lateinit var viewPublications: View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {}
-        mainViewModel = MainViewModel(GetPublications(PublicationsRepository(DatabaseRef(), "patata")))
         mainViewModel.model.observe(this, Observer(::updateUi))
         mainViewModel.loadPublications()
     }
@@ -33,7 +32,6 @@ class PublicationsBooksFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         viewPublications = inflater.inflate(R.layout.fragment_publications_books, container, false)
         recyclerView = viewPublications.findViewById(R.id.recicler_books)
         val linearLayoutManager = LinearLayoutManager(activity)
@@ -42,10 +40,15 @@ class PublicationsBooksFragment : Fragment() {
         return viewPublications
     }
     private fun initRecyclerView(publications: List<Publication>){
-        var listPublications = publications.filter { publication -> publication.category == "libros" }
-        recyclerView.adapter = PublicationsListAdapter(publications  as ArrayList<Publication>)
+        var listPublications = publications.filter {
+                publication ->
+                publication.category == "libros"
+        }
+
+        recyclerView.adapter = PublicationsListAdapter(listPublications  as ArrayList<Publication>)
 
     }
+    /*
     companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
@@ -53,6 +56,7 @@ class PublicationsBooksFragment : Fragment() {
                 arguments = Bundle().apply {}
             }
     }
+     */
     private fun updateUi(model: MainViewModel.UiModel?){
         when ( model) {
             is MainViewModel.UiModel.Content -> initRecyclerView(model.publicationsList)

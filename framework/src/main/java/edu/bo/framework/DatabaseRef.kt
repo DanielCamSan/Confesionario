@@ -17,7 +17,6 @@ class DatabaseRef : IRemoteDataSource {
         return date
     }
     private suspend fun getList(): MutableList<Publication> {
-
         //var listp = getPub()
         var listPublications = arrayListOf<Publication>()
         listPublications.add(

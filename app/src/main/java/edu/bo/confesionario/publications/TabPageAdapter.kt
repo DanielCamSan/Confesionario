@@ -1,4 +1,4 @@
-package edu.bo.confesionario
+package edu.bo.confesionario.publications
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
