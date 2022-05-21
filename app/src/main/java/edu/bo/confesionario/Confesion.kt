@@ -70,6 +70,11 @@ class Confesion : AppCompatActivity() {
             switch_anonymous.thumbTintList=
         }*/
         btn_publish.setOnClickListener{
+            val title= text_title.text.toString()
+            val category= text_category.text.toString()
+            val confess= text_confesion.text.toString()
+            val anonym= switch_anonymous.isActivated.toString()
+
 
 
             val intent = Intent(this, Publications::class.java)
@@ -79,4 +84,5 @@ class Confesion : AppCompatActivity() {
         }
 
     }
+
 }
