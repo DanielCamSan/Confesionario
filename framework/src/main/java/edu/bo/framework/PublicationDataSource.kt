@@ -10,4 +10,11 @@ class PublicationDataSource(val apiRest: RetrofitBuilder) : IRemoteDataSource {
             }
         return response
     }
+
+    override suspend fun postPublication(
+        apiKey: String,
+        publicationObject: Publication
+    ): Publication {
+        TODO("Not yet implemented")
+    }
 }
