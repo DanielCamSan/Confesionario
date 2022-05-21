@@ -17,6 +17,7 @@ import com.google.firebase.ktx.Firebase
 import edu.bo.confesionario.Publications
 import edu.bo.confesionario.R
 import edu.bo.confesionario.user_policies.UserPolicies
+import edu.bo.confesionario.publications.Publications
 import java.lang.Exception
 
 

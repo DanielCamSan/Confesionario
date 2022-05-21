@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.bo.confesionario">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
@@ -28,7 +28,7 @@
             android:name=".login.Login"
             android:exported="false" />
         <activity
-            android:name=".Publications"
+            android:name=".publications.Publications"
             android:exported="false" />
         <activity
             android:name=".IndividualConfession"

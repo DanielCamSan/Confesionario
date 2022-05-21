@@ -17,6 +17,7 @@ import edu.bo.confesionario.Help
 import edu.bo.confesionario.Publications
 import edu.bo.confesionario.R
 import edu.bo.confesionario.login.Login
+import edu.bo.confesionario.publications.Publications
 
 
 class UserPolicies : AppCompatActivity() {
