@@ -33,6 +33,7 @@ class LoginActivity  : AppCompatActivity() {
     }
 
     private fun updateUi(uiModel: LoginViewModel.UiModel?) {
+
         progressBar.visibility = if ( uiModel is LoginViewModel.UiModel.Loading) View.VISIBLE else View.GONE
         when (uiModel) {
             is LoginViewModel.UiModel.Login -> validateLogin(uiModel.resp)

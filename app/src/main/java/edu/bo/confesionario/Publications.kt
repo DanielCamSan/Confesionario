@@ -10,7 +10,6 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -21,15 +20,10 @@ import edu.bo.data.PublicationsRepository
 import edu.bo.framework.PublicationDataSource
 import edu.bo.framework.RetrofitBuilder
 import edu.bo.usecases.GetPublications
-
 import kotlinx.android.synthetic.main.activity_publications.*
-import androidx.appcompat.app.ActionBar
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import edu.bo.confesionario.login.Login
 
 class Publications : AppCompatActivity() {
-    lateinit var recyclerView : RecyclerView
     private lateinit var pager: ViewPager2
     private lateinit var tabs: TabLayout
     private lateinit var mainViewModel: MainViewModel
