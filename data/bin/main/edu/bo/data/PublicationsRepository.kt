@@ -15,8 +15,9 @@ class PublicationsRepository (val remoteDataSource: IRemoteDataSource) {
         date.set(year, month, day)
         return date
     }
-    suspend fun postPublication(publicationObject:Publication) : Publication
+    suspend fun postPublication(publicationObject:Publication)
     {
+        print("api: "+apiKey);
         return remoteDataSource.postPublication(apiKey,publicationObject)
     }
 
