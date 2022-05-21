@@ -12,6 +12,7 @@ import java.util.*
 import androidx.lifecycle.Observer
 import edu.bo.confesionario.R
 import edu.bo.domain.Publication
+import edu.bo.framework.DatabaseRef
 import edu.bo.framework.PublicationDataSource
 import edu.bo.framework.RetrofitBuilder
 import edu.bo.usecases.GetPublications
@@ -26,7 +27,7 @@ class PublicationsPartiesFragment : Fragment() {
         arguments?.let {
 
         }
-        mainViewModel = MainViewModel(GetPublications(PublicationsRepository(PublicationDataSource( RetrofitBuilder ), "patata")))
+        mainViewModel = MainViewModel(GetPublications(PublicationsRepository(DatabaseRef(), "patata")))
         mainViewModel.model.observe(this, Observer(::updateUi))
         mainViewModel.loadPublications()
     }

@@ -1,28 +1,32 @@
 package edu.bo.confesionario.publications
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
+import com.google.firebase.database.ktx.getValue
 import edu.bo.confesionario.*
+import edu.bo.confesionario.R
 import edu.bo.data.PublicationsRepository
+import edu.bo.domain.Publication
+import edu.bo.framework.DatabaseRef
 import edu.bo.framework.PublicationDataSource
 import edu.bo.framework.RetrofitBuilder
 import edu.bo.usecases.GetPublications
-
 import kotlinx.android.synthetic.main.activity_publications.*
+
 
 class Publications : AppCompatActivity() {
     private val pager: ViewPager2
@@ -43,13 +47,39 @@ class Publications : AppCompatActivity() {
         get() =  findViewById(R.id.toolBarLogoutBtn)
     private val appInfoBtn : ImageButton
         get() =  findViewById(R.id.infoBtn)
+    //private lateinit var binding : ActivityReadDataBinding
+
+    private lateinit var database : DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_publications)
-        mainViewModel = MainViewModel(GetPublications(PublicationsRepository(PublicationDataSource( RetrofitBuilder ), "patata")))
+        mainViewModel = MainViewModel(GetPublications(PublicationsRepository(DatabaseRef(), "patata")))
         //mainViewModel.model.observe(this, Observer(::updateUi))
         mainViewModel.loadPublications()
+        /*
+        database = FirebaseDatabase.getInstance().getReference().child("publications")
+        database.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                for (snap in dataSnapshot.children) {
+                    //val info = snap.getValue<Publication>()
+                    Log.d("s1",snap.child("id").value.toString())
+                    Log.d("s1",snap.child("title").value.toString())
+                    Log.d("s1",snap.child("description").value.toString())
+                    Log.d("s1",snap.child("date").value.toString())
+                    Log.d("s1",snap.child("idUser").value.toString())
+                    Log.d("meess","aaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("fail", "Failed to read value.", error.toException())
+            }
+        })*/
         setUpTabBar()
 
         tabs.getTabAt(3)?.view?.visibility = View.GONE
