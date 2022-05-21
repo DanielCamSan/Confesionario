@@ -11,7 +11,7 @@ class Welcome : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
         Handler().postDelayed({
-            val intent = Intent(this, Publications::class.java)
+            val intent = Intent(this, Login::class.java)
             startActivity(intent)
         }, 0)
     }

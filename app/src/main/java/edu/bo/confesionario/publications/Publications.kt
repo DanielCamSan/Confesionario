@@ -42,43 +42,30 @@ class Publications : AppCompatActivity() {
         get() =  findViewById(R.id.toolBarLogoutBtn)
     private val appInfoBtn : ImageButton
         get() =  findViewById(R.id.infoBtn)
-
+    private lateinit var adapter : TabPageAdapter
     private fun tabsDisplacement()
     {
         tabs.getTabAt(3)?.view?.visibility = View.GONE
         tabs.getTabAt(4)?.view?.visibility = View.GONE
         leftButton.visibility = View.INVISIBLE
-
         leftButton.setOnClickListener{
-            if (menuView > 0){
-                menuView -= 1
-                if (menuView == 0) {
-                    tabs.getTabAt(3)?.view?.visibility = View.GONE
-                    tabs.getTabAt(0)?.view?.visibility = View.VISIBLE
-                    leftButton.visibility = View.INVISIBLE
-                    rightButton.visibility = View.VISIBLE
-                }
-                if (menuView == 1) {
-                    tabs.getTabAt(4)?.view?.visibility = View.GONE
-                    tabs.getTabAt(1)?.view?.visibility = View.VISIBLE
-                    rightButton.visibility = View.VISIBLE
-                }
+            var position = viewPager.currentItem
+            rightButton.visibility = if (position == 4) View.GONE else View.VISIBLE
+            if (position > 0)
+            {
+                position -= 1
+                tabs.selectTab(tabs.getTabAt(position))
+                viewPager.currentItem = position
             }
         }
         rightButton.setOnClickListener{
-            if (menuView < 2) {
-                menuView += 1
-                if (menuView == 1) {
-                    tabs.getTabAt(0)?.view?.visibility = View.GONE
-                    tabs.getTabAt(3)?.view?.visibility = View.VISIBLE
-                    leftButton.visibility = View.VISIBLE
-                }
-                if (menuView == 2) {
-                    tabs.getTabAt(1)?.view?.visibility = View.GONE
-                    tabs.getTabAt(4)?.view?.visibility = View.VISIBLE
-                    rightButton.visibility = View.INVISIBLE
-                    leftButton.visibility = View.VISIBLE
-                }
+            var position = viewPager.currentItem
+            leftButton.visibility = if (position == 0) View.GONE else View.VISIBLE
+            if (position < 4)
+            {
+                position += 1
+                tabs.selectTab(tabs.getTabAt(position))
+                viewPager.currentItem = position
             }
         }
     }
@@ -87,14 +74,13 @@ class Publications : AppCompatActivity() {
         setContentView(R.layout.activity_publications)
         mainViewModel = MainViewModel(GetPublications(PublicationsRepository(DatabaseRef())))
         //mainViewModel.model.observe(this, Observer(::updateUi))
-        mainViewModel.loadPublications()
+        //mainViewModel.loadPublications()
         pager.setPageTransformer(ZoomOutPageTransformer())
         tabsDisplacement()
         publicateBtn.setOnClickListener{
             val intent = Intent(this, Confesion::class.java)
             startActivity(intent)
-            this.overridePendingTransition(0, 0);
-
+            this.overridePendingTransition(0, 0)
         }
         toolBarLogoutBtn.setOnClickListener{
             FirebaseAuth.getInstance().signOut()
@@ -114,10 +100,6 @@ class Publications : AppCompatActivity() {
             this.overridePendingTransition(0, 0);
 
         }
-        //pager.on
-        //{
-        //    Toast.makeText(this, "cambio de pagina"  , Toast.LENGTH_SHORT).show()
-        //}
         setUpTabBar()
     }
     private fun onSlidePage(numberPage: Int)
@@ -156,7 +138,7 @@ class Publications : AppCompatActivity() {
             PublicationsClassesFragment(mainViewModel),
             PublicationsConfesionsFragment(mainViewModel)
         )
-        val adapter = TabPageAdapter(this, tabs.tabCount, fragments)
+        adapter = TabPageAdapter(this, tabs.tabCount, fragments)
         pager.adapter = adapter
         pager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback()
         {
@@ -171,13 +153,13 @@ class Publications : AppCompatActivity() {
         {
             override fun onTabSelected(tab: TabLayout.Tab)
             {
-
+                leftButton.visibility = if (tab.position == 0) View.GONE else View.VISIBLE
+                rightButton.visibility = if (tab.position == 4) View.GONE else View.VISIBLE
                 viewPager.currentItem = tab.position
             }
             override fun onTabUnselected(tab: TabLayout.Tab?){}
             override fun onTabReselected(tab: TabLayout.Tab?){}
         })
-        tabs.selectTab(tabs.getTabAt(0))
     }
     /*
     private fun updateUi(model: MainViewModel.UiModel?){

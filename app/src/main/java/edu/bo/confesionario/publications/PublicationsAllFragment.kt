@@ -1,6 +1,7 @@
 package edu.bo.confesionario.publications
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +21,7 @@ data class PublicationsAllFragment(private var mainViewModel : MainViewModel) : 
         super.onCreate(savedInstanceState)
         mainViewModel.model.observe(this, Observer(::updateUi))
         mainViewModel.loadPublications()
+        //initRecyclerView(mainViewModel.getPublications())
     }
 
     override fun onCreateView(

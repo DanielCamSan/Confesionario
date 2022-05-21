@@ -7,10 +7,11 @@ import edu.bo.usecases.GetPublications
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 
-class MainViewModel(private val publications: GetPublications) :ScopedViewModel()  {
+class MainViewModel(val publications: GetPublications) :ScopedViewModel()  {
     init {
         initScope()
     }
+    private lateinit var listPublication : List<Publication>
     private val _model = MutableLiveData<UiModel>()
     val model: LiveData<UiModel>
         get() = _model
@@ -20,8 +21,12 @@ class MainViewModel(private val publications: GetPublications) :ScopedViewModel(
     }
     fun loadPublications() {
         launch {
-            _model.value = UiModel.Content(publications.invoke())
-
+            listPublication = publications.invoke()
+            _model.value = UiModel.Content(listPublication)
         }
+    }
+    fun getPublications() : List<Publication>
+    {
+        return listPublication
     }
 }
