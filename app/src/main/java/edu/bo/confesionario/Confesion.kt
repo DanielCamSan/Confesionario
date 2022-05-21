@@ -5,12 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Switch
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import edu.bo.confesionario.publications.Publications
+import edu.bo.confesionario.publications.MainViewModel
+import edu.bo.data.PublicationsRepository
+import edu.bo.framework.PublicationDataSource
+import edu.bo.framework.RetrofitBuilder
+import edu.bo.usecases.PostPublication
 
 
 class Confesion : AppCompatActivity() {
@@ -20,15 +26,22 @@ class Confesion : AppCompatActivity() {
         get() = findViewById(R.id.btn_publish)
     private val toolBarLogoutBtn : ImageButton
         get() =  findViewById(R.id.toolBarLogoutBtn)
-
     private val appInfoBtn : ImageButton
+        get() =  findViewById(R.id.infoBtn)
+
+    private val text_title : TextView
+        get() =  findViewById(R.id.text_title)
+    private val text_category : TextView
+        get() =  findViewById(R.id.infoBtn)
+    private val text_confesion : TextView
         get() =  findViewById(R.id.infoBtn)
     private val switch_anonymous: Switch
         get() =  findViewById(R.id.switch_anonymous)
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_confesion)
-
         btn_back.setOnClickListener{
             val intent = Intent(this, Publications::class.java)
             startActivity(intent)
@@ -57,6 +70,7 @@ class Confesion : AppCompatActivity() {
             switch_anonymous.thumbTintList=
         }*/
         btn_publish.setOnClickListener{
+            getString(text_title.toString())
             val intent = Intent(this, Publications::class.java)
             startActivity(intent)
             this.overridePendingTransition(0, 0);

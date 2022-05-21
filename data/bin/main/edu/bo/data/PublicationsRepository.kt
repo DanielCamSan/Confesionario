@@ -8,12 +8,16 @@ class PublicationsRepository (val remoteDataSource: IRemoteDataSource) {
     suspend fun getPublications() = remoteDataSource.getPublications()
     //suspend fun getPublications() = remoteDataSource.getPublications(apiKey)
     //suspend fun postPublication() = postPublication(publicationObject)
-    fun postPublication(publicationObject:Publication) : Publication
+    //remoteDataSource.getPublications(apiKey)
+    fun getDate(year:Int,month:Int,day:Int) : Calendar
     {
-        //usar el remote data source que llama al framework
-        //framework si o si lo de firebase
-        //
-        return publicationObject
+        val date =  Calendar.getInstance()
+        date.set(year, month, day)
+        return date
+    }
+    suspend fun postPublication(publicationObject:Publication) : Publication
+    {
+        return remoteDataSource.postPublication(apiKey,publicationObject)
     }
 
 }
