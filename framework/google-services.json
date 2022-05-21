@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "36533471456",
+    "firebase_url": "https://confesionario-23791-default-rtdb.firebaseio.com",
+    "project_id": "confesionario-23791",
+    "storage_bucket": "confesionario-23791.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36533471456:android:1ab6619df2211c912be885",
+        "android_client_info": {
+          "package_name": "edu.bo.confesionario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36533471456-mpkb1ajaaucgbeqs8u4jjqkqq7ok5ro8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.bo.confesionario",
+            "certificate_hash": "c0d55b73afafed69d8beeb9125d86c31c7fd20e4"
+          }
+        },
+        {
+          "client_id": "36533471456-fq2volkopvtkg3tjpp450rmi69vl0jst.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhZkUrJODo140lBT95usRZQ0WfUsEUr8E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36533471456-fq2volkopvtkg3tjpp450rmi69vl0jst.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36533471456:android:045103d2ff19031e2be885",
+        "android_client_info": {
+          "package_name": "edu.bo.framework"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36533471456-fq2volkopvtkg3tjpp450rmi69vl0jst.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhZkUrJODo140lBT95usRZQ0WfUsEUr8E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36533471456-fq2volkopvtkg3tjpp450rmi69vl0jst.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
