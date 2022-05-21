@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
+import edu.bo.confesionario.login.Login
 
 class Help : AppCompatActivity() {
     private var expandableTextView: ExpandableListView? = null
@@ -46,7 +47,7 @@ class Help : AppCompatActivity() {
                 GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
             ).signOut()
             Toast.makeText(this, R.string.logout_msg, Toast.LENGTH_SHORT).show()
-            val intent = Intent(applicationContext, _root_ide_package_.edu.bo.confesionario.login.Login::class.java)
+            val intent = Intent(applicationContext, Login::class.java)
             startActivity(intent)
             this.overridePendingTransition(0, 0);
 

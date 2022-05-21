@@ -41,7 +41,7 @@ class UserPolicies : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_policies)
         progressBar = findViewById(R.id.progressBar)
-
+        userPoliciesViewModel = UserPoliciesViewModel(UserPoliciesRepository())
         userPoliciesViewModel.model.observe(this, Observer(::updateUi))
 
         goBackBtn.setOnClickListener{
