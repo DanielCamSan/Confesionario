@@ -70,7 +70,11 @@ class Confesion : AppCompatActivity() {
             switch_anonymous.thumbTintList=
         }*/
         btn_publish.setOnClickListener{
-            getString(text_title.toString())
+            val publicationObject={
+                "Title" : text_title.text,
+
+            }
+
             val intent = Intent(this, Publications::class.java)
             startActivity(intent)
             this.overridePendingTransition(0, 0);

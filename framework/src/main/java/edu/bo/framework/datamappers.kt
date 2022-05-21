@@ -15,3 +15,7 @@ fun ServerPublication.toDomainPublication(): DomainPublication {
     return DomainPublication(category,newId, title, description, newDate, userName)
 }
 
+
+
+
+
