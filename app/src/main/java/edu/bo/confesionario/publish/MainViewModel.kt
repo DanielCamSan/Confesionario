@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import edu.bo.confesionario.publications.ScopedViewModel
 import edu.bo.domain.Publication
 import edu.bo.usecases.PostPublication
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val publication: PostPublication) : ScopedViewModel()  {
@@ -18,8 +19,8 @@ class MainViewModel(private val publication: PostPublication) : ScopedViewModel(
         class Content(val publicationSingle: Publication) : UiModel()
     }
     fun postPublication(publicationObject: Publication) {
-        launch {
-            _model.value = UiModel.Content(publication.invoke(publicationObject))
+        launch(Dispatchers.IO) {
+            publication.invoke(publicationObject)
         }
     }
 }

@@ -17,8 +17,7 @@ class PublicationsRepository (val remoteDataSource: IRemoteDataSource) {
     }
     suspend fun postPublication(publicationObject:Publication)
     {
-        print("api: "+apiKey);
-        return remoteDataSource.postPublication(apiKey,publicationObject)
+        return remoteDataSource.postPublication(publicationObject)
     }
 
 }
