@@ -30,6 +30,13 @@ class CommentDataSource (val commentList: MutableList<CommentDTO?>, val idPublic
         })
         return commentList
     }
+
+    override suspend fun postComment(newComment: CommentDTO) {
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("Comments")
+
+        myRef.child(newComment.id).setValue(getDomain(newComment))
+    }
     private fun getDTO(comment: Comment?): CommentDTO{
         if(comment != null) {
             val date = Calendar.getInstance()
@@ -37,6 +44,13 @@ class CommentDataSource (val commentList: MutableList<CommentDTO?>, val idPublic
             date.time = sdf.parse(comment.commentDate)
             return CommentDTO(comment.id, comment.username, comment.idUser, comment.idPublication, comment.commentBody, date)
         }
-        return CommentDTO(0,"",0,0,"",Calendar.getInstance())
+        return CommentDTO("","","",0,"",Calendar.getInstance())
+    }
+    private fun getDomain(comment: CommentDTO?): Comment{
+        if(comment != null) {
+            val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH)
+            return Comment(comment.id, comment.username, comment.idUser, comment.idPublication, comment.commentBody, sdf.format(comment.commentDate.time))
+        }
+        return Comment("","","",0,"","")
     }
 }

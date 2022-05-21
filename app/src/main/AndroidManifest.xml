@@ -15,7 +15,11 @@
             android:exported="false" />
         <activity
             android:name=".Welcome"
-            android:exported="false">
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".UserPolicies"
@@ -25,16 +29,10 @@
             android:exported="false" />
         <activity
             android:name=".Publications"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".IndividualConfession"
-            android:exported="false">
-        </activity>
+            android:exported="false"/>
         <activity
             android:name=".Help"
             android:exported="false" />

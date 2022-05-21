@@ -2,10 +2,7 @@ package edu.bo.confesionario
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,13 +14,12 @@ import edu.bo.confesionario.adapter.CommentAdapter
 import edu.bo.confesionario.comments.MainViewModel
 import edu.bo.data.CommentsRepository
 import edu.bo.domain.Comment
-import java.text.SimpleDateFormat
-import java.util.*
 import edu.bo.domain.Publication
 import edu.bo.framework.CommentDataSource
-import edu.bo.framework.RetrofitBuilder
 import edu.bo.usecases.GetComments
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import edu.bo.usecases.PostComment
+import java.text.SimpleDateFormat
+import java.util.*
 
 class IndividualConfession : AppCompatActivity() {
     private val backBtn: Button
@@ -46,6 +42,10 @@ class IndividualConfession : AppCompatActivity() {
         get() = findViewById(R.id.categoryName)
     private val commentsLabel: TextView
         get() = findViewById(R.id.comments)
+    private val commentInput: EditText
+        get() = findViewById(R.id.newCommentText)
+    private val newCommentBtn: Button
+        get() = findViewById(R.id.confessionPublishBtn)
     lateinit var mainViewModel: MainViewModel
     private lateinit var publicationData: Publication
     private lateinit var commentsAdapter: CommentAdapter
@@ -93,7 +93,8 @@ class IndividualConfession : AppCompatActivity() {
 
         // retrieve comments
         commentsAdapter = CommentAdapter(commentsList)
-        mainViewModel = MainViewModel(GetComments(CommentsRepository(CommentDataSource(commentsList, idPublication))))
+        val commentsRepository = CommentsRepository(CommentDataSource(commentsList, idPublication))
+        mainViewModel = MainViewModel(GetComments(commentsRepository), PostComment(commentsRepository))
         mainViewModel.model.observe(this, Observer(::updateUi))
         mainViewModel.loadComments()
 
@@ -101,6 +102,14 @@ class IndividualConfession : AppCompatActivity() {
         commentsLabel.setOnClickListener{
             commentsLabel.text = String.format("%d comentarios", commentsList.size)
             initRecyclerView()
+        }
+        newCommentBtn.setOnClickListener{
+            val uid = UUID.randomUUID().toString()
+            var username = FirebaseAuth.getInstance().currentUser?.displayName
+            var userId = FirebaseAuth.getInstance().currentUser?.uid
+            val newComment: Comment = Comment(uid,username, userId, idPublication?.toInt(), commentInput.text.toString(), Calendar.getInstance())
+            mainViewModel.createComment(newComment)
+            commentInput.text.clear()
         }
     }
     private fun fillTextViews(){
