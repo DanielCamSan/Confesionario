@@ -1,4 +1,4 @@
-package edu.bo.confesionario
+package edu.bo.confesionario.publications
 
 import android.content.Context
 import android.content.Intent
@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import edu.bo.confesionario.IndividualConfession
+import edu.bo.confesionario.R
 import java.util.*
 import kotlin.collections.ArrayList
 import edu.bo.domain.Publication
@@ -36,7 +38,7 @@ class PublicationsListAdapter(val publications: ArrayList<Publication>):
         holder.itemView.findViewById<TextView>(R.id.categoryText).text = publication.category
         holder.itemView.findViewById<TextView>(R.id.titleText).text = publication.title
         holder.itemView.findViewById<TextView>(R.id.descriptionText).text = publication.description
-        holder.itemView.findViewById<TextView>(R.id.numberText).text = "Confesion #"+publication.number
+        holder.itemView.findViewById<TextView>(R.id.numberText).text = "Confesion #"+publication.id.toString()
         holder.itemView.findViewById<TextView>(R.id.numberComentariesText).text = "5"
         holder.itemView.findViewById<TextView>(R.id.dateText).text = date
         holder.itemView.findViewById<TextView>(R.id.userText).text = publication.userName
@@ -47,7 +49,6 @@ class PublicationsListAdapter(val publications: ArrayList<Publication>):
         bundle.putString("category", publication.category)
         bundle.putString("title", publication.title)
         bundle.putString("description", publication.description)
-        bundle.putString("number", publication.number)
         bundle.putString("date", date)
         bundle.putString("userName", publication.userName)
         bundle.putString("id", publication.id.toString())

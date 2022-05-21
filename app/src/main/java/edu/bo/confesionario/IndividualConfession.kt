@@ -87,7 +87,7 @@ class IndividualConfession : AppCompatActivity() {
         val description = bundle!!.getString("description")
         val userName = bundle!!.getString("userName")
 
-        publicationData = Publication(category, number, title, description, date, userName, idPublication)
+        publicationData = Publication(category, idPublication, title, description, date, userName)
 
         fillTextViews()
 
@@ -118,7 +118,7 @@ class IndividualConfession : AppCompatActivity() {
         date = date + "-" + (if (publicationData.date.get(Calendar.DAY_OF_MONTH)<10) "0" else "") + publicationData.date.get(Calendar.DAY_OF_MONTH).toString()
         userNameTxt.text = publicationData.userName
         confessionCategoryTxt.text = publicationData.category
-        confessionNumberTxt.text = "Confesión #${publicationData.number}"
+        confessionNumberTxt.text = "Confesión #${publicationData.id.toString()}"
         confessionBodyTxt.text = publicationData.description
         confessionDateTxt.text = date.toString()
         confessionNameTxt.text = publicationData.title
