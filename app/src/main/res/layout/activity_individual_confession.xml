@@ -184,13 +184,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/confessionBody" />
 
             <TextView
-                android:id="@+id/confessionNumber3"
+                android:id="@+id/comments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="40dp"
-                android:text="23 comentarios"
+                android:text="comentarios"
                 android:textColor="@color/black"
+                android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/confessionBody" />
 
@@ -204,7 +205,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/confessionNumber" />
 
             <EditText
-                android:id="@+id/confessionNewComment"
+                android:id="@+id/newCommentText"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="16dp"
@@ -217,6 +218,7 @@
                 android:hint="Escribe tu comentario"
                 android:inputType="textLongMessage|textPersonName"
                 android:paddingStart="10dp"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/confessionBody" />
@@ -231,7 +233,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/confessionNewComment" />
+                app:layout_constraintTop_toBottomOf="@+id/newCommentText" />
 
             <Button
                 android:id="@+id/confessionPublishBtn"
@@ -244,14 +246,15 @@
                 android:textColor="@color/placeholder"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-                app:layout_constraintEnd_toEndOf="@+id/confessionNewComment"
-                app:layout_constraintTop_toBottomOf="@+id/confessionNewComment" />
+                app:layout_constraintEnd_toEndOf="@+id/newCommentText"
+                app:layout_constraintTop_toBottomOf="@+id/newCommentText" />
 
             <Button
                 android:id="@+id/confessionCancelPublishBtn"
                 android:layout_width="105dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="3dp"
+                android:layout_marginEnd="15dp"
                 android:backgroundTint="@color/white"
                 android:text="Cancelar"
                 android:textAllCaps="false"
@@ -259,7 +262,7 @@
                 android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@+id/recyclerView"
                 app:layout_constraintEnd_toStartOf="@+id/confessionPublishBtn"
-                app:layout_constraintTop_toBottomOf="@+id/confessionNewComment"
+                app:layout_constraintTop_toBottomOf="@+id/newCommentText"
                 app:layout_constraintVertical_bias="1.0" />
 
             <ImageView

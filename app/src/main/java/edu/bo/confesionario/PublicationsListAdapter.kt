@@ -50,6 +50,7 @@ class PublicationsListAdapter(val publications: ArrayList<Publication>):
         bundle.putString("number", publication.number)
         bundle.putString("date", date)
         bundle.putString("userName", publication.userName)
+        bundle.putString("id", publication.id.toString())
         holder.itemView.findViewById<CardView>(R.id.publication_card).setOnClickListener {
             var intent = Intent(parentContext, IndividualConfession::class.java)
             intent.putExtras(bundle)
