@@ -11,6 +11,10 @@ import java.text.SimpleDateFormat
 import java.util.*
 import edu.bo.data.IRemoteDataSource
 import edu.bo.domain.Publication
+import edu.bo.framework.PublicationPublish as FPublication
+import edu.bo.domain.Publication as PublicationDTO
+
+
 
 
 class PublicationDataSource(val apiRest: RetrofitBuilder) : IRemoteDataSource {
@@ -22,12 +26,18 @@ class PublicationDataSource(val apiRest: RetrofitBuilder) : IRemoteDataSource {
             }
         return response
     }
-
     override suspend fun postPublication(publicationObject: Publication) {
         //database = Firebase.database.reference
         //database.child("publications").child("example").setValue(publicationObject);
         val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("Comments")
-        myRef.child(publicationObject.id).setValue(getDomain(publicationObject))
+        val myRef = database.getReference("publications")
+        myRef.child(publicationObject.id.toString()).setValue(getDomain(publicationObject))
+    }
+    private fun getDomain(publication: PublicationDTO?): FPublication{
+        if(publication != null) {
+            val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH)
+            return FPublication(publication.category, publication.number, publication.title, publication.description, sdf.format(publication.date.time),publication.userName, publication.id)
+        }
+        return FPublication("","","","",Calendar.getInstance().toString(),"",0)
     }
 }
