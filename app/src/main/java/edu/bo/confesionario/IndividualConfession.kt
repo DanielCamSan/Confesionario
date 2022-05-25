@@ -87,7 +87,7 @@ class IndividualConfession : AppCompatActivity() {
         val description = bundle!!.getString("description")
         val userName = bundle!!.getString("userName")
 
-        publicationData = Publication(category, idPublication, title, description, date, userName)
+        publicationData = Publication(category, idPublication.toString(), title, description, date, userName)
 
         fillTextViews()
 

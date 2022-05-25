@@ -16,9 +16,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
-import edu.bo.confesionario.publications.MainViewModel
+import edu.bo.confesionario.publications.*
 import edu.bo.data.PublicationsRepository
-import edu.bo.framework.PublicationDataSource
+import edu.bo.framework.DatabaseRef
 import edu.bo.framework.RetrofitBuilder
 import edu.bo.usecases.GetPublications
 
@@ -47,7 +47,7 @@ class Publications : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_publications)
 
-        mainViewModel = MainViewModel(GetPublications(PublicationsRepository(PublicationDataSource( RetrofitBuilder ))))
+        mainViewModel = MainViewModel(GetPublications(PublicationsRepository(DatabaseRef())))
         mainViewModel.model.observe(this, Observer(::updateUi))
         mainViewModel.loadPublications()
         tabs = findViewById(R.id.tabs)
@@ -116,7 +116,12 @@ class Publications : AppCompatActivity() {
     }
     private fun setUpTabBar()
     {
-        val fragments: List<Fragment> = listOf<Fragment>(PublicationsAllFragment(),PublicationsBooksFragment(),PublicationsPartiesFragment(),PublicationsClassesFragment(),PublicationsConfesionsFragment())
+        val fragments: List<Fragment> = listOf<Fragment>(PublicationsAllFragment(mainViewModel),
+            PublicationsBooksFragment(mainViewModel),
+            PublicationsPartiesFragment(mainViewModel),
+            PublicationsClassesFragment(mainViewModel),
+            PublicationsConfesionsFragment(mainViewModel)
+        )
         val adapter = TabPageAdapter(this, tabs.tabCount, fragments)
         pager.adapter = adapter
         pager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback()

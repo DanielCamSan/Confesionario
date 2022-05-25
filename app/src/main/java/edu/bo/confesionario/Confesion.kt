@@ -12,13 +12,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import edu.bo.confesionario.publications.Publications
-//import edu.bo.confesionario.publications.MainViewModel
 import edu.bo.confesionario.publish.MainViewModel
-import edu.bo.data.CommentsRepository
 import edu.bo.data.PublicationsRepository
-import edu.bo.framework.CommentDataSource
 import edu.bo.domain.Publication
-import edu.bo.framework.PublicationDataSource
+import edu.bo.framework.DatabaseRef
 import edu.bo.framework.RetrofitBuilder
 import edu.bo.usecases.PostPublication
 import java.util.*
@@ -86,10 +83,9 @@ class Confesion : AppCompatActivity() {
             if (anonymous) {
                 userName="Anonimo"
             }
-            val newPublication : Publication =Publication(category, userId ,title, description,
-                Calendar.getInstance(), userName, uid.toInt()
-            )
-            val publicationsRepository = PublicationsRepository(PublicationDataSource(RetrofitBuilder))
+            val newPublication : Publication =Publication(category,userId ,title, description,
+                Calendar.getInstance(), userName)
+            val publicationsRepository = PublicationsRepository(DatabaseRef())
             mainViewModel= MainViewModel(PostPublication(publicationsRepository))
             //val publicationRepository = PublicationsRepository(PublicationDataSource(commentsList, idPublication))
             println(newPublication)
