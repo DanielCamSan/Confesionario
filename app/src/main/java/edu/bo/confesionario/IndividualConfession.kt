@@ -87,7 +87,7 @@ class IndividualConfession : AppCompatActivity() {
         val description = bundle!!.getString("description")
         val userName = bundle!!.getString("userName")
 
-        publicationData = Publication(category, idPublication, title, description, date, userName)
+        publicationData = Publication(category, idPublication.toString(), title, description, date, userName)
 
         fillTextViews()
 
@@ -107,6 +107,7 @@ class IndividualConfession : AppCompatActivity() {
             val uid = UUID.randomUUID().toString()
             var username = FirebaseAuth.getInstance().currentUser?.displayName
             var userId = FirebaseAuth.getInstance().currentUser?.uid
+
             val newComment: Comment = Comment(uid,username, userId, idPublication?.toInt(), commentInput.text.toString(), Calendar.getInstance())
             mainViewModel.createComment(newComment)
             commentInput.text.clear()

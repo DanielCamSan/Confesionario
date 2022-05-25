@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import edu.bo.domain.Publication
 import edu.bo.usecases.GetPublications
+import edu.bo.usecases.PostPublication
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 

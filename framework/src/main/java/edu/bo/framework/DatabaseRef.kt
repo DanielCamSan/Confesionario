@@ -6,6 +6,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import edu.bo.data.IRemoteDataSource
+import java.text.SimpleDateFormat
 import edu.bo.domain.Publication as DomainPublication
 import java.util.*
 
@@ -37,7 +38,6 @@ class DatabaseRef : IRemoteDataSource {
 
                     Log.d("erer",listResult.count().toString())
                 }
-
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -52,11 +52,20 @@ class DatabaseRef : IRemoteDataSource {
         }
         return listDomains
     }
-    /*
-    override fun createPublication(publication : DomainPublication)
-    {
-        val value = FirebaseDatabase.getInstance().getReference("publications")
-        value.child("tsts").setValue(publication)
+
+    override suspend fun postPublication(publicationObject: DomainPublication) {
+        //database = Firebase.database.reference
+        //database.child("publications").child("example").setValue(publicationObject);
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("publications")
+        myRef.child(publicationObject.id.toString()).setValue(getDomain(publicationObject))
     }
-    */
+    private fun getDomain(publication: DomainPublication?): PublicationPublish {
+        if(publication != null) {
+            val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH)
+            return PublicationPublish(publication.category, publication.title, publication.description, sdf.format(publication.date.time),publication.userName,publication.id)
+        }
+        return PublicationPublish("","","",Calendar.getInstance().toString(),"","0")
+    }
+
 }
