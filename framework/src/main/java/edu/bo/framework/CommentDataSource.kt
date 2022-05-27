@@ -31,6 +31,20 @@ class CommentDataSource (val commentList: MutableList<CommentDTO?>, val idPublic
         return commentList
     }
 
+    override suspend fun getAllComments(): List<edu.bo.domain.Comment?> {
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("Comments")
+        myRef.addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for(comment in snapshot.children){
+                    val snapcomment = comment.getValue(Comment::class.java)
+                        commentList.add(getDTO(snapcomment))
+                }
+            }
+            override fun onCancelled(p0: DatabaseError) {}
+        })
+        return commentList
+    }
     override suspend fun postComment(newComment: CommentDTO) {
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("Comments")

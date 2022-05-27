@@ -139,7 +139,7 @@
                     android:gravity="center|right|center_horizontal">
 
                     <TextView
-                        android:id="@+id/numberComentariesText"
+                        android:id="@+id/commentaries"
                         android:layout_width="38dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"

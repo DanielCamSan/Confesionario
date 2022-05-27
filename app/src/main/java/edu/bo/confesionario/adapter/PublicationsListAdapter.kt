@@ -3,6 +3,7 @@ package edu.bo.confesionario.publications
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,7 +40,7 @@ class PublicationsListAdapter(val publications: ArrayList<Publication>):
         holder.itemView.findViewById<TextView>(R.id.titleText).text = publication.title
         holder.itemView.findViewById<TextView>(R.id.descriptionText).text = publication.description
         holder.itemView.findViewById<TextView>(R.id.numberText).text = "Confesion #"+publication.id.toString()
-        holder.itemView.findViewById<TextView>(R.id.numberComentariesText).text = "5"
+        holder.itemView.findViewById<TextView>(R.id.commentaries).text = publication.numberOfCommentaries.toString()
         holder.itemView.findViewById<TextView>(R.id.dateText).text = date
         holder.itemView.findViewById<TextView>(R.id.userText).text = publication.userName
         date = publication.date.get(Calendar.YEAR).toString()
@@ -52,6 +53,7 @@ class PublicationsListAdapter(val publications: ArrayList<Publication>):
         bundle.putString("date", date)
         bundle.putString("userName", publication.userName)
         bundle.putString("id", publication.id.toString())
+        bundle.putString("commentaries", publication.numberOfCommentaries.toString())
         holder.itemView.findViewById<CardView>(R.id.publication_card).setOnClickListener {
             var intent = Intent(parentContext, IndividualConfession::class.java)
             intent.putExtras(bundle)

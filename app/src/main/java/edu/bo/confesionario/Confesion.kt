@@ -84,7 +84,7 @@ class Confesion : AppCompatActivity() {
                 userName="Anonimo"
             }
             val newPublication : Publication =Publication(category,userId ,title, description,
-                Calendar.getInstance(), userName)
+                Calendar.getInstance(), userName,0)
             val publicationsRepository = PublicationsRepository(DatabaseRef())
             mainViewModel= MainViewModel(PostPublication(publicationsRepository))
             //val publicationRepository = PublicationsRepository(PublicationDataSource(commentsList, idPublication))
