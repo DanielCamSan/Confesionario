@@ -8,12 +8,12 @@ import android.widget.*
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
+import edu.bo.confesionario.login.Login
 import edu.bo.confesionario.publications.Publications
 import edu.bo.confesionario.publish.MainViewModel
 import edu.bo.data.PublicationsRepository
 import edu.bo.domain.Publication
 import edu.bo.framework.DatabaseRef
-import edu.bo.framework.RetrofitBuilder
 import edu.bo.usecases.PostPublication
 import java.util.*
 

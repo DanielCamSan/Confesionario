@@ -13,13 +13,22 @@
 
     <string name="login_txt">Login</string>
     <string name="login_w_google_txt">Login with Google</string>
-    <string name="policies_title_txt">Políticas de uso</string>
+    <string name="policies_title_txt">Recuerda las reglas</string>
     <string name="policies_body_txt">body</string>
     <string name="accept_button_txt">Aceptar</string>
     <string name="go_back_txt">Volver</string>
     <string name="logout_msg">Se salio de sesion exitosamente</string>
     <string name="login_msg">Inicio exitoso</string>
     <string name="failed_login_msg">Inicio de sesion fallido</string>
+    <string name="no_spam_txt">No spam. </string>
+    <string name="rule1_txt">No saturar la conversación con comentarios repetitivos</string>
+    <string name="rule2_txt">No hacerse pasar por alguien más. </string>
+    <string name="rule3_txt">Impulsa el debate y el intercambio de ideas.</string>
+    <string name="rule4_txt">No usar texto ofensivo en el nombre del comentarista.</string>
+    <string name="rule5_txt">Los comentarios deben permanecer en el tema. </string>
+    <string name="rule6_txt">No hay comentarios despectivos o transgresores.  </string>
+    <string name="rule7_txt">Nada de lenguaje obsceno. </string>
+    <string name="atention_txt">atencion </string>
 
     <string name="your_web_client_id">36533471456-fq2volkopvtkg3tjpp450rmi69vl0jst.apps.googleusercontent.com</string>
 </resources>

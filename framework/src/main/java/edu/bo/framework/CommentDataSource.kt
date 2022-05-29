@@ -25,6 +25,7 @@ class CommentDataSource (val commentList: MutableList<CommentDTO?>, val idPublic
                         commentList.add(getDTO(snapcomment))
                     }
                 }
+                commentList.sortBy {it?.commentDate}
             }
             override fun onCancelled(p0: DatabaseError) {}
         })

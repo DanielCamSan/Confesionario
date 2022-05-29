@@ -16,10 +16,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
+import edu.bo.confesionario.login.Login
 import edu.bo.confesionario.publications.*
 import edu.bo.data.PublicationsRepository
 import edu.bo.framework.DatabaseRef
-import edu.bo.framework.RetrofitBuilder
 import edu.bo.usecases.GetPublications
 
 import kotlinx.android.synthetic.main.activity_publications.*

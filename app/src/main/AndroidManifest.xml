@@ -22,10 +22,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UserPolicies"
+            android:name=".user_policies.UserPolicies"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".login.Login"
             android:exported="false" />
         <activity
             android:name=".publications.Publications"
