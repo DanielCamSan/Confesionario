@@ -63,13 +63,11 @@ class Help : AppCompatActivity() {
                 }
             })
 
-/*            expandableListView!!.setOnGroupCollapseListener { groupPosition ->
-                Toast.makeText(
-                    applicationContext,
-                    (titleList as ArrayList<String>)[groupPosition] + " List Collapsed.",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }*/
+            expandableListView!!.setOnGroupCollapseListener { groupPosition ->
+                val changeColorCollapse = ((expandableListView!!.get(groupPosition) as ViewGroup).getChildAt(0) as ViewGroup).getChildAt(0)
+                changeColorCollapse.setBackgroundColor(getResources().getColor((R.color.light_yellow)))
+                ((changeColorCollapse as ViewGroup).getChildAt(0) as TextView).setTextColor(getResources().getColor((R.color.black)))
+            }
         }
         btnBack.findViewById<Button>(R.id.go_back_btn)
         btnBack.setOnClickListener {
