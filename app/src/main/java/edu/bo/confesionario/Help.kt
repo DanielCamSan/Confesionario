@@ -2,20 +2,27 @@ package edu.bo.confesionario
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.ViewGroup
 import android.widget.*
 import android.widget.ExpandableListView.OnGroupExpandListener
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
+
+
 
 class Help : AppCompatActivity() {
     private var expandableListView: ExpandableListView? = null
     private var expandableListAdapter: ExpandableListAdapter? = null
     private var titleList: List<String>? = null
-
     private val btnBack: Button
         get() = findViewById(R.id.go_back_btn)
+
+    private val googleBtn: Button
+        get() = findViewById(R.id.go_maps)
 
     private val toolBarLogoutBtn: ImageButton
         get() = findViewById(R.id.toolBarLogoutBtn)
@@ -23,8 +30,11 @@ class Help : AppCompatActivity() {
     private val appInfoBtn: ImageButton
         get() = findViewById(R.id.infoBtn)
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         setContentView(R.layout.activity_help)
         expandableListView = findViewById(R.id.eTV)
         if (expandableListView != null) {
@@ -38,8 +48,17 @@ class Help : AppCompatActivity() {
                 var lastExpandedPosition = -1
                 override fun onGroupExpand(i: Int) {
                     if (lastExpandedPosition != -1 && i != lastExpandedPosition) {
+                        val changeColorCollapse = ((expandableListView!!.get(lastExpandedPosition) as ViewGroup).getChildAt(0) as ViewGroup).getChildAt(0)
+                        changeColorCollapse.setBackgroundColor(getResources().getColor((R.color.light_yellow)))
+                        ((changeColorCollapse as ViewGroup).getChildAt(0) as TextView).setTextColor(getResources().getColor((R.color.black)))
                         expandableListView!!.collapseGroup(lastExpandedPosition)
                     }
+                    Log.d("Position", i.toString())
+                    val changeViewG=(expandableListView!!.get(i) as ViewGroup)
+                    val changeChildUno = (changeViewG.getChildAt(0) as ViewGroup)
+                    val changeChildDos = changeChildUno.getChildAt(0)
+                    changeChildDos.setBackgroundColor(getResources().getColor((R.color.primary_blue)))
+                    ((changeChildDos as ViewGroup).getChildAt(0) as TextView).setTextColor(getResources().getColor((R.color.white)))
                     lastExpandedPosition = i
                 }
             })
@@ -56,12 +75,18 @@ class Help : AppCompatActivity() {
         btnBack.setOnClickListener {
             finish()
         }
+        googleBtn.findViewById<Button>(R.id.go_back_btn)
+        googleBtn.setOnClickListener {
+            val intent = Intent(this, MapsActivity::class.java)
+            startActivity(intent)
+            this.overridePendingTransition(0, 0);
+        }
         appInfoBtn.setOnClickListener {
             val intent = Intent(this, Help::class.java)
             startActivity(intent)
             this.overridePendingTransition(0, 0);
-
         }
+
         toolBarLogoutBtn.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             GoogleSignIn.getClient(

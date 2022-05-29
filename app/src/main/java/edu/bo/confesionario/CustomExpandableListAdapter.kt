@@ -2,6 +2,7 @@ package edu.bo.confesionario
 
 import android.content.Context
 import android.graphics.Typeface
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,14 +33,13 @@ class CustomExpandableListAdapter internal constructor(
         var convertView = convertView
         val expandedListText = getChild(listPosition, expandedListPosition) as String
         if (convertView == null) {
-            val layoutInflater =
-                this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val layoutInflater = this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            Log.d("Position", listPosition.toString())
             convertView = layoutInflater.inflate(R.layout.ayuda_expand, null)
         }
 
         val expandedListTextView = convertView!!.findViewById<TextView>(R.id.descriptionAyudaView)
         expandedListTextView.text = expandedListText
-
         return convertView
     }
 

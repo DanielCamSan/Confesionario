@@ -16,9 +16,11 @@
     <string name="policies_body_txt">body</string>
     <string name="accept_button_txt">Aceptar</string>
     <string name="go_back_txt">Volver</string>
+    <string name="google_maps_txt">Ubicacion</string>
     <string name="logout_msg">Se salio de sesion exitosamente</string>
     <string name="login_msg">Inicio exitoso</string>
     <string name="failed_login_msg">Inicio de sesion fallido</string>
 
     <string name="your_web_client_id">36533471456-fq2volkopvtkg3tjpp450rmi69vl0jst.apps.googleusercontent.com</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

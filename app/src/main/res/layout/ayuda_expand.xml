@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardExpand"
         android:layout_width="385dp"
         android:layout_height="match_parent"
         android:layout_gravity="center"

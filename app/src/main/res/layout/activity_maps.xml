@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/help_background"
-    android:orientation="vertical"
-    android:padding="0dp"
-    tools:context=".Help">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout2"
         android:layout_width="match_parent"
@@ -82,7 +79,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
-
     <Button
         android:id="@+id/go_back_btn"
         style="?android:attr/borderlessButtonStyle"
@@ -94,52 +90,18 @@
         android:drawableTint="@color/black"
         android:includeFontPadding="false"
         android:paddingLeft="5dp"
-        android:paddingRight="50dp"
+        android:paddingRight="40dp"
         android:text="@string/go_back_txt"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="14sp"
-        android:textStyle="bold"
-        app:iconPadding="0dp"
-        app:iconTint="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.093"
-        app:strokeColor="#00FFFFFF"
-        app:strokeWidth="0dp" />
-    <Button
-        android:id="@+id/go_maps"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="123dp"
-        android:layout_height="48dp"
-        android:backgroundTint="#FFFFFF"
-        android:drawableLeft="@drawable/ubication"
-        android:drawablePadding="0dp"
-        android:drawableTint="@color/black"
-        android:includeFontPadding="false"
-        android:paddingLeft="5dp"
-        android:paddingRight="20dp"
-        android:text="@string/google_maps_txt"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:iconPadding="0dp"
-        app:iconTint="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.093"
-        app:strokeColor="#00FFFFFF"
-        app:strokeWidth="0dp" />
+        android:textStyle="bold" />
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="385dp"
+        android:layout_height="350dp"
+        android:layout_gravity="center_horizontal"
+        tools:context=".MapsActivity" />
 
-
-    <ExpandableListView
-        android:id="@+id/eTV"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@null"
-        android:groupIndicator="@null"
-        android:padding="5dp"></ExpandableListView>
 </LinearLayout>
