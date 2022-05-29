@@ -6,9 +6,6 @@ import java.util.*
 class PublicationsRepository (val remoteDataSource: IRemoteDataSource) {
 
     suspend fun getPublications() = remoteDataSource.getPublications()
-    //suspend fun getPublications() = remoteDataSource.getPublications(apiKey)
-    //suspend fun postPublication() = postPublication(publicationObject)
-    //remoteDataSource.getPublications(apiKey)
     fun getDate(year:Int,month:Int,day:Int) : Calendar
     {
         val date =  Calendar.getInstance()
