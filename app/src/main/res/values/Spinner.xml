@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="planets_array">
-        <item>libros</item>
-        <item>fiestas</item>
-        <item>clases</item>
-        <item>confesiones</item>
+        <item>Libros</item>
+        <item>Fiestas</item>
+        <item>Clases</item>
+        <item>Confesiones</item>
     </string-array>
 </resources>

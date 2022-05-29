@@ -49,13 +49,18 @@ class Confesion : AppCompatActivity() {
         spinner.onItemSelectedListener=object :
             AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                val category=listOfSpinner[p2]
+                category=listOfSpinner[p2]
                 //println(listOfSpinner[p2])
             }
             override fun onNothingSelected(p0: AdapterView<*>?) {
                 category=""
             }
 
+        }
+        var anonymous=false
+        switch_anonymous.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked)
+                anonymous=true
         }
         btn_back.setOnClickListener{
             val intent = Intent(this, Publications::class.java)
@@ -87,11 +92,6 @@ class Confesion : AppCompatActivity() {
             val title= text_title.text.toString()
 
             val description= text_confesion.text.toString()
-            var anonymous=true
-            switch_anonymous.setOnCheckedChangeListener { buttonView, isChecked ->
-                if (isChecked)
-                    anonymous=false
-            }
             var userName=FirebaseAuth.getInstance().currentUser?.displayName
             if (anonymous) {
                 userName="Anonimo"
