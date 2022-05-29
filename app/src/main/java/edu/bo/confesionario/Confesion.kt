@@ -3,11 +3,8 @@ package edu.bo.confesionario
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.TextView
-import android.widget.Switch
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
@@ -32,7 +29,7 @@ class Confesion : AppCompatActivity() {
         get() =  findViewById(R.id.infoBtn)
     private val text_title : TextView
         get() =  findViewById(R.id.text_title)
-    private val text_category : TextView
+    private val spinner : Spinner
         get() =  findViewById(R.id.text_category)
     private val text_confesion : TextView
         get() =  findViewById(R.id.text_confesion)
@@ -44,6 +41,22 @@ class Confesion : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_confesion)
+        val listOfSpinner=resources.getStringArray(R.array.planets_array)
+        //val listOfSpinner= listOf("libros","fiestas","clases","confesiones")
+        val adaptor = ArrayAdapter(this,android.R.layout.simple_spinner_item,listOfSpinner)
+        spinner.adapter=adaptor
+        var category= ""
+        spinner.onItemSelectedListener=object :
+            AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                val category=listOfSpinner[p2]
+                //println(listOfSpinner[p2])
+            }
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                category=""
+            }
+
+        }
         btn_back.setOnClickListener{
             val intent = Intent(this, Publications::class.java)
             startActivity(intent)
@@ -69,9 +82,10 @@ class Confesion : AppCompatActivity() {
         }
 
         btn_publish.setOnClickListener{
+
             val uid = (0 until 10000000000000).random()
             val title= text_title.text.toString()
-            val category= text_category.text.toString()
+
             val description= text_confesion.text.toString()
             var anonymous=true
             switch_anonymous.setOnCheckedChangeListener { buttonView, isChecked ->

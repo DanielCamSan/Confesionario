@@ -166,32 +166,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_title" />
 
-    <EditText
+    <Spinner
         android:id="@+id/text_category"
-        android:layout_width="wrap_content"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:width="380dp"
-        android:background="#F3F2F2"
-        android:ems="10"
+        android:backgroundTint="#44489F"
+        android:backgroundTintMode="add"
+        android:dropDownSelector="@drawable/arrow_down_expandable_list"
         android:hint="@string/text_category_confesion"
-        android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:paddingLeft="12dp"
         android:textColor="#707070"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.631"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Category_title"
-        tools:ignore="TextContrastCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/Category_title" />
 
     <TextView
         android:id="@+id/Confesion_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
         android:text="@string/Confesion"
         android:textColor="#000000"
         android:textSize="14sp"
@@ -212,6 +207,7 @@
         android:paddingLeft="12dp"
         android:textColor="#707070"
         android:textSize="16sp"
+        app:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.588"
         app:layout_constraintStart_toStartOf="parent"
@@ -249,4 +245,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switch_anonymous"
         tools:ignore="TextContrastCheck" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
