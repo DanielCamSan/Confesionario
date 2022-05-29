@@ -47,6 +47,7 @@
                 android:textColor="@color/mainBlue"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:maxWidth="250dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:text="12-2-2022"
+                android:textColor="@android:color/darker_gray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/username" />
         </androidx.constraintlayout.widget.ConstraintLayout>
