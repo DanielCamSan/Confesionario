@@ -79,11 +79,10 @@ class Confesion : AppCompatActivity() {
                     anonymous=false
             }
             var userName=FirebaseAuth.getInstance().currentUser?.displayName
-            var userId = FirebaseAuth.getInstance().currentUser?.uid
             if (anonymous) {
                 userName="Anonimo"
             }
-            val newPublication : Publication =Publication(category,userId ,title, description,
+            val newPublication : Publication = Publication(category,"0" ,title, description,
                 Calendar.getInstance(), userName,0)
             val publicationsRepository = PublicationsRepository(DatabaseRef())
             mainViewModel= MainViewModel(PostPublication(publicationsRepository))

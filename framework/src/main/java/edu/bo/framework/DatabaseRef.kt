@@ -2,35 +2,20 @@ package edu.bo.framework
 
 import android.util.Log
 import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import edu.bo.data.IRemoteDataSource
 import java.text.SimpleDateFormat
-import edu.bo.domain.Publication as DomainPublication
 import java.util.*
 import edu.bo.domain.Comment as CommentDTO
+import edu.bo.domain.Publication as DomainPublication
+
 
 class DatabaseRef : IRemoteDataSource {
 
     private var listResult = arrayListOf<Publication>()
     private var database = FirebaseDatabase.getInstance().getReference().child("publications")
     private var commentariesReference = CommentDataSource(mutableListOf<CommentDTO?>(),0)
-    constructor(){
-        database.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for (snap in dataSnapshot.children) {
-                    listResult.add(getPublicationFormat(snap))
-                }
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
-                Log.w("Error", "Fallo al recuperar las publicaciones.", error.toException())
-            }
-        })
-
-    }
     private fun getPublicationFormat(snap:DataSnapshot) : Publication
     {
         val publication = Publication(
@@ -39,18 +24,43 @@ class DatabaseRef : IRemoteDataSource {
             snap.child("title").value.toString(),
             snap.child("description").value.toString(),
             snap.child("date").value.toString(),
-            snap.child("idUser").value.toString()
+            snap.child("userName").value.toString()
         )
         return publication
     }
+    suspend fun fetchPublications(): List<Publication> {
+        listResult.clear()
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("publications")
+        val dataSnapshotTask = myRef.get()
+        //dataSnapshotTask
+        Thread.sleep(2_000)
+        val datas = dataSnapshotTask.result;
+        for(publication in datas.children){
+            listResult.add(getPublicationFormat(publication))
+        }
+        Log.i("Firebase", "3. After starting to load data")
+        /*myRef.addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for(publication in snapshot.children){
+                    listResult.add(getPublicationFormat(publication))
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("Error", "Fallo al recuperar las publicaciones.", error.toException())
+            }
+        })
+        */
+        return  listResult
+    }
     override suspend fun getPublications(): List<DomainPublication> {
         val commentaries =  commentariesReference.getAllComments()
-
-
-        var listDomains = listResult.map {
+        val publications = fetchPublications()
+        var listDomains = publications.map {
             publication -> publication.toDomainPublication()
         }
-        for (commentary in commentaries) {
+        for (commentary in commentaries)
+        {
             for (publication in listDomains)
             {
                 if (commentary != null) {
@@ -61,15 +71,19 @@ class DatabaseRef : IRemoteDataSource {
                 }
             }
         }
+
         return listDomains
     }
 
     override suspend fun postPublication(publicationObject: DomainPublication) {
         //database = Firebase.database.reference
         //database.child("publications").child("example").setValue(publicationObject);
+        val publication = fetchPublications()
+        //while (publication.count()<1) { }
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("publications")
-        myRef.child(publicationObject.id.toString()).setValue(getDomain(publicationObject))
+        publicationObject.id = (listResult.count()+1).toString()
+        myRef.child("pub"+publicationObject.id.toString()).setValue(getDomain(publicationObject))
     }
     private fun getDomain(publication: DomainPublication?): PublicationPublish {
         if(publication != null) {
