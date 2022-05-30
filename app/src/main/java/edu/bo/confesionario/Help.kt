@@ -48,9 +48,6 @@ class Help : AppCompatActivity() {
                 var lastExpandedPosition = -1
                 override fun onGroupExpand(i: Int) {
                     if (lastExpandedPosition != -1 && i != lastExpandedPosition) {
-                        val changeColorCollapse = ((expandableListView!!.get(lastExpandedPosition) as ViewGroup).getChildAt(0) as ViewGroup).getChildAt(0)
-                        changeColorCollapse.setBackgroundColor(getResources().getColor((R.color.light_yellow)))
-                        ((changeColorCollapse as ViewGroup).getChildAt(0) as TextView).setTextColor(getResources().getColor((R.color.black)))
                         expandableListView!!.collapseGroup(lastExpandedPosition)
                     }
                     Log.d("Position", i.toString())
