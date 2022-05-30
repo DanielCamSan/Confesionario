@@ -5,13 +5,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.ViewGroup
 import android.widget.*
+import android.widget.ExpandableListView.OnGroupClickListener
 import android.widget.ExpandableListView.OnGroupExpandListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
-
 
 
 class Help : AppCompatActivity() {
@@ -44,18 +44,13 @@ class Help : AppCompatActivity() {
                 CustomExpandableListAdapter(this, titleList as ArrayList<String>, listData)
             expandableListView!!.setAdapter(expandableListAdapter)
 
+
             expandableListView!!.setOnGroupExpandListener(object : OnGroupExpandListener {
                 var lastExpandedPosition = -1
                 override fun onGroupExpand(i: Int) {
                     if (lastExpandedPosition != -1 && i != lastExpandedPosition) {
                         expandableListView!!.collapseGroup(lastExpandedPosition)
                     }
-                    Log.d("Position", i.toString())
-                    val changeViewG=(expandableListView!!.get(i) as ViewGroup)
-                    val changeChildUno = (changeViewG.getChildAt(0) as ViewGroup)
-                    val changeChildDos = changeChildUno.getChildAt(0)
-                    changeChildDos.setBackgroundColor(getResources().getColor((R.color.primary_blue)))
-                    ((changeChildDos as ViewGroup).getChildAt(0) as TextView).setTextColor(getResources().getColor((R.color.white)))
                     lastExpandedPosition = i
                 }
             })
@@ -64,6 +59,7 @@ class Help : AppCompatActivity() {
                 val changeColorCollapse = ((expandableListView!!.get(groupPosition) as ViewGroup).getChildAt(0) as ViewGroup).getChildAt(0)
                 changeColorCollapse.setBackgroundColor(getResources().getColor((R.color.light_yellow)))
                 ((changeColorCollapse as ViewGroup).getChildAt(0) as TextView).setTextColor(getResources().getColor((R.color.black)))
+                ((changeColorCollapse as ViewGroup).getChildAt(1) as ImageView).setImageResource(R.drawable.arrow_down_expandable_list)
             }
         }
         btnBack.findViewById<Button>(R.id.go_back_btn)
@@ -103,20 +99,12 @@ class Help : AppCompatActivity() {
             serviceDescription.add(
                 """
                     Horario del centro de llamadas:
-                    Lun-vie 9 am-7pm EST
-                    El mejor momento para marcar:
-                    10:45 am
-                    Navega por el laberinto del teléfono a un humano:
-                    Presione 2 y luego 1
-                    Espera promedio
-                    Espera actual
-                    7 7
-                    Rango (entre números de teléfono):
-                    1
-                    Rango (general):
-                    1
-                    Métodos alternativos:
-                    teléfono, web
+                    Lun-vie 9 am-7pm BOLIVIA
+                    Métodos alternativos.
+                     
+                        Teléfono: 77777777 
+                        Pagina de Facebook: Lo que callamos los de la UCB
+                        
                     Es recomendable enviar un correo a los mensajes de contactanos.
                     """.trimIndent()
             )
@@ -124,11 +112,9 @@ class Help : AppCompatActivity() {
             val policeDescription = ArrayList<String>()
             policeDescription.add(
                 """
-                    Esta Política de Privacidad se aplica a todos nuestros juegos, ya se jueguen en nuestro sitio web www.king.com.
+                    Esta Política de Privacidad se aplica dentro de toda la aplicación.
                     
-                    En dispositivos móviles, PC o en otras plataformas como Facebook. También se aplica a nuestras actividades de marketing y publicidad.
-                    
-                    En todas las plataformas y otros servicios que podemos proporcionarle de vez en cuando. En esta Política de Privacidad, nos referimos a nuestros
+                    En dispositivos móviles, emuladores de PC y cualquier dispositivo Android. También se aplica a nuestras actividades de marketing y publicidad si es necesario.
                     """.trimIndent()
             )
 
@@ -136,9 +122,9 @@ class Help : AppCompatActivity() {
             val aboutDescription = ArrayList<String>()
             aboutDescription.add(
                 """
-                    Pulse el botón del Mapa del Reino situado en la esquina inferior izquierda para ir al Mapa del Reino, y luego pulse el botón del globo terráqueo para ir al Mapa del Mundo.
-                    Pulsa sobre un reino para ver su mapa. Toca una casilla vacía y selecciona Reubicar o Migrar para transferir tu territorio. Los jugadores sólo pueden trasladarse a un reino en el que la migración esté restringida si es más antiguo que su reino de origen.
+                    Pulse el botón de Ubicacion situado en la esquína superior derecha para ir al Mapa de nuestra ubicación
                     
+                    Bolivia-Cochabamba.
                     """.trimIndent()
             )
 
@@ -148,15 +134,12 @@ class Help : AppCompatActivity() {
                 """
                     Contactenos en:
                     
-                    abc2234@gmail.com
-                    androidlover@gmail.com
+                    Confesionario@gmail.com
                     
                     Visite nuestra pagina en:
                     
                     
-                    https://www.facebook.com/1182906556/videos/10220903002183147/
-                    
-                    Y nuestro canal de youtube:  https://www.youtube.com/watch?v=riT4nl0T8_M
+                    facebook.com/Lo-Que-Callamos-Los-De-La-UCB-CBBA-346151905797925
                     """.trimIndent()
             )
 

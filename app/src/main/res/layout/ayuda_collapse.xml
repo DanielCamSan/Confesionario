@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/collapse"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="horizontal"
-    android:padding="5dp"
-    >
+    android:padding="5dp">
 
 
     <androidx.cardview.widget.CardView
@@ -23,8 +23,8 @@
             android:id="@+id/tittleLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:background="@color/light_yellow">
+            android:background="@color/light_yellow"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/ayudaTitleView"

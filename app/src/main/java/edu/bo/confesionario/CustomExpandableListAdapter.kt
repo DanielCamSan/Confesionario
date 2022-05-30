@@ -2,11 +2,13 @@ package edu.bo.confesionario
 
 import android.content.Context
 import android.graphics.Typeface
+import android.media.Image
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
+import android.widget.ImageView
 import android.widget.TextView
 
 class CustomExpandableListAdapter internal constructor(
@@ -76,6 +78,14 @@ class CustomExpandableListAdapter internal constructor(
         val listTitleTextView = convertView!!.findViewById<TextView>(R.id.ayudaTitleView)
         listTitleTextView.setTypeface(null, Typeface.BOLD)
         listTitleTextView.text = listTitle
+        if(isExpanded){
+            val changeViewG = (convertView as ViewGroup)
+            val changeChildUno = (changeViewG.getChildAt(0) as ViewGroup)
+            val changeChildDos = changeChildUno.getChildAt(0)
+            changeChildDos.setBackgroundColor(context.getResources().getColor((R.color.primary_blue)))
+            ((changeChildDos as ViewGroup).getChildAt(0) as TextView).setTextColor(context.getResources().getColor((R.color.white)))
+            ((changeChildDos as ViewGroup).getChildAt(1) as ImageView).setImageResource(R.drawable.arrow_up_expandable_list)
+        }
 
         return convertView
     }
