@@ -34,7 +34,7 @@ class DatabaseRef : IRemoteDataSource {
         val myRef = database.getReference("publications")
         val dataSnapshotTask = myRef.get()
         //dataSnapshotTask
-        Thread.sleep(2_000)
+        Thread.sleep(3_000)
         val datas = dataSnapshotTask.result;
         for(publication in datas.children){
             listResult.add(getPublicationFormat(publication))

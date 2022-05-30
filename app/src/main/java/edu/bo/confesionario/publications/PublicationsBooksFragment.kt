@@ -36,7 +36,7 @@ data class PublicationsBooksFragment(private var mainViewModel : MainViewModel) 
     private fun initRecyclerView(publications: List<Publication>){
         var listPublications = publications.filter {
                 publication ->
-                publication.category == "libros"
+                publication.category == "Libros"
         }
 
         recyclerView.adapter = PublicationsListAdapter(listPublications  as ArrayList<Publication>)
