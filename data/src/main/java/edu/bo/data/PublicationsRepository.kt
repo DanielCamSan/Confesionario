@@ -16,5 +16,9 @@ class PublicationsRepository (val remoteDataSource: IRemoteDataSource) {
     {
         return remoteDataSource.postPublication(publicationObject)
     }
+    fun findPublication(query:String) : Pair<Boolean, Publication>
+    {
+        return remoteDataSource.findPublication(query)
+    }
 
 }

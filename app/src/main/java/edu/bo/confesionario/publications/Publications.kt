@@ -8,6 +8,8 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -16,12 +18,15 @@ import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 import edu.bo.confesionario.Confesion
 import edu.bo.confesionario.Help
+import edu.bo.confesionario.IndividualConfession
 import edu.bo.confesionario.R
 import edu.bo.confesionario.login.Login
 import edu.bo.data.PublicationsRepository
 import edu.bo.framework.DatabaseRef
+import edu.bo.usecases.FindPublication
 import edu.bo.usecases.GetPublications
 import kotlinx.android.synthetic.main.activity_publications.*
+import java.util.*
 
 class Publications : AppCompatActivity() {
     private lateinit var searcher : SearchView
@@ -30,7 +35,7 @@ class Publications : AppCompatActivity() {
     private val tabs: TabLayout
         get() = findViewById(R.id.tabs)
     private lateinit var mainViewModel: MainViewModel
-    var menuView : Int = 0
+    private lateinit var findViewModel: FindPublicationViewModel
     private val leftButton : ImageView
         get() = findViewById(R.id.buttonLeft)
     private  val publicateBtn: Button
@@ -73,9 +78,10 @@ class Publications : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_publications)
-        mainViewModel = MainViewModel(GetPublications(PublicationsRepository(DatabaseRef())))
-        //mainViewModel.model.observe(this, Observer(::updateUi))
-        //mainViewModel.loadPublications()
+        val repository = PublicationsRepository(DatabaseRef())
+        mainViewModel = MainViewModel(GetPublications(repository))
+        mainViewModel.loadPublications()
+        findViewModel = FindPublicationViewModel(FindPublication(repository))
         pager.setPageTransformer(ZoomOutPageTransformer())
         tabsDisplacement()
         publicateBtn.setOnClickListener{
@@ -104,10 +110,43 @@ class Publications : AppCompatActivity() {
         searcher = findViewById(R.id.searcher)
         searcher.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                //selecciona la vista todos
-                tabs.selectTab(tabs.getTabAt(0))
-                viewPager.currentItem = 0
+                if (query != null) {
+                    Log.d("Primero",query)
 
+                    findViewModel.findPublication(query)
+
+                    Log.d("cuarto","llego aqui")
+                    var model = findViewModel.model.value
+                    when ( model) {
+                        is FindPublicationViewModel.UiModel.Content ->
+                        {
+                            val request = model.publicationFind
+                            if (request.first)
+                            {
+                                val publication = request.second
+                                val bundle = Bundle()
+                                var date = publication.date.get(Calendar.YEAR).toString()
+                                date = date + "-" + (if (publication.date.get(Calendar.MONTH)+1<10) "0" else "") + (publication.date.get(Calendar.MONTH)+1).toString()
+                                date = date + "-" + (if (publication.date.get(Calendar.DAY_OF_MONTH)<10) "0" else "") + publication.date.get(
+                                    Calendar.DAY_OF_MONTH).toString()
+                                bundle.putString("category", publication.category)
+                                bundle.putString("title", publication.title)
+                                bundle.putString("description", publication.description)
+                                bundle.putString("date", date)
+                                bundle.putString("userName", publication.userName)
+                                bundle.putString("id", publication.id.toString())
+                                bundle.putString("commentaries", publication.numberOfCommentaries.toString())
+                                var intent = Intent(this@Publications, IndividualConfession::class.java)
+                                intent.putExtras(bundle)
+                                ContextCompat.startActivity(this@Publications, intent, bundle)
+                            }else{
+                                Toast.makeText(this@Publications,"No se hallo la publicacion",Toast.LENGTH_SHORT)
+                            }
+
+                        }
+                    }
+
+                }
                 return false
             }
 
@@ -119,6 +158,7 @@ class Publications : AppCompatActivity() {
 
         setUpTabBar()
     }
+
     private fun onSlidePage(numberPage: Int)
     {
         if (numberPage == 0) {
@@ -178,11 +218,7 @@ class Publications : AppCompatActivity() {
             override fun onTabReselected(tab: TabLayout.Tab?){}
         })
     }
-    /*
-    private fun updateUi(model: MainViewModel.UiModel?){
 
-    }
-    */
     ///visual
     ///animacion del visual pager que realiza un zoom out cuando cambiamos de tab
     class ZoomOutPageTransformer : ViewPager2.PageTransformer {

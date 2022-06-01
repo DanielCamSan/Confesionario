@@ -46,7 +46,7 @@ class DatabaseRef : IRemoteDataSource {
         })
         val dataSnapshotTask = reference.get()
         //dataSnapshotTask
-        Thread.sleep(2_000)
+        Thread.sleep(3_000)
         val datas = dataSnapshotTask.result;
         for(publication in datas.children){
             listResult.add(getPublicationFormat(publication))
@@ -93,6 +93,24 @@ class DatabaseRef : IRemoteDataSource {
             return PublicationPublish(publication.category, publication.title, publication.description, sdf.format(publication.date.time),publication.userName,publication.id)
         }
         return PublicationPublish("","","",Calendar.getInstance().toString(),"","0")
+    }
+    override fun findPublication(query:String) : Pair<Boolean, DomainPublication>{
+
+        var publications = listResult
+        var listDomains = publications.map {
+                publication -> publication.toDomainPublication()
+        }
+        var index = 0
+        if (listDomains.count()>1)
+        {
+            for (publication in listDomains)
+            {
+                if (publication.title == query)
+                    return Pair(true,publication)
+            }
+        }
+        return Pair(false,DomainPublication("","0","","", Calendar.getInstance(),"",0))
+
     }
 
 }
