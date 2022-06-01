@@ -13,15 +13,18 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import edu.bo.confesionario.IndividualConfession
 import edu.bo.confesionario.R
+import edu.bo.confesionario.adapter.RedirectToPublicationAdapter
 import java.util.*
 import kotlin.collections.ArrayList
 import edu.bo.domain.Publication
 
 class PublicationsListAdapter(val publications: ArrayList<Publication>):
     RecyclerView.Adapter<PublicationsListAdapter.PublicationListViewHolder>() {
+    private lateinit var redirectAdapter : RedirectToPublicationAdapter
     private lateinit var parentContext: Context
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PublicationListViewHolder {
         parentContext = parent.context
+        redirectAdapter = RedirectToPublicationAdapter(parentContext)
         val v = LayoutInflater.from(parent.context).inflate(R.layout.publication_card, parent, false)
         return PublicationListViewHolder(v)
     }
@@ -29,7 +32,6 @@ class PublicationsListAdapter(val publications: ArrayList<Publication>):
     override fun getItemCount(): Int {
         return publications.count()
     }
-
     override fun onBindViewHolder(holder: PublicationListViewHolder, position: Int) {
 
         val publication = publications.get(position)
@@ -46,18 +48,9 @@ class PublicationsListAdapter(val publications: ArrayList<Publication>):
         date = publication.date.get(Calendar.YEAR).toString()
         date = date + "-" + (if (publication.date.get(Calendar.MONTH)+1<10) "0" else "") + (publication.date.get(Calendar.MONTH)+1).toString()
         date = date + "-" + (if (publication.date.get(Calendar.DAY_OF_MONTH)<10) "0" else "") + publication.date.get(Calendar.DAY_OF_MONTH).toString()
-        val bundle = Bundle()
-        bundle.putString("category", publication.category)
-        bundle.putString("title", publication.title)
-        bundle.putString("description", publication.description)
-        bundle.putString("date", date)
-        bundle.putString("userName", publication.userName)
-        bundle.putString("id", publication.id.toString())
-        bundle.putString("commentaries", publication.numberOfCommentaries.toString())
+        val bundle = redirectAdapter.getBundleOfPublication(publication)
         holder.itemView.findViewById<CardView>(R.id.publication_card).setOnClickListener {
-            var intent = Intent(parentContext, IndividualConfession::class.java)
-            intent.putExtras(bundle)
-            startActivity(parentContext, intent, bundle)
+            redirectAdapter.redirectWith(bundle)
         }
     }
 

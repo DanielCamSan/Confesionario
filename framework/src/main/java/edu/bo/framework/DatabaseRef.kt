@@ -45,8 +45,7 @@ class DatabaseRef : IRemoteDataSource {
             }
         })
         val dataSnapshotTask = reference.get()
-        //dataSnapshotTask
-        Thread.sleep(3_000)
+        Thread.sleep(4_000)
         val datas = dataSnapshotTask.result;
         for(publication in datas.children){
             listResult.add(getPublicationFormat(publication))
@@ -78,10 +77,7 @@ class DatabaseRef : IRemoteDataSource {
     }
 
     override suspend fun postPublication(publicationObject: DomainPublication) {
-        //database = Firebase.database.reference
-        //database.child("publications").child("example").setValue(publicationObject);
-        val publication = fetchPublications()
-        //while (publication.count()<1) { }
+        fetchPublications()
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("publications")
         publicationObject.id = (listResult.count()+1).toString()

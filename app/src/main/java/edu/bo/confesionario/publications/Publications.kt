@@ -1,14 +1,11 @@
 package edu.bo.confesionario.publications
 
-//import androidx.appcompat.widget.SearchView
-//import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
@@ -20,13 +17,16 @@ import edu.bo.confesionario.Confesion
 import edu.bo.confesionario.Help
 import edu.bo.confesionario.IndividualConfession
 import edu.bo.confesionario.R
+import edu.bo.confesionario.adapter.RedirectToPublicationAdapter
 import edu.bo.confesionario.login.Login
 import edu.bo.data.PublicationsRepository
+import edu.bo.domain.Publication
 import edu.bo.framework.DatabaseRef
 import edu.bo.usecases.FindPublication
 import edu.bo.usecases.GetPublications
 import kotlinx.android.synthetic.main.activity_publications.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 class Publications : AppCompatActivity() {
     private lateinit var searcher : SearchView
@@ -36,6 +36,7 @@ class Publications : AppCompatActivity() {
         get() = findViewById(R.id.tabs)
     private lateinit var mainViewModel: MainViewModel
     private lateinit var findViewModel: FindPublicationViewModel
+    private lateinit var redirectorToPublication : RedirectToPublicationAdapter
     private val leftButton : ImageView
         get() = findViewById(R.id.buttonLeft)
     private  val publicateBtn: Button
@@ -83,6 +84,7 @@ class Publications : AppCompatActivity() {
         mainViewModel.loadPublications()
         findViewModel = FindPublicationViewModel(FindPublication(repository))
         pager.setPageTransformer(ZoomOutPageTransformer())
+        redirectorToPublication = RedirectToPublicationAdapter(this)
         tabsDisplacement()
         publicateBtn.setOnClickListener{
             val intent = Intent(this, Confesion::class.java)
@@ -111,41 +113,7 @@ class Publications : AppCompatActivity() {
         searcher.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
-                    Log.d("Primero",query)
-
-                    findViewModel.findPublication(query)
-
-                    Log.d("cuarto","llego aqui")
-                    var model = findViewModel.model.value
-                    when ( model) {
-                        is FindPublicationViewModel.UiModel.Content ->
-                        {
-                            val request = model.publicationFind
-                            if (request.first)
-                            {
-                                val publication = request.second
-                                val bundle = Bundle()
-                                var date = publication.date.get(Calendar.YEAR).toString()
-                                date = date + "-" + (if (publication.date.get(Calendar.MONTH)+1<10) "0" else "") + (publication.date.get(Calendar.MONTH)+1).toString()
-                                date = date + "-" + (if (publication.date.get(Calendar.DAY_OF_MONTH)<10) "0" else "") + publication.date.get(
-                                    Calendar.DAY_OF_MONTH).toString()
-                                bundle.putString("category", publication.category)
-                                bundle.putString("title", publication.title)
-                                bundle.putString("description", publication.description)
-                                bundle.putString("date", date)
-                                bundle.putString("userName", publication.userName)
-                                bundle.putString("id", publication.id.toString())
-                                bundle.putString("commentaries", publication.numberOfCommentaries.toString())
-                                var intent = Intent(this@Publications, IndividualConfession::class.java)
-                                intent.putExtras(bundle)
-                                ContextCompat.startActivity(this@Publications, intent, bundle)
-                            }else{
-                                Toast.makeText(this@Publications,"No se hallo la publicacion",Toast.LENGTH_SHORT)
-                            }
-
-                        }
-                    }
-
+                    findAndRedirect(query)
                 }
                 return false
             }
@@ -157,6 +125,28 @@ class Publications : AppCompatActivity() {
         })
 
         setUpTabBar()
+    }
+    private fun findAndRedirect(query: String)
+    {
+        findViewModel.findPublication(query)
+        var model = findViewModel.model.value
+        when ( model) {
+            is FindPublicationViewModel.UiModel.Content ->
+            {
+                val request = model.publicationFind
+                if (request.first)
+                {
+                    redirectorToPublication.redirectToPublication(request.second)
+                }else{
+                    Toast.makeText(this@Publications,"No se hallo la publicacion",Toast.LENGTH_SHORT)
+                }
+
+            }
+        }
+    }
+    private fun redirectToPublication(publication: Publication)
+    {
+        //ContextCompat.startActivity(this@Publications, intent, bundle)
     }
 
     private fun onSlidePage(numberPage: Int)

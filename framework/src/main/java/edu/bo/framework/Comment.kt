@@ -1,6 +1,5 @@
 package edu.bo.framework
 
-import java.util.*
 
 data class Comment (
     val id: String = "",
