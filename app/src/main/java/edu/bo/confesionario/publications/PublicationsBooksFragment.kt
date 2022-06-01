@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,8 +15,10 @@ import edu.bo.confesionario.R
 import edu.bo.domain.Publication
 
 data class PublicationsBooksFragment(private var mainViewModel : MainViewModel) : Fragment() {
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewPublications: View
+    private lateinit var searcher: SearchView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainViewModel.model.observe(this, Observer(::updateUi))
@@ -28,7 +31,7 @@ data class PublicationsBooksFragment(private var mainViewModel : MainViewModel) 
     ): View? {
         viewPublications = inflater.inflate(R.layout.fragment_publications_books, container, false)
         recyclerView = viewPublications.findViewById(R.id.recicler_books)
-        val linearLayoutManager = LinearLayoutManager(activity)
+         val linearLayoutManager = LinearLayoutManager(activity)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView.layoutManager = linearLayoutManager
         return viewPublications

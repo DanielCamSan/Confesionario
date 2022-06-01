@@ -2,34 +2,41 @@ package edu.bo.confesionario.publications
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
-import edu.bo.confesionario.*
+import edu.bo.confesionario.Confesion
+import edu.bo.confesionario.Help
+import edu.bo.confesionario.IndividualConfession
 import edu.bo.confesionario.R
+import edu.bo.confesionario.adapter.RedirectToPublicationAdapter
 import edu.bo.confesionario.login.Login
 import edu.bo.data.PublicationsRepository
+import edu.bo.domain.Publication
 import edu.bo.framework.DatabaseRef
+import edu.bo.usecases.FindPublication
 import edu.bo.usecases.GetPublications
 import kotlinx.android.synthetic.main.activity_publications.*
-
+import java.util.*
+import kotlin.collections.ArrayList
 
 class Publications : AppCompatActivity() {
+    private lateinit var searcher : SearchView
     private val pager: ViewPager2
         get() = findViewById(R.id.viewPager)
     private val tabs: TabLayout
         get() = findViewById(R.id.tabs)
     private lateinit var mainViewModel: MainViewModel
-    var menuView : Int = 0
+    private lateinit var findViewModel: FindPublicationViewModel
+    private lateinit var redirectorToPublication : RedirectToPublicationAdapter
     private val leftButton : ImageView
         get() = findViewById(R.id.buttonLeft)
     private  val publicateBtn: Button
@@ -72,10 +79,12 @@ class Publications : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_publications)
-        mainViewModel = MainViewModel(GetPublications(PublicationsRepository(DatabaseRef())))
-        //mainViewModel.model.observe(this, Observer(::updateUi))
-        //mainViewModel.loadPublications()
+        val repository = PublicationsRepository(DatabaseRef())
+        mainViewModel = MainViewModel(GetPublications(repository))
+        mainViewModel.loadPublications()
+        findViewModel = FindPublicationViewModel(FindPublication(repository))
         pager.setPageTransformer(ZoomOutPageTransformer())
+        redirectorToPublication = RedirectToPublicationAdapter(this)
         tabsDisplacement()
         publicateBtn.setOnClickListener{
             val intent = Intent(this, Confesion::class.java)
@@ -100,8 +109,46 @@ class Publications : AppCompatActivity() {
             this.overridePendingTransition(0, 0);
 
         }
+        searcher = findViewById(R.id.searcher)
+        searcher.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    findAndRedirect(query)
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return false
+            }
+
+        })
+
         setUpTabBar()
     }
+    private fun findAndRedirect(query: String)
+    {
+        findViewModel.findPublication(query)
+        var model = findViewModel.model.value
+        when ( model) {
+            is FindPublicationViewModel.UiModel.Content ->
+            {
+                val request = model.publicationFind
+                if (request.first)
+                {
+                    redirectorToPublication.redirectToPublication(request.second)
+                }else{
+                    Toast.makeText(this@Publications,"No se hallo la publicacion",Toast.LENGTH_SHORT)
+                }
+
+            }
+        }
+    }
+    private fun redirectToPublication(publication: Publication)
+    {
+        //ContextCompat.startActivity(this@Publications, intent, bundle)
+    }
+
     private fun onSlidePage(numberPage: Int)
     {
         if (numberPage == 0) {
@@ -161,11 +208,7 @@ class Publications : AppCompatActivity() {
             override fun onTabReselected(tab: TabLayout.Tab?){}
         })
     }
-    /*
-    private fun updateUi(model: MainViewModel.UiModel?){
 
-    }
-    */
     ///visual
     ///animacion del visual pager que realiza un zoom out cuando cambiamos de tab
     class ZoomOutPageTransformer : ViewPager2.PageTransformer {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -87,6 +88,7 @@
         android:layout_width="410dp"
         android:layout_height="69dp"
         android:layout_marginTop="8dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -121,12 +123,15 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <SearchView
-        android:id="@+id/searcher_publication"
+    <android.widget.SearchView
+        android:id="@+id/searcher"
         android:layout_width="371dp"
         android:layout_height="44dp"
         android:layout_marginTop="8dp"
         android:background="#DFDFDF"
+        android:fadeScrollbars="false"
+        android:inputType="textUri"
+        android:isScrollContainer="false"
         android:queryHint="@string/publications_searcher_hint"
         app:layout_constraintEnd_toEndOf="@id/menuContainer"
         app:layout_constraintStart_toStartOf="parent"
@@ -140,7 +145,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searcher_publication">
+        app:layout_constraintTop_toBottomOf="@+id/searcher">
 
         <ImageView
             android:id="@+id/buttonRight"
@@ -222,7 +227,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
-        android:layout_height="402dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.615"
@@ -240,5 +246,6 @@
 
         </androidx.viewpager2.widget.ViewPager2>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

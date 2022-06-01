@@ -4,9 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import edu.bo.domain.Publication
 import edu.bo.usecases.GetPublications
-import edu.bo.usecases.PostPublication
 import kotlinx.coroutines.launch
-import org.json.JSONArray
+
 
 class MainViewModel(val publications: GetPublications) :ScopedViewModel()  {
     init {
@@ -26,8 +25,5 @@ class MainViewModel(val publications: GetPublications) :ScopedViewModel()  {
             _model.value = UiModel.Content(listPublication)
         }
     }
-    fun getPublications() : List<Publication>
-    {
-        return listPublication
-    }
+
 }

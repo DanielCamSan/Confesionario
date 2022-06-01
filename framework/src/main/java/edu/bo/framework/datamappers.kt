@@ -1,6 +1,4 @@
 package edu.bo.framework
-import retrofit2.http.GET
-import retrofit2.http.Query
 import java.text.SimpleDateFormat
 import java.util.*
 
