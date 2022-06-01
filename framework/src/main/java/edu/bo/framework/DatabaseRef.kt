@@ -2,7 +2,9 @@ package edu.bo.framework
 
 import android.util.Log
 import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import edu.bo.data.IRemoteDataSource
 import java.text.SimpleDateFormat
 import java.util.*
@@ -31,16 +33,8 @@ class DatabaseRef : IRemoteDataSource {
     suspend fun fetchPublications(): List<Publication> {
         listResult.clear()
         val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("publications")
-        val dataSnapshotTask = myRef.get()
-        //dataSnapshotTask
-        Thread.sleep(2_000)
-        val datas = dataSnapshotTask.result;
-        for(publication in datas.children){
-            listResult.add(getPublicationFormat(publication))
-        }
-        Log.i("Firebase", "3. After starting to load data")
-        /*myRef.addValueEventListener(object: ValueEventListener{
+        val reference = database.getReference("publications")
+        reference.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(publication in snapshot.children){
                     listResult.add(getPublicationFormat(publication))
@@ -50,7 +44,15 @@ class DatabaseRef : IRemoteDataSource {
                 Log.w("Error", "Fallo al recuperar las publicaciones.", error.toException())
             }
         })
-        */
+        val dataSnapshotTask = reference.get()
+        //dataSnapshotTask
+        Thread.sleep(2_000)
+        val datas = dataSnapshotTask.result;
+        for(publication in datas.children){
+            listResult.add(getPublicationFormat(publication))
+        }
+
+
         return  listResult
     }
     override suspend fun getPublications(): List<DomainPublication> {

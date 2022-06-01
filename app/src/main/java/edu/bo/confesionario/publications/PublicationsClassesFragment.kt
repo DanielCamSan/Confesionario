@@ -34,7 +34,7 @@ class PublicationsClassesFragment(private var mainViewModel : MainViewModel) : F
         return viewPublications
     }
     private fun initRecyclerView(publications: List<Publication>){
-        var listPublications = publications.filter { publication -> publication.category == "clases" }
+        var listPublications = publications.filter { publication -> publication.category == "Clases" }
         recyclerView.adapter = PublicationsListAdapter(listPublications as ArrayList<Publication>)
     }
     private fun updateUi(model: MainViewModel.UiModel?){

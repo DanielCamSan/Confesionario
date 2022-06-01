@@ -35,7 +35,7 @@ class PublicationsConfesionsFragment(private var mainViewModel : MainViewModel) 
         return viewPublications
     }
     private fun initRecyclerView(publications: List<Publication>){
-        var listPublications = publications.filter { publication -> publication.category == "confesiones" }
+        var listPublications = publications.filter { publication -> publication.category == "Confesiones" }
         recyclerView.adapter = PublicationsListAdapter(listPublications as ArrayList<Publication>)
     }
     private fun updateUi(model: MainViewModel.UiModel?){

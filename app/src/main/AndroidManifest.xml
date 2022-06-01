@@ -29,7 +29,8 @@
             android:exported="false" />
         <activity
             android:name=".publications.Publications"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".IndividualConfession"
             android:exported="false"/>
