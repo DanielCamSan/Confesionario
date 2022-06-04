@@ -42,7 +42,7 @@ class PublicationsListAdapter(val publications: ArrayList<Publication>):
         holder.itemView.findViewById<TextView>(R.id.titleText).text = publication.title
         holder.itemView.findViewById<TextView>(R.id.descriptionText).text = publication.description
         holder.itemView.findViewById<TextView>(R.id.numberText).text = "Confesion #"+publication.id.toString()
-        holder.itemView.findViewById<TextView>(R.id.commentaries).text = publication.numberOfCommentaries.toString()
+        //holder.itemView.findViewById<TextView>(R.id.commentaries).text = publication.numberOfCommentaries.toString()
         holder.itemView.findViewById<TextView>(R.id.dateText).text = date
         holder.itemView.findViewById<TextView>(R.id.userText).text = publication.userName
         date = publication.date.get(Calendar.YEAR).toString()

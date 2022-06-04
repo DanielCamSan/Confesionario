@@ -138,14 +138,6 @@
                     android:layout_height="match_parent"
                     android:gravity="center|right|center_horizontal">
 
-                    <TextView
-                        android:id="@+id/commentaries"
-                        android:layout_width="38dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="14sp"
-                        android:textColor="@color/publication_card_gris" />
-
                     <ImageView
                         android:id="@+id/imageView16"
                         android:layout_width="34dp"
