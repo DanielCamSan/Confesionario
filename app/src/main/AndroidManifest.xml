@@ -8,7 +8,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/confesionario_padre_cleber"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/confesionario"
         android:supportsRtl="true"
         android:theme="@style/Theme.Confesionario"
         android:usesCleartextTraffic="true">
